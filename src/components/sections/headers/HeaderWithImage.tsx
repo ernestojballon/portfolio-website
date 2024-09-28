@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
+import Image from 'next/image';
 
 type ImageProps = {
   src: string;
@@ -24,7 +25,9 @@ export const HeaderWithImage = (props: HeaderWithImageProps) => {
         <div className="grid grid-cols-1 gap-x-20 gap-y-12 md:gap-y-16 lg:grid-cols-2 lg:items-center">
           <div>{slot1}</div>
           <div>
-            <img src={image.src} className="w-full object-cover" alt={image.alt} />
+            <Image src={image.src} className="w-full object-cover"
+              alt={image.alt || ""} width={800} height={600}
+            />
           </div>
         </div>
       </div>

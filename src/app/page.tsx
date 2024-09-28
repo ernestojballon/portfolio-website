@@ -1,6 +1,6 @@
 import HeaderWithCarousel from '@/components/sections/headers/HeaderWithCarousel'
 import HeaderWithImage from '@/components/sections/headers/HeaderWithImage'
-import Layout415 from '@/components/sections/layout/DismissCards'
+import DismissCards from '@/components/sections/layout/DismissCards'
 import VerticalFeatureProgress from '@/components/sections/layout/VerticalFeatureProgress'
 import MultipleSlots from '@/components/sections/layout/MultipleSlots'
 import TitleImage from '@/components/sections/TitleImage'
@@ -77,7 +77,7 @@ const UiSections = () => {
       < MultipleSlots />
 
 
-      <Layout415 />
+      <DismissCards />
       <VerticalFeatureProgress />
       <ScrollingReveal />
       <TitleImage />

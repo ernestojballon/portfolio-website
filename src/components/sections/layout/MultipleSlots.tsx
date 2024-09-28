@@ -2,8 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { use, useEffect, useRef, useState } from "react";
-import { RxChevronRight } from "react-icons/rx";
+import { useEffect, useRef, useState } from "react";
 
 type ImageProps = {
   src: string;

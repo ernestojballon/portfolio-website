@@ -90,3 +90,39 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+   .container {
+    @apply w-full max-w-[80rem] mx-auto stroke-border ;
+  }
+  .h1 {
+    @apply mb-5 mt-2 text-5xl font-bold md:mb-6 md:text-7xl lg:text-5xl;
+  }
+  .h2 {
+    @apply scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0;
+  }
+  .h3 {
+    @apply scroll-m-20 text-2xl font-semibold tracking-tight;
+  }
+  .h4 {
+    @apply scroll-m-20 text-xl font-semibold tracking-tight;
+  }
+  .h5 {
+    @apply scroll-m-20 text-lg font-semibold tracking-tight;
+  }
+  .h6 {
+    @apply scroll-m-20 text-base font-semibold tracking-tight;
+  }
+  .blockquote {
+    @apply mt-6 border-l-4 border-gray-300 pl-6 italic text-xl text-gray-700 font-medium leading-8 py-2 mb-6;
+  }
+  .body {
+    @apply leading-7 [&:not(:first-child)]:mt-6;
+  }
+  .small {
+    @apply text-sm font-medium leading-none;
+  }
+  .tagLine {
+    @apply mb-3 font-semibold md:mb-4 ;
+  }
+}

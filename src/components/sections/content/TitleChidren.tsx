@@ -13,7 +13,7 @@ export const TitleChidren = (props: TitleChidrenProps) => {
   return (
     <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
-        <div className="mx-auto w-full max-w-xl">
+        <div className="mx-auto w-full max-w-lg">
           <h2 className="rb-5 mb-5 h1 font-bold md:mb-6 ">
             {heading}
           </h2>

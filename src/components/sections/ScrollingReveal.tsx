@@ -59,7 +59,6 @@ const ScrollingLayout = (props: ScrollingLayoutProps) => {
 
   useEffect(() => {
     if (isMobile) return;
-    console.log({ scrollProgress });
     controlsLeft.start({
       padding: `${scrollProgress ? 2 : 0}rem`,
 
@@ -100,12 +99,12 @@ const ScrollingLayout = (props: ScrollingLayoutProps) => {
         >
           <div className="shadow-lg flex-auto border-2 border-black flex gap-4 overflow-hidden">
             <div className="p-4">
-              <div>{cardSlot1}</div>
+              <div key={"cardSlot1"}>{cardSlot1}</div>
             </div>
           </div>
           <div className="shadow-lg flex-auto border-2 border-black flex gap-4 overflow-hidden">
             <div className="p-4">
-              <div>{cardSlot2}</div>
+              <div key={"cardSlot2"}>{cardSlot2}</div>
             </div>
           </div>
         </motion.div>
@@ -120,29 +119,27 @@ const ScrollingLayout = (props: ScrollingLayoutProps) => {
 
 export const ScrollingLayoutDefaults: ScrollingLayoutProps = {
   slot1: [
-    <>
-      <p className="text-sm font-semibold mb-2">Tagline</p>
-      <h1 className="h2">Medium length section heading goes here</h1>
-      <p className="max-w-md mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
-      <div className="flex space-x-4">
-        <Button variant="secondary">Button</Button>
-        <Button variant="link">Button →</Button>
-      </div>
-    </>
+    <p key={"Tagline"} className="text-sm font-semibold mb-2">Tagline</p>,
+    <h1 key={"heading"} className="h2">Medium length section heading goes here</h1>,
+    <p key={"description"} className="max-w-md mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>,
+    <div key={"CTA"} className="flex space-x-4">,
+      <Button variant="secondary">Button</Button>
+      <Button variant="link">Button →</Button>
+    </div>
   ],
   mainBackgroundImage: "https://cdn.prod.website-files.com/624380709031623bfe4aee60/6243807090316203124aee66_placeholder-image.svg",
   cardSlot1: [
-    <><img src={"https://cdn.prod.website-files.com/632abf3cc994db4faa25529f/632abf3cc994db480f2552e6_icon.svg"} alt="Icon" className="w-12 h-12 mb-4" />
-      <h3 className="text-xl font-semibold mb-2">Short heading here</h3>
-      <p className="text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
-      <Button variant="link">Button →</Button></>
+    <img key={"link"} src={"https://cdn.prod.website-files.com/632abf3cc994db4faa25529f/632abf3cc994db480f2552e6_icon.svg"} alt="Icon" className="w-12 h-12 mb-4" />
+    , <h3 key={"shortName"} className="text-xl font-semibold mb-2">Short heading here</h3>
+    , <p key={"description"} className="text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
+    , <Button key={"cta"} variant="link">Button →</Button>
   ],
   cardSlot2: [
-    <><img src={"https://cdn.prod.website-files.com/632abf3cc994db4faa25529f/632abf3cc994db480f2552e6_icon.svg"} alt="Icon" className="w-12 h-12 mb-4" />
-      <h3 className="text-xl font-semibold mb-2">Short heading here</h3>
-      <p className="text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
-      <Button variant="link">Button →</Button></>
-  ]
+    <img key={"link"} src={"https://cdn.prod.website-files.com/632abf3cc994db4faa25529f/632abf3cc994db480f2552e6_icon.svg"} alt="Icon" className="w-12 h-12 mb-4" />
+    , <h3 key={"shortName"} className="text-xl font-semibold mb-2">Short heading here</h3>
+    , <p key={"description"} className="text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
+    , <Button key={"cta"} variant="link">Button →</Button>
+  ],
 }
 
 

@@ -93,10 +93,10 @@ body {
 
 @layer components {
    .container {
-    @apply w-full max-w-[80rem] mx-auto stroke-border ;
+    @apply w-full max-w-[80rem] mx-auto stroke-border relative ;
   }
   .h1 {
-    @apply mb-5 mt-2 text-5xl font-bold md:mb-6 md:text-7xl lg:text-5xl;
+    @apply mb-5 mt-2 text-5xl font-bold md:mb-6 ;
   }
   .h2 {
     @apply scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0;

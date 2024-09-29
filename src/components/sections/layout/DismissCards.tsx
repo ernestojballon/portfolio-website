@@ -23,11 +23,11 @@ type Props = {
   featureSections: FeatureSectionProps[];
 };
 
-export type Layout415Props = React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
+export type DismissCardsProps = React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
 
-export const Layout415 = (props: Layout415Props) => {
+export const DismissCards = (props: DismissCardsProps) => {
   const { slot1, featureSections } = {
-    ...Layout415Defaults,
+    ...DismissCardsDefaults,
     ...props,
   } as Props;
 
@@ -114,7 +114,7 @@ const FeatureSection = ({
   );
 };
 
-export const Layout415Defaults: Layout415Props = {
+export const DismissCardsDefaults: DismissCardsProps = {
   slot1: [
     <h1 key="title" className='h1'>Medium length hero heading goes here</h1>,
     <p key="text" className="body">
@@ -131,7 +131,7 @@ export const Layout415Defaults: Layout415Props = {
     {
       icon: {
         src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-        alt: "Relume logo 1",
+        alt: "logo 1",
       },
       title: "Subheading one",
       description:
@@ -140,7 +140,7 @@ export const Layout415Defaults: Layout415Props = {
     {
       icon: {
         src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-        alt: "Relume logo 2",
+        alt: "logo 2",
       },
       title: "Subheading two",
       description:
@@ -149,7 +149,7 @@ export const Layout415Defaults: Layout415Props = {
     {
       icon: {
         src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-        alt: "Relume logo 3",
+        alt: "logo 3",
       },
       title: "Subheading three",
       description:
@@ -158,7 +158,7 @@ export const Layout415Defaults: Layout415Props = {
     {
       icon: {
         src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-        alt: "Relume logo 4",
+        alt: "logo 4",
       },
       title: "Subheading four",
       description:
@@ -166,4 +166,4 @@ export const Layout415Defaults: Layout415Props = {
     },
   ],
 };
-export default Layout415;
+export default DismissCards;

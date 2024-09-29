@@ -271,8 +271,8 @@ export const Navbar1Defaults: Navbar1Props = {
     alt: "Logo image",
   },
   navLinks: [
-    { title: "Home", url: "#" },
-    { title: "Resume", url: "#" },
+    { title: "Home", url: "/" },
+    { title: "Blog", url: "/blog" },
 
     {
       title: "Showcase",
@@ -308,7 +308,7 @@ export const Navbar1Defaults: Navbar1Props = {
             url: "#",
             image: {
               src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
-              alt: "Relume placeholder image 1",
+              alt: "placeholder image 1",
             },
             title: "ESignature Component",
             description: "React signature component for web applications",
@@ -318,7 +318,7 @@ export const Navbar1Defaults: Navbar1Props = {
             url: "#",
             image: {
               src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
-              alt: "Relume placeholder image 2",
+              alt: "placeholder image 2",
             },
             title: "Todo List",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
@@ -328,7 +328,7 @@ export const Navbar1Defaults: Navbar1Props = {
             url: "#",
             image: {
               src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
-              alt: "Relume placeholder image 3",
+              alt: "placeholder image 3",
             },
             title: "Article Title",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
@@ -338,7 +338,7 @@ export const Navbar1Defaults: Navbar1Props = {
             url: "#",
             image: {
               src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
-              alt: "Relume placeholder image 4",
+              alt: "placeholder image 4",
             },
             title: "Article Title",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
@@ -348,7 +348,7 @@ export const Navbar1Defaults: Navbar1Props = {
             url: "#",
             image: {
               src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
-              alt: "Relume placeholder image 5",
+              alt: "placeholder image 5",
             },
             title: "Article Title",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
@@ -358,7 +358,7 @@ export const Navbar1Defaults: Navbar1Props = {
             url: "#",
             image: {
               src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
-              alt: "Relume placeholder image 6",
+              alt: "placeholder image 6",
             },
             title: "Article Title",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",

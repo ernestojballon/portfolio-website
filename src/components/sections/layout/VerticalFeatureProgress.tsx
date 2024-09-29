@@ -84,7 +84,7 @@ export const VerticalFeatureProgressDefaults: VerticalFeatureProgressProps = {
     {
       icon: {
         src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-        alt: "Relume icon 1",
+        alt: "icon 1",
       },
       heading: "Subheading one",
       description:
@@ -93,7 +93,7 @@ export const VerticalFeatureProgressDefaults: VerticalFeatureProgressProps = {
     {
       icon: {
         src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-        alt: "Relume icon 2",
+        alt: "icon 2",
       },
       heading: "Subheading two",
       description:
@@ -102,7 +102,7 @@ export const VerticalFeatureProgressDefaults: VerticalFeatureProgressProps = {
     {
       icon: {
         src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-        alt: "Relume icon 3",
+        alt: "icon 3",
       },
       heading: "Subheading three",
       description:
@@ -111,7 +111,7 @@ export const VerticalFeatureProgressDefaults: VerticalFeatureProgressProps = {
     {
       icon: {
         src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-        alt: "Relume icon 4",
+        alt: "icon 4",
       },
       heading: "Subheading four",
       description:
@@ -120,7 +120,7 @@ export const VerticalFeatureProgressDefaults: VerticalFeatureProgressProps = {
     {
       icon: {
         src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-        alt: "Relume icon 4",
+        alt: "icon 4",
       },
       heading: "Subheading four",
       description:

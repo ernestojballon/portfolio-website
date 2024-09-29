@@ -85,27 +85,27 @@ export const HeaderWithCarouselDefaults: HeaderWithCarouselProps = {
   images: [
     {
       src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
-      alt: "Relume placeholder image 1",
+      alt: "placeholder image 1",
     },
     {
       src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
-      alt: "Relume placeholder image 2",
+      alt: "placeholder image 2",
     },
     {
       src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
-      alt: "Relume placeholder image 3",
+      alt: "placeholder image 3",
     },
     {
       src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
-      alt: "Relume placeholder image 4",
+      alt: "placeholder image 4",
     },
     {
       src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
-      alt: "Relume placeholder image 5",
+      alt: "placeholder image 5",
     },
     {
       src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
-      alt: "Relume placeholder image 6",
+      alt: "placeholder image 6",
     },
   ],
 };

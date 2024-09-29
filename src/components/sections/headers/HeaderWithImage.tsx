@@ -26,7 +26,7 @@ export const HeaderWithImage = (props: HeaderWithImageProps) => {
           <div>{slot1}</div>
           <div>
             <Image src={image.src} className="w-full object-cover"
-              alt={image.alt || ""} width={800} height={600}
+              alt={image.alt || ""} width={800} height={600} priority
             />
           </div>
         </div>

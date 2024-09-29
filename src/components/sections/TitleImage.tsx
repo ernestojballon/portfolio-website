@@ -193,7 +193,7 @@ export const TitleImageDefaults: TitleImageProps = {
       heading: "Hover over link one",
       image: {
         src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-1.svg",
-        alt: "Relume placeholder image 1",
+        alt: "placeholder image 1",
       },
     },
     {
@@ -202,7 +202,7 @@ export const TitleImageDefaults: TitleImageProps = {
       heading: "Hover over link two",
       image: {
         src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-2.svg",
-        alt: "Relume placeholder image 2",
+        alt: "placeholder image 2",
       },
     },
   ],

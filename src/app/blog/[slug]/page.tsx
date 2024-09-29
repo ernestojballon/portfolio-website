@@ -1,6 +1,5 @@
 import TitleChidren from '@/components/sections/content/TitleChidren'
 import Navbar1 from '@/components/sections/navs/NavBar1'
-import { g } from 'framer-motion/client'
 import React from 'react'
 
 
@@ -10,8 +9,6 @@ export async function generateStaticParams() {
   const postSlugs = posts.map((post: { slug: string }) => ({ slug: post.slug }))
   return postSlugs
 }
-
-
 
 type BlogPostProps = {
   params: {
@@ -32,8 +29,8 @@ const BlogPage = async (props: BlogPostProps) => {
       <TitleChidren
         heading={blog.title?.rendered}
         children={(<span dangerouslySetInnerHTML={{ __html: blog.content.rendered }} />)}
-
-      /></>
+      />
+    </>
 
   )
 }

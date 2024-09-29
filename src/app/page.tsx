@@ -9,7 +9,7 @@ import { title } from 'process'
 import React from 'react'
 import Navbar1 from '@/components/sections/navs/NavBar1'
 
-const UiSections = () => {
+const Home = () => {
   return (
     <>
 
@@ -40,7 +40,6 @@ const UiSections = () => {
             but I'm also very comfortable with the back-end.
             I've worked with a variety of technologies,
             but on the left a few of my favorites.
-
           </p>
         </React.Fragment >
 
@@ -74,9 +73,7 @@ const UiSections = () => {
 
 
       />
-      < MultipleSlots />
-
-
+      <MultipleSlots />
       <DismissCards />
       <VerticalFeatureProgress />
       <ScrollingReveal />
@@ -85,4 +82,4 @@ const UiSections = () => {
   )
 }
 
-export default UiSections
+export default Home

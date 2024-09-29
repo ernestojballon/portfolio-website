@@ -92,6 +92,9 @@ body {
 }
 
 @layer components {
+  iframe {
+    @apply max-w-full ;
+  }
    .container {
     @apply w-full max-w-[80rem] mx-auto stroke-border relative ;
   }

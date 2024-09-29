@@ -266,7 +266,7 @@ const SubMenu = ({
 
 export const Navbar1Defaults: Navbar1Props = {
   logo: {
-    url: "#",
+    url: "/",
     src: "https://d22po4pjz3o32e.cloudfront.net/logo-image.svg",
     alt: "Logo image",
   },

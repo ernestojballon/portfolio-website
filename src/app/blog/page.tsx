@@ -3,31 +3,34 @@ import React from 'react'
 import BlogList from '@/components/sections/lists/BlogList'
 import Navbar1 from '@/components/sections/navs/NavBar1'
 import { formatReadableDate } from '@/utils/formatReadableDate'
+import { getPostsQuery, getErnestoWordpressClient } from "@/app/blog/helpers/graphql/index";
+import blogParser, { PostListItem } from "@/app/blog/helpers/blogsParser";
+
+export const revalidate = 5;
 
 const BlogHome = async () => {
-  const res = await fetch('https://wordpress.ernestoballon.com/wp-json/wp/v2/posts')
-
-  const posts = await res.json()
-
-  const blogPosts = posts.map((post: any) => ({
+  const { data } = await getErnestoWordpressClient().query({
+    query: getPostsQuery
+  });
+  const postList = blogParser(data);
+  const blogPosts = postList.map((post: PostListItem) => ({
     url: `/blog/${post.slug}`,
     image: {
-      src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
+      src: post.featuredImage || "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
       alt: " placeholder image 1",
     },
-    // category: "Uncategorized",
-    title: post.title.rendered,
-    description: (<span dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />),
+    category: post.categories.filter((cat) => "Uncategorized" !== cat).map((cat => cat.toUpperCase())).join(", "),
+    title: post.title,
+    excerpt: post.excerpt,
     avatar: {
-      src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
+      src: post.authorImage || "https://d22po4pjz3o32e.cloudfront.net/placeholder-avatar.svg",
       alt: " placeholder avatar 3",
     },
-    fullName: "Ernesto Ballon",
-    date: formatReadableDate(post.date),
-    // readTime: "5 min read",
+    fullName: post.author,
+    date: post.date && formatReadableDate(post.date),
+    readTime: "5 min read",
 
   }))
-  // render post links
   return (
     <>
       <Navbar1 />

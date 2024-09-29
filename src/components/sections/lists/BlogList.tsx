@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
+import ClientSideHTML from "@/components/utils/ClientSideHTML";
 import Link from "next/link";
+import { ReactNode } from "react";
 import { RxChevronRight } from "react-icons/rx";
 
 type ImageProps = {
@@ -8,16 +10,16 @@ type ImageProps = {
 };
 
 type BlogPost = {
-  url: string;
-  image: ImageProps;
-  category: string;
-  readTime: string;
-  title: string;
-  description: string;
-  avatar: ImageProps;
-  fullName: string;
-  date: string;
-  button: any;
+  url?: string;
+  image?: ImageProps;
+  category?: string;
+  readTime?: string;
+  title?: string;
+  excerpt?: string;
+  avatar?: ImageProps;
+  fullName?: string;
+  date?: string;
+  button?: any;
 };
 
 type Props = {
@@ -41,11 +43,11 @@ export const BlogList = (props: BlogListProps) => {
         <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 md:gap-y-16 lg:grid-cols-3">
           {blogPosts.map((post, index) => (
             <div key={index}>
-              <Link href={post.url} className="mb-6 inline-block w-full max-w-full">
+              <Link href={post?.url || ""} className="mb-6 inline-block w-full max-w-full">
                 <div className="w-full overflow-hidden">
                   <img
-                    src={post.image.src}
-                    alt={post.image.alt}
+                    src={post?.image?.src}
+                    alt={post?.image?.alt}
                     className="aspect-[3/2] size-full object-cover"
                   />
                 </div>
@@ -60,12 +62,12 @@ export const BlogList = (props: BlogListProps) => {
               <a href={post.url} className="mb-2 block max-w-full">
                 <h5 className="text-xl font-bold md:text-2xl">{post.title}</h5>
               </a>
-              <p>{post.description}</p>
+              <ClientSideHTML content={post.excerpt || ''} as="p" />
               <div className="mt-6 flex items-center">
                 <div className="mr-4 shrink-0">
                   <img
-                    src={post.avatar.src}
-                    alt={post.avatar.alt}
+                    src={post?.avatar?.src}
+                    alt={post?.avatar?.alt}
                     className="size-12 min-h-12 min-w-12 rounded-full object-cover"
                   />
                 </div>
@@ -109,7 +111,7 @@ export const BlogListDefaults: BlogListProps = {
       },
       category: "Category",
       title: "Blog title heading will go here",
-      description:
+      excerpt:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
       avatar: {
         src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
@@ -133,7 +135,7 @@ export const BlogListDefaults: BlogListProps = {
       },
       category: "Category",
       title: "Blog title heading will go here",
-      description:
+      excerpt:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
       avatar: {
         src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
@@ -157,7 +159,7 @@ export const BlogListDefaults: BlogListProps = {
       },
       category: "Category",
       title: "Blog title heading will go here",
-      description:
+      excerpt:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
       avatar: {
         src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",

@@ -1,4 +1,10 @@
+import Image from "next/image";
+
 type Props = {
+  image: {
+    src: string;
+    alt?: string;
+  };
   heading: string;
   children: React.ReactNode;
 };
@@ -6,14 +12,23 @@ type Props = {
 export type TitleChidrenProps = React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
 
 export const TitleChidren = (props: TitleChidrenProps) => {
-  const { heading, children } = {
+  const { image, heading, children } = {
     ...TitleChidrenDefaults,
     ...props,
   } as Props;
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
-      <div className="container">
-        <div className="mx-auto w-full max-w-lg">
+    <section className=" py-16 md:py-16 lg:py-16">
+      <Image src="/images/lines-header.png"
+        width={1200}
+        height={400}
+
+        className="w-full object-cover h-[5rem] "
+        alt={image.alt || ""} />
+      <div className="container px-[5%]">
+        <div className="rb-12 mb-10 md:mb-12 lg:mb-14">
+
+        </div>
+        <div className="mx-auto w-full max-w-5xl">
           <h2 className="rb-5 mb-5 h1 font-bold md:mb-6 ">
             {heading}
           </h2>
@@ -25,6 +40,10 @@ export const TitleChidren = (props: TitleChidrenProps) => {
 };
 
 export const TitleChidrenDefaults: TitleChidrenProps = {
+  image: {
+    src: "https://via.placeholder.com/800x400",
+    alt: "placeholder",
+  },
   heading: "Short heading goes here",
   children: (
     <div>

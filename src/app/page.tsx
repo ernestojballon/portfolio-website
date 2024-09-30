@@ -16,7 +16,7 @@ const Home = () => {
       <HeaderWithImage slot1={[
         <React.Fragment key="intro">
           <p key="tagline" className='tagLine'>Intro </p>
-          <h1 key={title} className='h1'>Hola, I'm Ernest </h1>
+          <h1 key={title} className='h1'>Hola, I'm Ernesto</h1>
           <p className="body">
             Hey there! I'm a Full Stack Engineer with a serious love for all things
             JavaScript, cloud, and AI. I'm always on the hunt for new tech to play with and cool problems to solve. Learning is my jam

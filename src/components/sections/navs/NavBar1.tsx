@@ -370,13 +370,14 @@ export const Navbar1Defaults: Navbar1Props = {
   ],
   buttons: [
     {
-      title: "Button",
-      variant: "secondary",
-      size: "sm",
+      title: "Sign In",
+      variant: "default",
+      size: "lg",
     },
     {
-      title: "Button",
-      size: "sm",
+      title: "Sign Up",
+      variant: "variant",
+      size: "lg",
     },
   ],
 };

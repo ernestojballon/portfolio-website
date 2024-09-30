@@ -42,7 +42,7 @@ export const BlogList = (props: BlogListProps) => {
         </div>
         <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 md:gap-y-16 lg:grid-cols-3">
           {blogPosts.map((post, index) => (
-            <div key={index}>
+            <div className="flex flex-col" key={index}>
               <Link href={post?.url || ""} className="mb-6 inline-block w-full max-w-full">
                 <div className="w-full overflow-hidden">
                   <img
@@ -63,7 +63,7 @@ export const BlogList = (props: BlogListProps) => {
                 <h5 className="text-xl font-bold md:text-2xl">{post.title}</h5>
               </a>
               <ClientSideHTML content={post.excerpt || ''} as="p" />
-              <div className="mt-6 flex items-center">
+              <div className="pt-6 flex items-center mt-auto">
                 <div className="mr-4 shrink-0">
                   <img
                     src={post?.avatar?.src}

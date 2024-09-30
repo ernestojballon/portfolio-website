@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import ClientSideHTML from "@/components/utils/ClientSideHTML";
 import Link from "next/link";
-import { ReactNode } from "react";
 import { RxChevronRight } from "react-icons/rx";
 
 type ImageProps = {
@@ -62,7 +61,7 @@ export const BlogList = (props: BlogListProps) => {
               <a href={post.url} className="mb-2 block max-w-full">
                 <h5 className="text-xl font-bold md:text-2xl">{post.title}</h5>
               </a>
-              <ClientSideHTML content={post.excerpt || ''} as="p" />
+              {post.excerpt}
               <div className="pt-6 flex items-center mt-auto">
                 <div className="mr-4 shrink-0">
                   <img

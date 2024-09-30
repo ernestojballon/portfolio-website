@@ -1,5 +1,6 @@
 import TitleChidren from '@/components/sections/content/TitleChidren'
 import Navbar1 from '@/components/sections/navs/NavBar1'
+import { sanitizeHtml } from '@/utils/sanitizeHtml'
 import React from 'react'
 
 
@@ -23,12 +24,23 @@ const BlogPage = async (props: BlogPostProps) => {
   const post = await res.json()
   const blog = post[0]
 
+  const html = sanitizeHtml({
+    htmlString: blog.content.rendered,
+    options: {
+      stringReplace: {
+        from: "https://wordpress.ernestoballon.com",
+        to: "https://drxtoysoe50lt.cloudfront.net",
+      }
+    }
+  })
+
+
   return (
     <>
       <Navbar1 />
       <TitleChidren
         heading={blog.title?.rendered}
-        children={(<span dangerouslySetInnerHTML={{ __html: blog.content.rendered }} />)}
+        children={(<span dangerouslySetInnerHTML={{ __html: html }} />)}
       />
     </>
 

@@ -5,6 +5,7 @@ import Navbar1 from '@/components/sections/navs/NavBar1'
 import { formatReadableDate } from '@/utils/formatReadableDate'
 import { getPostsQuery, getErnestoWordpressClient } from "@/app/blog/helpers/graphql/index";
 import blogParser, { PostListItem } from "@/app/blog/helpers/blogsParser";
+import { sanitizeHtml } from '@/utils/sanitizeHtml';
 
 export const revalidate = 5;
 
@@ -21,7 +22,13 @@ const BlogHome = async () => {
     },
     category: post.categories.filter((cat) => "Uncategorized" !== cat).map((cat => cat.toUpperCase())).join(", "),
     title: post.title,
-    excerpt: post.excerpt,
+    excerpt: post.excerpt ? sanitizeHtml({
+      htmlString: post.excerpt, options: {
+        removeHtmlTags: true,
+        truncateOn: 150,
+        firstCapital: true,
+      }
+    }) : "",
     avatar: {
       src: post.authorImage || "https://d22po4pjz3o32e.cloudfront.net/placeholder-avatar.svg",
       alt: " placeholder avatar 3",

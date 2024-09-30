@@ -18,7 +18,7 @@ type BlogPostProps = {
 const BlogPage = async (props: BlogPostProps) => {
 
   const { slug } = props.params
-  const url = `https://wordpress.ernestoballon.com/wp-json/wp/v2/posts?slug=${slug}`
+  const url = `https://drxtoysoe50lt.cloudfront.net/wp-json/wp/v2/posts?slug=${slug}`
   const res = await fetch(url)
   const post = await res.json()
   const blog = post[0]

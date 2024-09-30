@@ -5,7 +5,7 @@ const { getClient: getErnestoWordpressClient } = registerApolloClient(() => {
   return new ApolloClient({
     cache: new InMemoryCache(),
     link: new HttpLink({
-      uri: "https://wordpress.ernestoballon.com/graphql",
+      uri: "https://drxtoysoe50lt.cloudfront.net/graphql",
     }),
   });
 });

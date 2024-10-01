@@ -3,10 +3,10 @@ import Navbar1 from '@/components/sections/navs/NavBar1'
 import sanitized from '@/utils/stringFormatter'
 import React from 'react'
 import styles from './wordpressStyles.module.css'
-
+import appConfig from '@/app/app.config'
 
 export async function generateStaticParams() {
-  const res = await fetch('https://wordpress.ernestoballon.com/wp-json/wp/v2/posts')
+  const res = await fetch(`${appConfig.wordpressApiUrl}/wp-json/wp/v2/posts`)
   const posts = await res.json()
   const postSlugs = posts.map((post: { slug: string }) => ({ slug: post.slug }))
   return postSlugs
@@ -19,14 +19,13 @@ type BlogPostProps = {
 }
 
 async function getPost(slug: string) {
-  const url = `https://wordpress.ernestoballon.com/wp-json/wp/v2/posts?slug=${slug}`
+  const url = `${appConfig.wordpressApiUrl}/wp-json/wp/v2/posts?slug=${slug}`
   const res = await fetch(url, { next: { revalidate: 60 } }) // Revalidate every 60 seconds
   const post = await res.json()
   return post[0]
 }
 
 const BlogPage = async (props: BlogPostProps) => {
-
   const { slug } = props.params
   const blog = await getPost(slug)
 
@@ -41,12 +40,11 @@ const BlogPage = async (props: BlogPostProps) => {
         ALLOWED_URI_REGEXP: /^(?:(?:https?:)?\/\/)?(?:(?:www|m)\.)?(?:(?:youtube\.com|youtu.be))(?:\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/
       },
       stringReplace: {
-        from: "https://wordpress.ernestoballon.com",
-        to: "https://drxtoysoe50lt.cloudfront.net",
+        from: appConfig.wordpressApiUrl,
+        to: appConfig.wordpressCloudfrontUrl,
       }
     }
   })
-
 
   return (
     <div className={styles.container}>

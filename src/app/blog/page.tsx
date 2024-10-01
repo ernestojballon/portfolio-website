@@ -6,6 +6,7 @@ import { formatReadableDate } from '@/utils/formatReadableDate'
 import { getPostsQuery, getErnestoWordpressClient } from "@/app/blog/helpers/graphql/index";
 import blogParser, { PostListItem } from "@/app/blog/helpers/blogsParser";
 import stringFormatter from '@/utils/stringFormatter';
+import appConfig from '@/app/app.config'
 
 export const revalidate = 5;
 
@@ -20,8 +21,8 @@ const BlogHome = async () => {
       src: post.featuredImage ? stringFormatter({
         str: post.featuredImage, options: {
           stringReplace: {
-            from: "https://wordpress.ernestoballon.com",
-            to: "https://drxtoysoe50lt.cloudfront.net",
+            from: appConfig.wordpressApiUrl,
+            to: appConfig.wordpressCloudfrontUrl,
           }
         }
       }) : "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",

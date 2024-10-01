@@ -29,7 +29,13 @@ const BlogHome = async () => {
     },
     category: post.categories.filter((cat) => "Uncategorized" !== cat).map((cat => cat.toUpperCase())).join(", "),
     title: post.title,
-    excerpt: post.excerpt || "",
+    excerpt: post.excerpt ? stringFormatter({
+      str: post.excerpt, options: {
+        removeHtmlTags: true,
+        truncateOn: 150,
+        firstCapital: true,
+      }
+    }) : "",
     avatar: {
       src: post.authorImage || "https://d22po4pjz3o32e.cloudfront.net/placeholder-avatar.svg",
       alt: " placeholder avatar 3",

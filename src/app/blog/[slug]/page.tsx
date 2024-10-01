@@ -17,13 +17,18 @@ type BlogPostProps = {
     slug: string
   }
 }
+
+async function getPost(slug: string) {
+  const url = `https://wordpress.ernestoballon.com/wp-json/wp/v2/posts?slug=${slug}`
+  const res = await fetch(url, { next: { revalidate: 60 } }) // Revalidate every 60 seconds
+  const post = await res.json()
+  return post[0]
+}
+
 const BlogPage = async (props: BlogPostProps) => {
 
   const { slug } = props.params
-  const url = `https://wordpress.ernestoballon.com/wp-json/wp/v2/posts?slug=${slug}`
-  const res = await fetch(url)
-  const post = await res.json()
-  const blog = post[0]
+  const blog = await getPost(slug)
 
   const html = sanitized({
     str: blog.content.rendered,
@@ -46,6 +51,7 @@ const BlogPage = async (props: BlogPostProps) => {
   return (
     <div className={styles.container}>
       <Navbar1 />
+      {"hola"}
       <TitleChidren
         heading={blog.title?.rendered}
         children={(<span dangerouslySetInnerHTML={{ __html: html }} />)}

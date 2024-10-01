@@ -5,14 +5,20 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
+    const { post_slug, secret } = body;
+
     // Check for secret to confirm this is a valid request
-    if (body.secret !== "fb7b839eb1b45b7cb0d44c8dc284b5c1b3154bf1") {
+    if (secret !== "fb7b839eb1b45b7cb0d44c8dc284b5c1b3154bf1") {
       return NextResponse.json({ message: "Invalid token" }, { status: 401 });
     }
 
-    // Revalidate the blog page
-    revalidatePath(`/blog`);
-
+    // Revalidate the specific post
+    if (post_slug) {
+      revalidatePath(`/posts/${post_slug}`);
+    } else {
+      // If no specific post_id, revalidate all posts
+      revalidatePath(`/posts`);
+    }
     // If you want to revalidate a specific post, you can use the post_id
     // Uncomment the following line if you want to revalidate a specific post
     // revalidatePath(`/blog/${body.post_id}`);

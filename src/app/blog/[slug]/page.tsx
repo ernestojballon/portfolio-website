@@ -1,6 +1,6 @@
 import TitleChidren from '@/components/sections/content/TitleChidren'
 import Navbar1 from '@/components/sections/navs/NavBar1'
-import { sanitizeHtml } from '@/utils/sanitizeHtml'
+import sanitized from '@/utils/stringFormatter'
 import React from 'react'
 import styles from './wordpressStyles.module.css'
 
@@ -25,9 +25,16 @@ const BlogPage = async (props: BlogPostProps) => {
   const post = await res.json()
   const blog = post[0]
 
-  const html = sanitizeHtml({
-    htmlString: blog.content.rendered,
+  const html = sanitized({
+    str: blog.content.rendered,
     options: {
+      sanitize: true,
+      sanitizeOptions: {
+        ADD_TAGS: ['iframe'],
+        ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling', 'src'],
+        ALLOW_UNKNOWN_PROTOCOLS: true,
+        ALLOWED_URI_REGEXP: /^(?:(?:https?:)?\/\/)?(?:(?:www|m)\.)?(?:(?:youtube\.com|youtu.be))(?:\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/
+      },
       stringReplace: {
         from: "https://wordpress.ernestoballon.com",
         to: "https://drxtoysoe50lt.cloudfront.net",

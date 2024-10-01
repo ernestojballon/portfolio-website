@@ -16,23 +16,28 @@ type SanitizeHtmlProps = {
 export const sanitizeHtml = ({ htmlString, options }: SanitizeHtmlProps): string => {
   const { truncateOn, removeHtmlTags, stringReplace } = options;
 
-  let sanitizedHtml = DOMPurify.sanitize(htmlString);
+  let sanitizedHtmlString = DOMPurify.sanitize(htmlString, {
+    ADD_TAGS: ['iframe'],
+    ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling', 'src'],
+    ALLOW_UNKNOWN_PROTOCOLS: true,
+    ALLOWED_URI_REGEXP: /^(?:(?:https?:)?\/\/)?(?:(?:www|m)\.)?(?:(?:youtube\.com|youtu.be))(?:\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/
+  });
 
   if (removeHtmlTags) {
-    sanitizedHtml = sanitizedHtml.replace(/<[^>]+>/g, '');
+    sanitizedHtmlString = sanitizedHtmlString.replace(/<[^>]+>/g, '');
   }
 
   if (stringReplace?.from && stringReplace?.to) {
-    sanitizedHtml = sanitizedHtml.replace(new RegExp(stringReplace.from, 'g'), stringReplace.to);
+    sanitizedHtmlString = sanitizedHtmlString.replace(new RegExp(stringReplace.from, 'g'), stringReplace.to);
   }
 
   if (options.firstCapital) {
-    sanitizedHtml = sanitizedHtml.charAt(0).toUpperCase() + sanitizedHtml.slice(1);
+    sanitizedHtmlString = sanitizedHtmlString.charAt(0).toUpperCase() + sanitizedHtmlString.slice(1);
   }
 
-  if (truncateOn && sanitizedHtml.length > truncateOn) {
-    sanitizedHtml = sanitizedHtml.slice(0, truncateOn) + '...';
+  if (truncateOn && sanitizedHtmlString.length > truncateOn) {
+    sanitizedHtmlString = sanitizedHtmlString.slice(0, truncateOn) + '...';
   }
 
-  return sanitizedHtml;
+  return sanitizedHtmlString;
 };

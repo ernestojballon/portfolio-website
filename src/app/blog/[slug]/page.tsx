@@ -2,6 +2,7 @@ import TitleChidren from '@/components/sections/content/TitleChidren'
 import Navbar1 from '@/components/sections/navs/NavBar1'
 import { sanitizeHtml } from '@/utils/sanitizeHtml'
 import React from 'react'
+import styles from './wordpressStyles.module.css'
 
 
 export async function generateStaticParams() {
@@ -36,14 +37,13 @@ const BlogPage = async (props: BlogPostProps) => {
 
 
   return (
-    <>
+    <div className={styles.container}>
       <Navbar1 />
       <TitleChidren
         heading={blog.title?.rendered}
         children={(<span dangerouslySetInnerHTML={{ __html: html }} />)}
       />
-    </>
-
+    </div>
   )
 }
 

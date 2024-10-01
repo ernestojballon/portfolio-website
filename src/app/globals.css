@@ -2,9 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @import url(./styles/wordpress.css); */
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #393939;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,7 +36,7 @@ body {
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
+    --primary: 0 0% 10%;
     --primary-foreground: 0 0% 98%;
     --secondary: 0 0% 96.1%;
     --secondary-foreground: 0 0% 9%;
@@ -98,34 +100,37 @@ body {
    .container {
     @apply w-full max-w-[80rem] mx-auto stroke-border relative ;
   }
+  .font-color{
+    color:var(--primary) ;
+  }
   .h1 {
-    @apply mb-5 mt-2 text-5xl font-bold md:mb-6 ;
+    @apply font-color mb-5 mt-2 text-5xl font-bold md:mb-6 ;
   }
   .h2 {
-    @apply scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0;
+    @apply font-color scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0;
   }
   .h3 {
-    @apply scroll-m-20 text-2xl font-semibold tracking-tight;
+    @apply font-color scroll-m-20 text-2xl font-semibold tracking-tight;
   }
   .h4 {
-    @apply scroll-m-20 text-xl font-semibold tracking-tight;
+    @apply font-color scroll-m-20 text-xl font-semibold tracking-tight;
   }
   .h5 {
-    @apply scroll-m-20 text-lg font-semibold tracking-tight;
+    @apply font-color scroll-m-20 text-lg font-semibold tracking-tight;
   }
   .h6 {
-    @apply scroll-m-20 text-base font-semibold tracking-tight;
+    @apply font-color scroll-m-20 text-base font-semibold tracking-tight;
   }
   .blockquote {
-    @apply mt-6 border-l-4 border-gray-300 pl-6 italic text-xl text-gray-700 font-medium leading-8 py-2 mb-6;
+    @apply font-color mt-6 border-l-4 border-gray-300 pl-6 italic text-xl text-gray-700 font-medium leading-8 py-2 mb-6;
   }
   .body {
-    @apply leading-7 [&:not(:first-child)]:mt-6;
+    @apply font-color leading-7 [&:not(:first-child)]:mt-6;
   }
   .small {
-    @apply text-sm font-medium leading-none;
+    @apply font-color text-sm font-medium leading-none;
   }
   .tagLine {
-    @apply mb-3 font-semibold md:mb-4 ;
+    @apply font-color mb-3 font-semibold md:mb-4 uppercase ;
   }
 }

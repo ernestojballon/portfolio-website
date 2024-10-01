@@ -1,0 +1,62 @@
+/* styles/WordPressContent.module.css */
+
+
+
+.container :global(.wp-block-heading) {
+  font-size: 1.8rem;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: #1a1a1a;
+}
+
+.container :global(.wp-block-heading a) {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.container :global(.wp-block-code) {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.container :global(.wp-block-code code) {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 0.9em;
+}
+
+.container code {
+  background-color: #f4f4f4;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.container :global(.wp-block-image) {
+  margin: 20px 0;
+}
+
+.container :global(.wp-block-image img) {
+  max-width: 100%;
+  height: auto;
+}
+
+.container a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.container a:hover {
+  text-decoration: underline;
+}
+
+.container strong {
+  font-weight: bold;
+}

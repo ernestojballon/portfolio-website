@@ -13,12 +13,13 @@ export async function POST(req: NextRequest) {
     }
 
     // Revalidate the specific post
-    if (post_slug) {
-      revalidatePath(`/posts/${post_slug}`);
-    } else {
-      // If no specific post_id, revalidate all posts
-      revalidatePath(`/posts`);
+    if (!post_slug) {
+      NextResponse.json({ message: "Need post_slug to update " }, { status: 400 });
     }
+    // If no specific post_id, revalidate all posts
+    revalidatePath(`/blog`);
+    revalidatePath(`/blog/${post_slug}`);
+
     // If you want to revalidate a specific post, you can use the post_id
     // Uncomment the following line if you want to revalidate a specific post
     // revalidatePath(`/blog/${body.post_id}`);

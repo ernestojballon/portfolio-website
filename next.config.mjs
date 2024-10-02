@@ -5,6 +5,13 @@ const nextConfig = {
     WORDPRESS_CLOUDFRONT_DISTRIBUTION_URL: process.env.WORDPRESS_CLOUDFRONT_DISTRIBUTION_URL,
     WORDPRESS_CONTENT_REVALIDATION_SECRET_KEY: process.env.WORDPRESS_CONTENT_REVALIDATION_SECRET_KEY,
   },
+  webpack: (config) => {
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      canvas: false,
+    };
+    return config;
+  },
 };
 
 export default nextConfig;

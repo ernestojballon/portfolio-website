@@ -1,7 +1,7 @@
 
 import React from 'react'
 import BlogList from '@/components/sections/lists/BlogList'
-import Navbar1 from '@/components/sections/navs/NavBar1'
+import NavBar from '@/app/nav/Nav'
 import { formatReadableDate } from '@/utils/formatReadableDate'
 import { getPostsQuery, getErnestoWordpressClient } from "@/app/blog/helpers/graphql/index";
 import blogParser, { PostListItem } from "@/app/blog/helpers/blogsParser";
@@ -48,7 +48,7 @@ const BlogHome = async () => {
   }))
   return (
     <>
-      <Navbar1 />
+      <NavBar />
       <BlogList
         slot1={[
           <h1 key="title" className="h1 text-4xl font-bold mb-4 text-red-400">

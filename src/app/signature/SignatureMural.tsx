@@ -148,7 +148,7 @@ const SignatureMural = () => {
   const selectedSignature = signatures.find(sig => sig.id === selectedSignatureId)
 
   return (
-    <div className="flex flex-col items-center space-y-4 p-4 mt-16">
+    <div className="flex flex-col items-center space-y-4 p-4 mt-16 ">
       <h1 className="text-2xl font-bold">Ernesto's Signature Mural</h1>
       <div className="relative w-full max-w-3xl border border-gray-300  rounded-lg overflow-hidden">
         <Stage
@@ -210,20 +210,45 @@ const SignatureMural = () => {
           </Button>
         </div> */}
       </div>
-      <div className="w-full max-w-md space-y-4">
+      <div className="flex justify-between items-center  gap-2">
+        <Button onClick={handleDelete} disabled={!selectedSignatureId} variant="destructive">
+          <Trash2 className=" h-4 mr-2" />
+          Delete Selected
+        </Button>
+
+        <Button onClick={handleDownloadMural} variant="outline">
+          <Download className=" h-4 mr-2" />
+          Download Mural
+        </Button>
+        {/* <div className="flex items-center space-x-2">
+            <span className="text-sm font-medium">Zoom:</span>
+            <Slider
+              min={0.5}
+              max={3}
+              step={0.1}
+              value={[scale]}
+              onValueChange={([value]) => setScale(value)}
+              className="w-32"
+            />
+          </div> */}
+      </div>
+      <div className="w-full max-w-md space-y-4 ">
         <div className="border border-gray-300 rounded-md p-4">
           <SignatureCanvas
             key={isMobile ? 'mobile' : 'desktop'}
             ref={sigPad}
             canvasProps={{
               className: `w-full h-full border border-solid border-color-gray-30`,
-              height: isMobile ? 650 : 250
+              height: isMobile ? 550 : 250
             }}
             penColor={color}
             clearOnResize={true}
           />
-          <div className="flex justify-between mt-4">
-            <Button onClick={handleClear} variant="outline">Clear</Button>
+
+          <div className="flex justify-between mt-4 flex-wrap gap-2">
+            <Button className='w-[30%]' onClick={handleClear} variant="outline">Clear</Button>
+
+            <Button className='w-[30%]' onClick={handleSubmit}>Submit</Button>
             <Select onValueChange={setColor} defaultValue={color}>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Select a color" />
@@ -246,34 +271,13 @@ const SignatureMural = () => {
                 <SelectItem value="#FFFF66">Laser Lemon</SelectItem>
               </SelectContent>
             </Select>
-            <Button onClick={handleSubmit}>Submit</Button>
+            <Button className='ml-auto' onClick={handleUndoLastSignature} disabled={signatures.length === 0} variant="outline">
+              <Undo className=" h-4 mr-2" />
+              Undo Last
+            </Button>
           </div>
         </div>
-        <div className="flex justify-between items-center flex-wrap gap-4">
-          <Button onClick={handleDelete} disabled={!selectedSignatureId} variant="destructive">
-            <Trash2 className="w-4 h-4 mr-2" />
-            Delete Selected
-          </Button>
-          <Button onClick={handleUndoLastSignature} disabled={signatures.length === 0} variant="outline">
-            <Undo className="w-4 h-4 mr-2" />
-            Undo Last
-          </Button>
-          <Button onClick={handleDownloadMural} variant="outline">
-            <Download className="w-4 h-4 mr-2" />
-            Download Mural
-          </Button>
-          <div className="flex items-center space-x-2">
-            <span className="text-sm font-medium">Zoom:</span>
-            <Slider
-              min={0.5}
-              max={3}
-              step={0.1}
-              value={[scale]}
-              onValueChange={([value]) => setScale(value)}
-              className="w-32"
-            />
-          </div>
-        </div>
+
       </div>
       {/* <div>
         <p>Debug: Total signatures: {signatures.length}</p>

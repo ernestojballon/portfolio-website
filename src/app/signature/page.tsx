@@ -1,12 +1,12 @@
 
-import Navbar1 from '@/components/sections/navs/NavBar1'
+import NavBar from '@/app/nav/Nav'
 import SignatureMural from './SignatureMural'
 import React from 'react'
 
 const signaturePage = () => {
   return (
     <div>
-      <Navbar1 />
+      <NavBar />
       <SignatureMural />
     </div>
   )

@@ -1,7 +1,5 @@
 "use client"
 import React, { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { RxChevronDown } from "react-icons/rx";
@@ -41,7 +39,7 @@ type NavLink = {
 };
 
 type Props = {
-  logo: ImageProps;
+  logoSlot: React.ReactNode;
   navLinks: NavLink[];
   buttons: any[];
 };
@@ -49,7 +47,7 @@ type Props = {
 export type Navbar1Props = React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
 
 export const Navbar1 = (props: Navbar1Props) => {
-  const { logo, navLinks, buttons } = {
+  const { logoSlot, navLinks, buttons } = {
     ...Navbar1Defaults,
     ...props,
   } as Props;
@@ -60,10 +58,10 @@ export const Navbar1 = (props: Navbar1Props) => {
   return (
     <nav className="fixed top-0 z-[999] flex min-h-16 w-full items-center border-b border-border-primary bg-white px-[5%] md:min-h-18">
       <div className="mx-auto flex size-full max-w-full items-center justify-between">
-        <a href={logo.url || "/"} className="flex items-center">
-          <p className="font-bold text-2xl bg-gradient-to-r from-indigo-400 to-red-400 text-transparent bg-clip-text"
-          >Ernesto J Ballon</p>
-        </a>
+        <div >
+          {logoSlot}
+        </div>
+
         <div className="absolute hidden h-screen overflow-auto border-b border-border-primary bg-white px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-6 lg:flex lg:h-auto lg:flex-1 lg:items-center lg:justify-between lg:border-none lg:bg-none lg:px-0 lg:pt-0">
           <div className="flex flex-col items-center lg:flex-row">
             {navLinks.map((navLink, index) => (
@@ -238,7 +236,7 @@ const SubMenu = ({
                         href={blogCategory.url}
                         className="grid max-w-full auto-cols-fr grid-cols-1 items-start gap-x-6 gap-y-4 py-2 lg:grid-cols-[0.5fr_1fr] lg:gap-y-0"
                       >
-                        <div className="relative flex w-full flex-col pt-[66.6%] lg:flex-row">
+                        <div className="relative flex w-full flex-col pt-[10%] lg:flex-row">
                           <img
                             src={blogCategory.image.src}
                             alt={blogCategory.image.alt || ""}
@@ -265,11 +263,12 @@ const SubMenu = ({
 };
 
 export const Navbar1Defaults: Navbar1Props = {
-  logo: {
-    url: "/",
-    src: "https://d22po4pjz3o32e.cloudfront.net/logo-image.svg",
-    alt: "Logo image",
-  },
+  logoSlot: [
+    <a href={"/"} className="flex items-center">
+      <p className="font-bold text-2xl bg-gradient-to-r from-indigo-400 to-red-400 text-transparent bg-clip-text"
+      >Ernesto J Ballon</p>
+    </a>
+  ],
   navLinks: [
     { title: "Home", url: "/" },
     { title: "Blog", url: "/blog" },

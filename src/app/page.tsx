@@ -2,12 +2,12 @@ import HeaderWithCarousel from '@/components/sections/headers/HeaderWithCarousel
 import HeaderWithImage from '@/components/sections/headers/HeaderWithImage'
 import DismissCards from '@/components/sections/layout/DismissCards'
 import VerticalFeatureProgress from '@/components/sections/layout/VerticalFeatureProgress'
-import MultipleSlots from '@/components/sections/layout/MultipleSlots'
+// import MultipleSlots from '@/components/sections/layout/MultipleSlots'
 import TitleImage from '@/components/sections/TitleImage'
 import ScrollingReveal from '@/components/sections/ScrollingReveal'
 import Image from 'next/image'
 import React from 'react'
-import Navbar1 from '@/components/sections/navs/NavBar1'
+import NavBar from '@/app/nav/Nav'
 import {
   CodeBracketIcon, EyeIcon,
   CloudIcon,
@@ -21,6 +21,7 @@ import {
   GlobeAltIcon
 } from '@heroicons/react/24/outline';
 import Link from 'next/link'
+import TwoSections from '@/components/sections/content/TwoSections'
 
 const SkillItem = ({ Icon, skill }: { Icon: React.ElementType; skill: string }) => (
   <div className="flex items-center mb-2">
@@ -53,24 +54,6 @@ const projects = [
     ],
   },
   {
-    name: "Acosta DMA Cleaning Website",
-    description: "A responsive website for a cleaning company, showcasing services and contact information.",
-    image: "/images/acostadmacleaning-logo.png",
-    url: "https://acostadmacleaning.com",
-    repoUrl: "https://acostadmacleaning.com",
-    technologies: [
-      "Vanilla JS",
-      "Tailwind CSS",
-      "Babel",
-      "Webpack",
-      "AWS S3",
-      "AWS CloudFront",
-      "AWS Route 53",
-      "AWS SES"
-
-    ],
-  },
-  {
     name: "Google Reviews Widget",
     description: "Widget Develop as web component to display google reviews",
     image: "/images/acostadmacleaning-logo.png",
@@ -79,9 +62,6 @@ const projects = [
     technologies: [
       "Stencil JS",
       "Tailwind CSS",
-      "Babel",
-      "Webpack",
-      "AWS S3",
       "AWS CloudFront",
       "AWS Route 53",
       "AWS SES"
@@ -93,7 +73,7 @@ const projects = [
 const Home = () => {
   return (
     <>
-      <Navbar1 />
+      <NavBar />
       <HeaderWithImage slot1={[
         <React.Fragment key="intro">
           <div className="max-w-4xl mx-auto">
@@ -227,7 +207,73 @@ const Home = () => {
 
 
       />
-      <MultipleSlots
+      <TwoSections
+
+        slot1={[
+          <React.Fragment key="intro">
+            <p className="tagLine">HTML, CSS, and JavaScript</p>
+            <h2 className="h2">
+              Crafting the Frontend
+            </h2>
+            <p className="body">
+              With a keen eye for detail and a commitment to best practices,
+              I develop stunning websites that captivate users and drive results.
+            </p>
+          </React.Fragment >
+        ]}
+        slot2={[
+          <React.Fragment key="intro">
+
+            <div className="grid md:grid-row-2 gap-8">
+              {projects.map((project, index) => (
+                <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col p-4">
+
+                  <div className="flex justify-between items-center">
+                    <h3 className="h4">{project.name}</h3>
+                    <div className="flex-shrink-0">
+                      <Image
+                        src={project.image}
+                        alt={`${project.name} logo`}
+                        width={100}
+                        height={100}
+                        className="object-scale-down"
+                      />
+                    </div>
+                  </div>
+                  <p className="body">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 my-4">
+                    {project.technologies.map((tech, techIndex) => (
+                      <span key={techIndex} className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <Link
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-indigo-600 hover:text-indigo-800"
+                    >
+                      <EyeIcon className="w-5 h-5 mr-2" />
+                      View Site
+                    </Link>
+                    <Link
+                      href={project.repoUrl}
+                      className="inline-flex items-center text-gray-600 hover:text-gray-800"
+                    >
+                      <CodeBracketIcon className="w-5 h-5 mr-2" />
+                      View Code
+                    </Link>
+                  </div>
+
+                </div>
+              ))}
+            </div>
+          </React.Fragment >
+        ]}
+      />
+      {/* <MultipleSlots
         contents={[
           {
             slot1: [
@@ -244,43 +290,47 @@ const Home = () => {
 
                   <div className="grid md:grid-row-2 gap-8">
                     {projects.map((project, index) => (
-                      <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-                        <Image
-                          src={project.image}
-                          alt={`${project.name} logo`}
-                          width={100}
-                          height={100}
-                          className="w-full h-20 object-scale-down"
-                        />
-                        <div className="p-6">
-                          <h3 className="text-2xl font-semibold text-gray-900 mb-2">{project.name}</h3>
-                          <p className="text-gray-600 mb-4">{project.description}</p>
-                          <div className="flex flex-wrap gap-2 mb-4">
-                            {project.technologies.map((tech, techIndex) => (
-                              <span key={techIndex} className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
-                          <div className="flex justify-between items-center">
-                            <Link
-                              href={project.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center text-indigo-600 hover:text-indigo-800"
-                            >
-                              <EyeIcon className="w-5 h-5 mr-2" />
-                              View Site
-                            </Link>
-                            <Link
-                              href={project.repoUrl}
-                              className="inline-flex items-center text-gray-600 hover:text-gray-800"
-                            >
-                              <CodeBracketIcon className="w-5 h-5 mr-2" />
-                              View Code
-                            </Link>
+                      <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col p-4">
+
+                        <div className="flex justify-between items-center">
+                          <h3 className="h4">{project.name}</h3>
+                          <div className="flex-shrink-0">
+                            <Image
+                              src={project.image}
+                              alt={`${project.name} logo`}
+                              width={100}
+                              height={100}
+                              className="object-scale-down"
+                            />
                           </div>
                         </div>
+                        <p className="body">{project.description}</p>
+                        <div className="flex flex-wrap gap-2 my-4">
+                          {project.technologies.map((tech, techIndex) => (
+                            <span key={techIndex} className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <Link
+                            href={project.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center text-indigo-600 hover:text-indigo-800"
+                          >
+                            <EyeIcon className="w-5 h-5 mr-2" />
+                            View Site
+                          </Link>
+                          <Link
+                            href={project.repoUrl}
+                            className="inline-flex items-center text-gray-600 hover:text-gray-800"
+                          >
+                            <CodeBracketIcon className="w-5 h-5 mr-2" />
+                            View Code
+                          </Link>
+                        </div>
+
                       </div>
                     ))}
                   </div>
@@ -327,7 +377,7 @@ const Home = () => {
         {
           src: '/images/frontend.webp',
           alt: 'React js programer image'
-        }]} />
+        }]} /> */}
       <DismissCards />
       <VerticalFeatureProgress />
       <ScrollingReveal />

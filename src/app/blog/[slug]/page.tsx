@@ -1,5 +1,5 @@
 import TitleChidren from '@/components/sections/content/TitleChidren'
-import Navbar1 from '@/components/sections/navs/NavBar1'
+import NavBar from '@/app/nav/Nav'
 import sanitized from '@/utils/stringFormatter'
 import React from 'react'
 import styles from './wordpressStyles.module.css'
@@ -48,7 +48,7 @@ const BlogPage = async (props: BlogPostProps) => {
 
   return (
     <div className={styles.container}>
-      <Navbar1 />
+      <NavBar />
       {"hola"}
       <TitleChidren
         heading={blog.title?.rendered}

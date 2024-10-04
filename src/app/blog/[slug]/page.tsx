@@ -47,13 +47,14 @@ const BlogPage = async (props: BlogPostProps) => {
   })
 
   return (
-    <div className={styles.container}>
+    <div >
       <NavBar />
-      {"hola"}
-      <TitleChidren
-        heading={blog.title?.rendered}
-        children={(<span dangerouslySetInnerHTML={{ __html: html }} />)}
-      />
+      <div className={styles.container}>
+        <TitleChidren
+          heading={blog.title?.rendered}
+          children={(<span dangerouslySetInnerHTML={{ __html: html }} />)}
+        />
+      </div>
     </div>
   )
 }

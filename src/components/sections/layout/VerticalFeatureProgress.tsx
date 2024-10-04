@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { RxChevronRight } from "react-icons/rx";
 
 type FeaturesProps = {
   icon: {
@@ -11,7 +10,8 @@ type FeaturesProps = {
     alt: string;
   };
   heading: string;
-  description: string;
+  description?: string;
+  descriptionNode?: React.ReactNode[]
 };
 
 type Props = {
@@ -23,8 +23,8 @@ export type VerticalFeatureProgressProps = React.ComponentPropsWithoutRef<"secti
 
 export const VerticalFeatureProgress = (props: VerticalFeatureProgressProps) => {
   const { slot1, features } = {
-    ...props,
     ...VerticalFeatureProgressDefaults,
+    ...props,
   } as Props;
 
   const scrollSection = useRef<HTMLDivElement>(null);
@@ -49,10 +49,15 @@ export const VerticalFeatureProgress = (props: VerticalFeatureProgressProps) => 
                 </div>
               </div>
               <div className="py-10">
-                <h6 className="mb-3 text-md font-bold leading-[1.4] md:mb-4 md:text-xl">
+                <h6 className="h2 mb-4">
                   {feature.heading}
                 </h6>
-                <p>{feature.description}</p>
+                {
+                  feature.description ? <p>{feature.description}</p> :
+                    feature.descriptionNode?.map((node, index) => (
+                      <div key={index}>{node}</div>
+                    ))
+                }
               </div>
             </div>
           ))}

@@ -82,6 +82,9 @@ export default function JavaScriptPlayground() {
     editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
       executeCode();
     });
+    editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, () => {
+      executeCode();
+    });
   };
 
   const handleEditorChange = (

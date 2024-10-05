@@ -8,6 +8,7 @@ const geistSans = localFont({
   variable: '--font-geist-sans',
   weight: '100 900',
 });
+
 const geistMono = localFont({
   src: './fonts/GeistMonoVF.woff',
   variable: '--font-geist-mono',
@@ -26,6 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/aev3bgg.css" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

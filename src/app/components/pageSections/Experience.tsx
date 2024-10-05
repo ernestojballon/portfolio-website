@@ -43,17 +43,17 @@ const Experience = () => {
           descriptionNode: [
             <>
               <CompanyLogo src="/icons/comcast-lg.svg" alt="Comcast" />
-              <p key="text" className="body mb-5">
+              <p key="text" className="quote my-6">
                 Lead Engineer for Comcast project, developing features for
                 buyflow and checkout.
               </p>
               <CompanyLogo src="/icons/ross.svg" alt="ROSS" />
-              <p key="text2" className="body mb-5">
+              <p key="text2" className="quote my-6">
                 Senior Engineer for ROSS stores project, developed pilot for
                 microfrontend application.
               </p>
               <CompanyLogo src="/icons/cat-lg.svg" alt="Caterpillar" />
-              <p key="text3" className="body mb-5">
+              <p key="text3" className="quote my-6">
                 Senior Engineer for Caterpillar project, developed application
                 for remote 3D troubleshooting app for heavy machinery.
               </p>

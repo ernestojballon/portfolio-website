@@ -96,7 +96,7 @@ const FeatureSection = ({
 
   return (
     <motion.div
-      className="absolute ml-6 mr-6 flex flex-col justify-between border rounded-md bg-white p-8 md:ml-0"
+      className="absolute  ml-6 mr-6 flex flex-col justify-between border rounded-md bg-white  md:ml-0"
       style={{
         rotate: index === totalSections - 1 ? '9deg' : rotate,
         translateY: index === totalSections - 1 ? undefined : translateY,
@@ -104,19 +104,18 @@ const FeatureSection = ({
         zIndex: `${totalSections - index}`,
       }}
     >
-      <div className="rb-6 mb-6 md:mb-8">
+      <div className="neon-border "></div>
+      <div className="p-8">
         <Image
           src={section.icon.src}
           alt={section.icon.alt || ''}
           width={48}
           height={48}
-          className="size-12"
+          className="size-12 mb-4 filter brightness-75 contrast-125 grayscale"
         />
+        <h3 className="h3">{section.title}</h3>
+        <p className="quote mt-4">{section.description}</p>
       </div>
-      <h3 className="mb-3 text-xl font-bold md:mb-4 md:text-2xl">
-        {section.title}
-      </h3>
-      <p>{section.description}</p>
     </motion.div>
   );
 };

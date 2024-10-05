@@ -46,7 +46,7 @@ export const VerticalFeatureProgress = (
           <div className="absolute left-8 right-auto top-[10%] h-3/4 w-0.5 bg-black/15 md:left-[2.4375rem]">
             <motion.div
               ref={scrollSection}
-              className="bg-black"
+              className="bg-red-300 "
               style={{ height }}
             />
           </div>
@@ -69,7 +69,7 @@ export const VerticalFeatureProgress = (
               <div className="py-10">
                 <h6 className="h2 mb-4">{feature.heading}</h6>
                 {feature.description ? (
-                  <p>{feature.description}</p>
+                  <p className="quote my-6">{feature.description}</p>
                 ) : (
                   feature.descriptionNode?.map((node, index) => (
                     <div key={index}>{node}</div>

@@ -1,14 +1,24 @@
 import React from 'react';
 import Navbar1 from '@/components/sections/navs/NavBar1';
+import Image from 'next/image';
 
 const NavBar = () => {
   return (
     <Navbar1
       logoSlot={[
-        <a key="logo" href={'/'} className="flex items-center">
-          <p className="font-bold text-2xl bg-gradient-to-r from-indigo-400 to-red-400 text-transparent bg-clip-text">
-            Ernesto J Ballon
-          </p>
+        <a key="logo" href={'/'} className="flex ">
+          <div className="relative flex h-fit items-center justif-center gap-2">
+            <p className="body flex gap-2 bg-gradient-to-r from-indigo-400 to-red-400 text-transparent bg-clip-text">
+              <Image
+                className="rounded-full border-2 border-transparent bg-gradient-to-r from-indigo-300 to-red-300 hover:scale-110 hover:border-0 transition-all duration-300 ease-in-out"
+                src="/images/ernesto-ballon.jpeg"
+                alt="Ernesto J Ballon"
+                width={40}
+                height={40}
+              />
+              <span className="my-auto">Ernesto J Ballon</span>
+            </p>
+          </div>
         </a>,
       ]}
       navLinks={[

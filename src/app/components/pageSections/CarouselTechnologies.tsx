@@ -20,7 +20,7 @@ const SkillItem = ({
   skill: string;
 }) => (
   <div className="flex items-center mb-2">
-    <Icon className="h-5 w-5 text-blue-600 mr-2" />
+    <Icon className="h-5 w-5 text-red-400 mr-2" />
     <span className="bodysmall">{skill}</span>
   </div>
 );
@@ -41,7 +41,7 @@ const CarouselTechnologies = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             <div>
               <h3 className="h3 mb-4 flex items-center ">
-                <CodeBracketIcon className="h-6 w-6 text-indigo-500 mr-2" />
+                <CodeBracketIcon className="h-6 w-6 text-red-400 mr-2" />
                 Front-End Expertise
               </h3>
               <SkillItem Icon={GlobeAltIcon} skill="React & React Native" />
@@ -61,7 +61,7 @@ const CarouselTechnologies = () => {
             </div>
             <div>
               <h3 className="h3 mb-2 flex items-center">
-                <ServerIcon className="h-6 w-6 text-indigo-500 mr-2" />
+                <ServerIcon className="h-6 w-6 text-red-400 mr-2" />
                 Back-End & Cloud Skills
               </h3>
               <SkillItem

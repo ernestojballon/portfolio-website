@@ -29,7 +29,8 @@ const FavoriteLibraries = () => {
             src: '/icons/react.svg',
             alt: 'react js logo',
           },
-          title: 'Obsessed with React.js, I have almost 5 years of experience',
+          title:
+            'Love to work with React.js, I have almost 7 years of experience',
           description:
             'From web pages to 3D applications, I have worked with React.js in a variety of projects. I have a deep understanding of the library and its ecosystem, including Redux, Next.js, and Gatsby.js, all of them with TypeScript.',
         },

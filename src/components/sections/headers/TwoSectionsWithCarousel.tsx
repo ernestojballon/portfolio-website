@@ -36,7 +36,7 @@ export const HeaderWithCarousel = (props: HeaderWithCarouselProps) => {
                   <div key={index} className="grid size-full grid-cols-1 gap-4">
                     <div className="relative w-full pt-[120%]">
                       <Image
-                        className="absolute inset-0 h-full w-full transition-opacity duration-300 ease-in-out group-hover:opacity-75"
+                        className="absolute inset-0 h-full w-full transition-opacity duration-300 ease-in-out group-hover:opacity-75 filter brightness-75 contrast-125 grayscale"
                         src={image.src}
                         alt={image.alt || ''}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -52,7 +52,7 @@ export const HeaderWithCarousel = (props: HeaderWithCarouselProps) => {
                   <div key={index} className="grid size-full grid-cols-1 gap-4">
                     <div className="relative w-full pt-[120%]">
                       <Image
-                        className="absolute inset-0 h-full w-full transition-opacity duration-300 ease-in-out group-hover:opacity-75"
+                        className="absolute inset-0 h-full w-full transition-opacity duration-300 ease-in-out group-hover:opacity-75 filter brightness-75 contrast-125 grayscale"
                         src={image.src}
                         alt={image.alt || ''}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

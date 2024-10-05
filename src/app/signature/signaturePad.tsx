@@ -1,7 +1,7 @@
-'use client';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import SignatureCanvas from 'react-signature-canvas';
-import { Button } from "@/components/ui/button"
+"use client";
+import { useCallback, useEffect, useRef, useState } from "react";
+import SignatureCanvas from "react-signature-canvas";
+import { Button } from "@/components/ui/button";
 
 const Signature = () => {
   // const { setSignatureImageURL, setCurrentPage } = useStore();
@@ -16,7 +16,11 @@ const Signature = () => {
   };
 
   const confirmSignature = () => {
-    console.log(padRef.current?.toDataURL('image/png') ? padRef.current?.toDataURL('image/png') : '')
+    console.log(
+      padRef.current?.toDataURL("image/png")
+        ? padRef.current?.toDataURL("image/png")
+        : "",
+    );
     // setSignatureImageURL(
     //   padRef.current?.toDataURL('image/png') ? padRef.current?.toDataURL('image/png') : '',
     // );
@@ -30,7 +34,7 @@ const Signature = () => {
       canvas.width = canvas?.offsetWidth * ratio;
       canvas.height = canvas?.offsetHeight * ratio;
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      canvas.getContext('2d')!.scale(ratio, ratio);
+      canvas.getContext("2d")!.scale(ratio, ratio);
       padRef?.current?.clear();
     }
   }, [signature]);
@@ -63,17 +67,10 @@ const Signature = () => {
       </div>
 
       <div className="flex h-1/6 items-center justify-between">
-        <Button
-          data-testid="cancelButton"
-
-          onClick={() => onCancelModal()}
-        >
+        <Button data-testid="cancelButton" onClick={() => onCancelModal()}>
           Cancel
         </Button>
-        <Button
-          data-testid="clearButton"
-          onClick={() => clear()}
-        >
+        <Button data-testid="clearButton" onClick={() => clear()}>
           Clear Signature
         </Button>
         <Button

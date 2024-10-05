@@ -1,6 +1,11 @@
-type ThrottledFunction<T extends (...args: any[]) => any> = (...args: Parameters<T>) => void;
+type ThrottledFunction<T extends (...args: any[]) => any> = (
+  ...args: Parameters<T>
+) => void;
 
-function throttle<T extends (...args: any[]) => any>(func: T, limit: number): ThrottledFunction<T> {
+function throttle<T extends (...args: any[]) => any>(
+  func: T,
+  limit: number,
+): ThrottledFunction<T> {
   let shouldWait = false;
   let waitingArgs: Parameters<T> | null = null;
 
@@ -12,7 +17,7 @@ function throttle<T extends (...args: any[]) => any>(func: T, limit: number): Th
     } else {
       shouldWait = false;
     }
-  }
+  };
 
   return (...args: Parameters<T>): void => {
     if (shouldWait) {
@@ -24,11 +29,8 @@ function throttle<T extends (...args: any[]) => any>(func: T, limit: number): Th
     shouldWait = true;
 
     setTimeout(timeoutFunction, limit);
-  }
+  };
 }
-
-
-
 
 export { throttle };
 // // Example usage:

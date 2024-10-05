@@ -1,4 +1,4 @@
-import DOMPurify from 'isomorphic-dompurify';
+import DOMPurify from "isomorphic-dompurify";
 
 type SanitizeHtmlProps = {
   str: string;
@@ -16,23 +16,34 @@ type SanitizeHtmlProps = {
 };
 
 const stringFormatter = ({ str, options }: SanitizeHtmlProps): string => {
-  const { truncateOn, removeHtmlTags, stringReplace, sanitize, sanitizeOptions } = options;
+  const {
+    truncateOn,
+    removeHtmlTags,
+    stringReplace,
+    sanitize,
+    sanitizeOptions,
+  } = options;
 
   if (!str) {
-    return '';
+    return "";
   }
 
-  let sanitizedStr = str
+  let sanitizedStr = str;
   if (sanitize) {
-    sanitizedStr = DOMPurify.sanitize(sanitizedStr, { ...sanitizeOptions }).toString();
+    sanitizedStr = DOMPurify.sanitize(sanitizedStr, {
+      ...sanitizeOptions,
+    }).toString();
   }
 
   if (removeHtmlTags) {
-    sanitizedStr = sanitizedStr.replace(/<[^>]+>/g, '');
+    sanitizedStr = sanitizedStr.replace(/<[^>]+>/g, "");
   }
 
   if (stringReplace?.from && stringReplace?.to) {
-    sanitizedStr = sanitizedStr.replace(new RegExp(stringReplace.from, 'g'), stringReplace.to);
+    sanitizedStr = sanitizedStr.replace(
+      new RegExp(stringReplace.from, "g"),
+      stringReplace.to,
+    );
   }
 
   if (options.firstCapital) {
@@ -40,11 +51,10 @@ const stringFormatter = ({ str, options }: SanitizeHtmlProps): string => {
   }
 
   if (truncateOn && sanitizedStr.length > truncateOn) {
-    sanitizedStr = sanitizedStr.slice(0, truncateOn) + '...';
+    sanitizedStr = sanitizedStr.slice(0, truncateOn) + "...";
   }
 
   return sanitizedStr;
 };
 
-
-export default stringFormatter
+export default stringFormatter;

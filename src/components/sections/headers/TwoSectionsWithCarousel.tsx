@@ -11,7 +11,8 @@ type Props = {
   images: ImageProps[];
 };
 
-export type HeaderWithCarouselProps = React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
+export type HeaderWithCarouselProps =
+  React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
 
 export const HeaderWithCarousel = (props: HeaderWithCarouselProps) => {
   const { slot1, images } = {
@@ -66,21 +67,25 @@ export const HeaderWithCarousel = (props: HeaderWithCarouselProps) => {
 
 export const HeaderWithCarouselDefaults: HeaderWithCarouselProps = {
   slot1: [
-    <span key="tagLine" className="tagLine">Ready</span>,
-    <h1 key="title" className='h1'>Medium length hero heading goes here</h1>,
+    <span key="tagLine" className="tagLine">
+      Ready
+    </span>,
+    <h1 key="title" className="h1">
+      Medium length hero heading goes here
+    </h1>,
     <p key="text" className="body">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
-      elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
-      commodo diam libero vitae erat.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+      varius enim in eros elementum tristique. Duis cursus, mi quis viverra
+      ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
     </p>,
     <div key="content" className="flex gap-4 mt-6">
-      <a href="#" >
+      <a href="#">
         <Button>Primary Button</Button>
       </a>
-      <a href="#" >
+      <a href="#">
         <Button variant="secondary">Secondary Button</Button>
       </a>
-    </div>
+    </div>,
   ],
   images: [
     {

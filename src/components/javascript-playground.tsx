@@ -1,87 +1,95 @@
-"use client"
-import { type editor } from 'monaco-editor';
-import { useState, useRef, useEffect, useCallback, useMemo, Ref } from 'react'
-import Editor, { Monaco } from '@monaco-editor/react'
-import { Button } from "@/components/ui/button"
-import { throttle } from "@/utils/throttle"
+"use client";
+import { type editor } from "monaco-editor";
+import { useState, useRef, useEffect, useCallback, useMemo, Ref } from "react";
+import Editor, { Monaco } from "@monaco-editor/react";
+import { Button } from "@/components/ui/button";
+import { throttle } from "@/utils/throttle";
 
 export default function JavaScriptPlayground() {
-  const [code, setCode] = useState('')
-  const [output, setOutput] = useState('')
+  const [code, setCode] = useState("");
+  const [output, setOutput] = useState("");
   const editorRef: {
-    current: editor.IStandaloneCodeEditor | null
-  } = useRef(null)
+    current: editor.IStandaloneCodeEditor | null;
+  } = useRef(null);
 
   useEffect(() => {
     // Load code from local storage on component mount
-    const savedCode = localStorage.getItem('javascriptPlaygroundCode')
+    const savedCode = localStorage.getItem("javascriptPlaygroundCode");
     if (savedCode) {
-      setCode(savedCode)
+      setCode(savedCode);
     } else {
-      setCode('// Write your JavaScript code here\n// Press Cmd+Enter (or Ctrl+Enter) to run\nconsole.log("Hello, World!");')
+      setCode(
+        '// Write your JavaScript code here\n// Press Cmd+Enter (or Ctrl+Enter) to run\nconsole.log("Hello, World!");',
+      );
     }
-  }, [])
+  }, []);
 
   const executeCode = useCallback(() => {
-    if (!editorRef.current) return
+    if (!editorRef.current) return;
 
-    const consoleLog = console.log
-    const consoleError = console.error
-    const consoleWarn = console.warn
-    let outputBuffer = []
+    const consoleLog = console.log;
+    const consoleError = console.error;
+    const consoleWarn = console.warn;
+    let outputBuffer = [];
 
     console.log = (...args) => {
-      outputBuffer.push(args.join(' '))
-      consoleLog(...args)
-    }
+      outputBuffer.push(args.join(" "));
+      consoleLog(...args);
+    };
     console.error = (...args) => {
-      outputBuffer.push(`Error: ${args.join(' ')}`)
-      consoleError(...args)
-    }
+      outputBuffer.push(`Error: ${args.join(" ")}`);
+      consoleError(...args);
+    };
     console.warn = (...args) => {
-      outputBuffer.push(`Warning: ${args.join(' ')}`)
-      consoleWarn(...args)
-    }
+      outputBuffer.push(`Warning: ${args.join(" ")}`);
+      consoleWarn(...args);
+    };
 
     try {
-      eval(editorRef.current.getValue())
+      eval(editorRef.current.getValue());
     } catch (error: any) {
-      outputBuffer.push(`Runtime Error: ${error.message}`)
+      outputBuffer.push(`Runtime Error: ${error.message}`);
     }
 
-    console.log = consoleLog
-    console.error = consoleError
-    console.warn = consoleWarn
+    console.log = consoleLog;
+    console.error = consoleError;
+    console.warn = consoleWarn;
 
-    setOutput(outputBuffer.join('\n'))
-  }, [])
+    setOutput(outputBuffer.join("\n"));
+  }, []);
 
-  const executeCodeThrottle = useMemo(() => throttle(executeCode, 500), [executeCode]);
+  const executeCodeThrottle = useMemo(
+    () => throttle(executeCode, 500),
+    [executeCode],
+  );
 
   useEffect(() => {
     // Save code to local storage whenever it changes
     if (code) {
-      localStorage.setItem('javascriptPlaygroundCode', code)
+      localStorage.setItem("javascriptPlaygroundCode", code);
       if (editorRef.current) {
         executeCodeThrottle();
       }
     }
-  }, [code, executeCodeThrottle])
+  }, [code, executeCodeThrottle]);
 
-  const handleEditorDidMount = (editor: editor.IStandaloneCodeEditor, monaco: Monaco) => {
-    editorRef.current = editor
+  const handleEditorDidMount = (
+    editor: editor.IStandaloneCodeEditor,
+    monaco: Monaco,
+  ) => {
+    editorRef.current = editor;
 
-    editor.addCommand(
-      monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter,
-      () => {
-        executeCode()
-      }
-    )
-  }
+    editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
+      executeCode();
+    });
+  };
 
-  const handleEditorChange = (value: string | undefined, ev: editor.IModelContentChangedEvent) => {
-    setCode(value || '')
-  }
+  const handleEditorChange = (
+    value: string | undefined,
+    ev: editor.IModelContentChangedEvent,
+  ) => {
+    setCode(value || "");
+  };
 
   function copyValue() {
     navigator.clipboard.writeText(code);
@@ -90,9 +98,11 @@ export default function JavaScriptPlayground() {
 
   return (
     <div className="flex flex-col h-full   ">
-      <div className='flex flex-row mb-4' >
-        <h1 className='h3' >JavaScript Playground</h1>
-        <Button className='ml-auto' onClick={copyValue}>Copy Code</Button>
+      <div className="flex flex-row mb-4">
+        <h1 className="h3">JavaScript Playground</h1>
+        <Button className="ml-auto" onClick={copyValue}>
+          Copy Code
+        </Button>
       </div>
       <div className="flex-1 min-h-0 relative w-full ">
         <Editor
@@ -102,11 +112,11 @@ export default function JavaScriptPlayground() {
           value={code}
           onChange={handleEditorChange}
           onMount={handleEditorDidMount}
-          theme='light'//"vs-dark"
+          theme="light" //"vs-dark"
           options={{
             minimap: { enabled: false },
             fontSize: 14,
-            lineNumbers: 'on',
+            lineNumbers: "on",
             roundedSelection: true,
             scrollBeyondLastLine: false,
             readOnly: false,
@@ -127,5 +137,5 @@ export default function JavaScriptPlayground() {
         </div>
       </div>
     </div>
-  )
+  );
 }

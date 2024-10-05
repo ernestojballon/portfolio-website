@@ -1,13 +1,14 @@
-import React from 'react'
-import TwoSections from '@/components/sections/content/TwoSections'
-import Image from 'next/image'
-import Link from 'next/link';
-import { CodeBracketIcon, EyeIcon } from '@heroicons/react/24/outline';
+import React from "react";
+import TwoSections from "@/components/sections/content/TwoSections";
+import Image from "next/image";
+import Link from "next/link";
+import { CodeBracketIcon, EyeIcon } from "@heroicons/react/24/outline";
 
 const projects = [
   {
     name: "Acosta DMA Cleaning Website",
-    description: "A responsive website for a cleaning company, showcasing services and contact information.",
+    description:
+      "A responsive website for a cleaning company, showcasing services and contact information.",
     image: "/images/acostadmacleaning-logo.png",
     url: "https://acostadmacleaning.com",
     repoUrl: "https://acostadmacleaning.com",
@@ -19,8 +20,7 @@ const projects = [
       "AWS S3",
       "AWS CloudFront",
       "AWS Route 53",
-      "AWS SES"
-
+      "AWS SES",
     ],
   },
   {
@@ -34,8 +34,7 @@ const projects = [
       "Tailwind CSS",
       "AWS CloudFront",
       "AWS Route 53",
-      "AWS SES"
-
+      "AWS SES",
     ],
   },
   // Add more projects here
@@ -43,26 +42,24 @@ const projects = [
 const LatestProjects = () => {
   return (
     <TwoSections
-
       slot2={[
         <React.Fragment key="intro">
           <p className="tagLine">Project</p>
-          <h2 className="h2">
-            Showcase of my recent work
-          </h2>
+          <h2 className="h2">Showcase of my recent work</h2>
           <p className="body">
-            With a keen eye for detail and a commitment to best practices,
-            I develop stunning websites that captivate users and drive results.
+            With a keen eye for detail and a commitment to best practices, I
+            develop stunning websites that captivate users and drive results.
           </p>
-        </React.Fragment >
+        </React.Fragment>,
       ]}
       slot1={[
         <React.Fragment key="intro">
-
           <div className="grid md:grid-row-2 gap-8">
             {projects.map((project, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col p-4">
-
+              <div
+                key={index}
+                className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col p-4"
+              >
                 <div className="flex justify-between items-center">
                   <h3 className="h4">{project.name}</h3>
                   <div className="flex-shrink-0">
@@ -78,7 +75,10 @@ const LatestProjects = () => {
                 <p className="body">{project.description}</p>
                 <div className="flex flex-wrap gap-2 my-4">
                   {project.technologies.map((tech, techIndex) => (
-                    <span key={techIndex} className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">
+                    <span
+                      key={techIndex}
+                      className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm"
+                    >
                       {tech}
                     </span>
                   ))}
@@ -101,14 +101,13 @@ const LatestProjects = () => {
                     View Code
                   </Link>
                 </div>
-
               </div>
             ))}
           </div>
-        </React.Fragment >
+        </React.Fragment>,
       ]}
     />
-  )
-}
+  );
+};
 
-export default LatestProjects
+export default LatestProjects;

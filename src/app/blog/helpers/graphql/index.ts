@@ -1,10 +1,6 @@
-import getErnestoWordpressClient from "./client"
+import getErnestoWordpressClient from "./client";
 
 //blog queries
-import { getPostsQuery } from "./queries/posts"
+import { getPostsQuery } from "./queries/posts";
 
-
-export {
-  getErnestoWordpressClient,
-  getPostsQuery
-}
+export { getErnestoWordpressClient, getPostsQuery };

@@ -1,7 +1,5 @@
 /* styles/WordPressContent.module.css */
 
-
-
 .container :global(.wp-block-heading) {
   font-size: 1.8rem;
   margin-top: 30px;
@@ -29,7 +27,7 @@
 }
 
 .container :global(.wp-block-code code) {
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   font-size: 0.9em;
 }
 

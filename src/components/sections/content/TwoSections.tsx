@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 import { Button } from "@/components/ui/button";
 
 type Props = {
   slot1: React.ReactNode[];
   slot2: React.ReactNode[];
 };
-export type TwoSectionsProps = React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
-
+export type TwoSectionsProps = React.ComponentPropsWithoutRef<"section"> &
+  Partial<Props>;
 
 const TwoSections = (props: TwoSectionsProps) => {
   const { slot1, slot2 } = {
@@ -23,14 +23,16 @@ const TwoSections = (props: TwoSectionsProps) => {
       </div>
     </section>
   );
-}
+};
 export const TwoSectionsDefaults: TwoSectionsProps = {
   slot1: [
-    <h1 key="title" className='h1 text-red-400'>Medium length hero heading goes here</h1>,
+    <h1 key="title" className="h1 text-red-400">
+      Medium length hero heading goes here
+    </h1>,
     <p key="text" className="body">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
-      elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
-      commodo diam libero vitae erat.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+      varius enim in eros elementum tristique. Duis cursus, mi quis viverra
+      ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
     </p>,
     <div key="content" className="flex gap-4 mt-6">
       <Button>Primary Button</Button>
@@ -38,11 +40,13 @@ export const TwoSectionsDefaults: TwoSectionsProps = {
     </div>,
   ],
   slot2: [
-    <h1 key="title" className='h1 text-red-400'>Medium length hero heading goes here</h1>,
+    <h1 key="title" className="h1 text-red-400">
+      Medium length hero heading goes here
+    </h1>,
     <p key="text" className="body">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
-      elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
-      commodo diam libero vitae erat.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+      varius enim in eros elementum tristique. Duis cursus, mi quis viverra
+      ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
     </p>,
     <div key="content" className="flex gap-4 mt-6">
       <Button>Primary Button</Button>
@@ -50,4 +54,4 @@ export const TwoSectionsDefaults: TwoSectionsProps = {
     </div>,
   ],
 };
-export default TwoSections
+export default TwoSections;

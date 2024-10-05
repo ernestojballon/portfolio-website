@@ -1,7 +1,7 @@
-import React from 'react'
-import VerticalFeatureProgress from '@/components/sections/layout/VerticalFeatureProgress'
-import { Button } from '@/components/ui/button'
-import ResumeButton from '../ContactButtons';
+import React from "react";
+import VerticalFeatureProgress from "@/components/sections/layout/VerticalFeatureProgress";
+import { Button } from "@/components/ui/button";
+import ResumeButton from "../ContactButtons";
 
 const CompanyLogo = ({ src, alt }: { src: string; alt: string }) => (
   <img src={src} alt={alt} width={100} className="object-contain my-2" />
@@ -11,8 +11,12 @@ const Experience = () => {
   return (
     <VerticalFeatureProgress
       slot1={[
-        <p key="tagline" className='tagLine'>Experience</p>,
-        <h2 key="title" className='h1'>Places I've worked</h2>,
+        <p key="tagline" className="tagLine">
+          Experience
+        </p>,
+        <h2 key="title" className="h1">
+          Places I've worked
+        </h2>,
         <p key="text" className="body">
           Over the years I was lucky to work with awesome people and companies.
         </p>,
@@ -28,21 +32,25 @@ const Experience = () => {
             alt: "Accenture logo",
           },
           heading: "Software Engineer at Accenture",
-          descriptionNode: [<>
-            <CompanyLogo src="/icons/comcast-lg.svg" alt="Comcast" />
-            <p key="text" className="body mb-5">
-              Lead Engineer for Comcast project, developing features for buyflow and checkout.
-            </p>
-            <CompanyLogo src="/icons/ross.svg" alt="ROSS" />
-            <p key="text2" className="body mb-5">
-              Senior Engineer for ROSS stores project, developed pilot for microfrontend application.
-            </p>
-            <CompanyLogo src="/icons/cat-lg.svg" alt="Caterpillar" />
-            <p key="text3" className="body mb-5">
-              Senior Engineer for Caterpillar project, developed application for remote 3D troubleshooting app for heavy machinery.
-            </p>
-          </>],
-
+          descriptionNode: [
+            <>
+              <CompanyLogo src="/icons/comcast-lg.svg" alt="Comcast" />
+              <p key="text" className="body mb-5">
+                Lead Engineer for Comcast project, developing features for
+                buyflow and checkout.
+              </p>
+              <CompanyLogo src="/icons/ross.svg" alt="ROSS" />
+              <p key="text2" className="body mb-5">
+                Senior Engineer for ROSS stores project, developed pilot for
+                microfrontend application.
+              </p>
+              <CompanyLogo src="/icons/cat-lg.svg" alt="Caterpillar" />
+              <p key="text3" className="body mb-5">
+                Senior Engineer for Caterpillar project, developed application
+                for remote 3D troubleshooting app for heavy machinery.
+              </p>
+            </>,
+          ],
         },
         {
           icon: {
@@ -61,10 +69,10 @@ const Experience = () => {
           heading: "Software Engineer at Centene",
           description:
             "Software Engineer for Centene project, developed features for pharmacies to be able to provide prescriptions to patients.",
-        }
+        },
       ]}
     />
-  )
-}
+  );
+};
 
-export default Experience
+export default Experience;

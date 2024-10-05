@@ -20,9 +20,13 @@ type Props = {
   tagline: string;
   hoverLinks: HoverLinkProps[];
 };
-export type TitleImageProps = React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
+export type TitleImageProps = React.ComponentPropsWithoutRef<"section"> &
+  Partial<Props>;
 
-const getDirection = (ev: React.MouseEvent<HTMLDivElement, MouseEvent>, obj: HTMLElement) => {
+const getDirection = (
+  ev: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  obj: HTMLElement,
+) => {
   const { width: w, height: h, left, top } = obj.getBoundingClientRect();
 
   const centerX = left + w / 2;
@@ -56,11 +60,13 @@ export const TitleImage = (props: TitleImageProps) => {
 
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [hoveredIndex, setHoveredIndex] = useState<null | number>(null);
-  const [direction, setDirection] = useState<"top" | "bottom" | "left" | "right" | string>(
-    "initial",
-  );
+  const [direction, setDirection] = useState<
+    "top" | "bottom" | "left" | "right" | string
+  >("initial");
 
-  const handleMouseEnter = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleMouseEnter = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => {
     if (!ref.current) return;
     setDirection(getDirection(event, ref.current));
   };
@@ -151,8 +157,10 @@ export const TitleImage = (props: TitleImageProps) => {
               className={clsx(
                 "relative flex items-center justify-start border-b border-border-primary py-5 transition-colors duration-300 md:py-6",
                 {
-                  "lg:text-black/20": hoveredIndex !== index && hoveredIndex !== null,
-                  "lg:text-black": hoveredIndex === index || hoveredIndex === null,
+                  "lg:text-black/20":
+                    hoveredIndex !== index && hoveredIndex !== null,
+                  "lg:text-black":
+                    hoveredIndex === index || hoveredIndex === null,
                 },
               )}
             >
@@ -165,8 +173,16 @@ export const TitleImage = (props: TitleImageProps) => {
                 ${hoveredIndex === index ? "opacity-100" : "opacity-0"}
               `}
                 style={{
-                  translateX: cursorPosition.x - 300 + translateLeftInverse + translateRightInverse,
-                  translateY: cursorPosition.y - 300 + translateTopInverse + translateBottomInverse,
+                  translateX:
+                    cursorPosition.x -
+                    300 +
+                    translateLeftInverse +
+                    translateRightInverse,
+                  translateY:
+                    cursorPosition.y -
+                    300 +
+                    translateTopInverse +
+                    translateBottomInverse,
                 }}
               >
                 <motion.img

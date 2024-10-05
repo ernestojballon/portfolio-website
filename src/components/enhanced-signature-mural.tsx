@@ -1,66 +1,77 @@
-"use client"
-import React, { useState, useRef, useEffect } from 'react'
-import SignatureCanvas from 'react-signature-canvas'
-import { Stage, Layer, Image } from 'react-konva'
-import { Button } from "@/components/ui/button"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Slider } from "@/components/ui/slider"
-import { useToast } from "@/components/ui/use-toast"
-import { Trash2, ZoomIn, ZoomOut, Move, Undo, Download } from 'lucide-react'
+"use client";
+import React, { useState, useRef, useEffect } from "react";
+import SignatureCanvas from "react-signature-canvas";
+import { Stage, Layer, Image } from "react-konva";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Slider } from "@/components/ui/slider";
+import { useToast } from "@/components/ui/use-toast";
+import { Trash2, ZoomIn, ZoomOut, Move, Undo, Download } from "lucide-react";
 
 interface Signature {
-  id: string
-  dataURL: string
-  x: number
-  y: number
-  color: string
-  scale: number
-  rotation: number
+  id: string;
+  dataURL: string;
+  x: number;
+  y: number;
+  color: string;
+  scale: number;
+  rotation: number;
 }
 
 export function EnhancedSignatureMuralComponent() {
-  const [signatures, setSignatures] = useState<Signature[]>([])
-  const [selectedSignature, setSelectedSignature] = useState<string | null>(null)
-  const [color, setColor] = useState<string>("#000000")
-  const [scale, setScale] = useState<number>(1)
-  const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 })
-  const [isDragging, setIsDragging] = useState<boolean>(false)
-  const sigPad = useRef<SignatureCanvas>(null)
-  const stageRef = useRef<any>(null)
-  const [canvasSize, setCanvasSize] = useState({ width: 800, height: 400 })
-  const { toast } = useToast()
+  const [signatures, setSignatures] = useState<Signature[]>([]);
+  const [selectedSignature, setSelectedSignature] = useState<string | null>(
+    null,
+  );
+  const [color, setColor] = useState<string>("#000000");
+  const [scale, setScale] = useState<number>(1);
+  const [position, setPosition] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const sigPad = useRef<SignatureCanvas>(null);
+  const stageRef = useRef<any>(null);
+  const [canvasSize, setCanvasSize] = useState({ width: 800, height: 400 });
+  const { toast } = useToast();
 
   useEffect(() => {
-    const savedSignatures = localStorage.getItem('mural-signatures')
+    const savedSignatures = localStorage.getItem("mural-signatures");
     if (savedSignatures) {
-      setSignatures(JSON.parse(savedSignatures))
+      setSignatures(JSON.parse(savedSignatures));
     }
 
     const updateCanvasSize = () => {
       setCanvasSize({
         width: Math.min(800, window.innerWidth - 40),
-        height: Math.min(400, (window.innerHeight - 300) / 2)
-      })
-    }
-    updateCanvasSize()
-    window.addEventListener('resize', updateCanvasSize)
-    return () => window.removeEventListener('resize', updateCanvasSize)
-  }, [])
+        height: Math.min(400, (window.innerHeight - 300) / 2),
+      });
+    };
+    updateCanvasSize();
+    window.addEventListener("resize", updateCanvasSize);
+    return () => window.removeEventListener("resize", updateCanvasSize);
+  }, []);
 
   useEffect(() => {
-    localStorage.setItem('mural-signatures', JSON.stringify(signatures))
-  }, [signatures])
+    localStorage.setItem("mural-signatures", JSON.stringify(signatures));
+  }, [signatures]);
 
   const handleClear = () => {
     if (sigPad.current) {
-      sigPad.current.clear()
+      sigPad.current.clear();
     }
-  }
+  };
 
   const handleSubmit = () => {
     if (sigPad.current) {
-      const dataURL = sigPad.current.toDataURL()
-      console.log("Signature dataURL:", dataURL) // Debugging log
+      const dataURL = sigPad.current.toDataURL();
+      console.log("Signature dataURL:", dataURL); // Debugging log
       const newSignature: Signature = {
         id: Date.now().toString(),
         dataURL,
@@ -68,78 +79,78 @@ export function EnhancedSignatureMuralComponent() {
         y: Math.random() * (canvasSize.height - 50),
         color,
         scale: 1,
-        rotation: Math.random() * 30 - 15
-      }
-      setSignatures(prevSignatures => {
-        console.log("Adding new signature:", newSignature) // Debugging log
-        return [...prevSignatures, newSignature]
-      })
-      setSelectedSignature(newSignature.id)
-      sigPad.current.clear()
+        rotation: Math.random() * 30 - 15,
+      };
+      setSignatures((prevSignatures) => {
+        console.log("Adding new signature:", newSignature); // Debugging log
+        return [...prevSignatures, newSignature];
+      });
+      setSelectedSignature(newSignature.id);
+      sigPad.current.clear();
       toast({
         title: "Signature added",
         description: "Your signature has been added to the mural.",
-      })
+      });
     }
-  }
+  };
 
   const handleDelete = () => {
     if (selectedSignature) {
-      setSignatures(signatures.filter(sig => sig.id !== selectedSignature))
-      setSelectedSignature(null)
+      setSignatures(signatures.filter((sig) => sig.id !== selectedSignature));
+      setSelectedSignature(null);
       toast({
         title: "Signature deleted",
         description: "The selected signature has been removed from the mural.",
-      })
+      });
     }
-  }
+  };
 
-  const handleZoom = (direction: 'in' | 'out') => {
-    setScale(prevScale => {
-      const newScale = direction === 'in' ? prevScale * 1.2 : prevScale / 1.2
-      return Math.max(0.5, Math.min(newScale, 3))
-    })
-  }
+  const handleZoom = (direction: "in" | "out") => {
+    setScale((prevScale) => {
+      const newScale = direction === "in" ? prevScale * 1.2 : prevScale / 1.2;
+      return Math.max(0.5, Math.min(newScale, 3));
+    });
+  };
 
   const handleWheel = (e: React.WheelEvent) => {
-    e.preventDefault()
-    const scaleBy = 1.1
-    const stage = stageRef.current
-    const oldScale = stage.scaleX()
+    e.preventDefault();
+    const scaleBy = 1.1;
+    const stage = stageRef.current;
+    const oldScale = stage.scaleX();
     const mousePointTo = {
       x: stage.getPointerPosition().x / oldScale - stage.x() / oldScale,
       y: stage.getPointerPosition().y / oldScale - stage.y() / oldScale,
-    }
-    const newScale = e.deltaY > 0 ? oldScale / scaleBy : oldScale * scaleBy
-    setScale(newScale)
+    };
+    const newScale = e.deltaY > 0 ? oldScale / scaleBy : oldScale * scaleBy;
+    setScale(newScale);
     setPosition({
       x: -(mousePointTo.x - stage.getPointerPosition().x / newScale) * newScale,
       y: -(mousePointTo.y - stage.getPointerPosition().y / newScale) * newScale,
-    })
-  }
+    });
+  };
 
   const handleUndoLastSignature = () => {
     if (signatures.length > 0) {
-      const newSignatures = [...signatures]
-      newSignatures.pop()
-      setSignatures(newSignatures)
-      setSelectedSignature(null)
+      const newSignatures = [...signatures];
+      newSignatures.pop();
+      setSignatures(newSignatures);
+      setSelectedSignature(null);
       toast({
         title: "Undo",
         description: "Last signature has been removed.",
-      })
+      });
     }
-  }
+  };
 
   const handleDownloadMural = () => {
-    const dataURL = stageRef.current.toDataURL()
-    const link = document.createElement('a')
-    link.download = 'signature-mural.png'
-    link.href = dataURL
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
+    const dataURL = stageRef.current.toDataURL();
+    const link = document.createElement("a");
+    link.download = "signature-mural.png";
+    link.href = dataURL;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <div className="flex flex-col items-center space-y-4 p-4">
@@ -158,8 +169,8 @@ export function EnhancedSignatureMuralComponent() {
         >
           <Layer>
             {signatures.map((sig) => {
-              const img = new window.Image()
-              img.src = sig.dataURL
+              const img = new window.Image();
+              img.src = sig.dataURL;
               return (
                 <Image
                   key={sig.id}
@@ -173,7 +184,7 @@ export function EnhancedSignatureMuralComponent() {
                   onTap={() => setSelectedSignature(sig.id)}
                   rotation={sig.rotation}
                 />
-              )
+              );
             })}
           </Layer>
         </Stage>
@@ -191,14 +202,17 @@ export function EnhancedSignatureMuralComponent() {
           <SignatureCanvas
             ref={sigPad}
             canvasProps={{
-              className: "signature-canvas w-full border border-gray-400 rounded-md",
+              className:
+                "signature-canvas w-full border border-gray-400 rounded-md",
               width: 400,
-              height: 350
+              height: 350,
             }}
             penColor={color}
           />
           <div className="flex justify-between mt-4">
-            <Button onClick={handleClear} variant="outline">Clear</Button>
+            <Button onClick={handleClear} variant="outline">
+              Clear
+            </Button>
             <Select onValueChange={setColor} defaultValue={color}>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Select a color" />
@@ -214,7 +228,11 @@ export function EnhancedSignatureMuralComponent() {
           </div>
         </div>
         <div className="flex justify-between items-center">
-          <Button onClick={handleDelete} disabled={!selectedSignature} variant="destructive">
+          <Button
+            onClick={handleDelete}
+            disabled={!selectedSignature}
+            variant="destructive"
+          >
             <Trash2 className="w-4 h-4 mr-2" />
             Delete Selected
           </Button>
@@ -242,9 +260,12 @@ export function EnhancedSignatureMuralComponent() {
       <div>
         <p>Debug: Total signatures: {signatures.length}</p>
         {signatures.map((sig, index) => (
-          <p key={sig.id}>Signature {index + 1}: ID={sig.id}, X={sig.x.toFixed(2)}, Y={sig.y.toFixed(2)}</p>
+          <p key={sig.id}>
+            Signature {index + 1}: ID={sig.id}, X={sig.x.toFixed(2)}, Y=
+            {sig.y.toFixed(2)}
+          </p>
         ))}
       </div>
     </div>
-  )
+  );
 }

@@ -1,25 +1,26 @@
-import React from 'react'
-import DismissCards from '@/components/sections/layout/DismissCards'
-import { Button } from '@/components/ui/button'
-import ResumeButton, { CallMeButton, EmailButton } from '../ContactButtons'
+import React from "react";
+import DismissCards from "@/components/sections/layout/DismissCards";
+import { Button } from "@/components/ui/button";
+import ResumeButton, { CallMeButton, EmailButton } from "../ContactButtons";
 
 const FavoriteLibraries = () => {
   return (
     <DismissCards
-      slot1={
-        [
-          <p className='tagLine'>Tools</p>,
-          <h2 key="title" className='h1'>Some of my preferred libraries and tools</h2>,
+      slot1={[
+        <p className="tagLine">Tools</p>,
+        <h2 key="title" className="h1">
+          Some of my preferred libraries and tools
+        </h2>,
 
-          <p key="text" className="body">
-            I love JavaScript and AWS. I'm always looking for new libraries and tools to make me productive.
-          </p>,
-          <div key="content" className="flex gap-4 mt-6">
-            <ResumeButton />
-            <EmailButton />
-          </div>,
-        ]
-      }
+        <p key="text" className="body">
+          I love JavaScript and AWS. I'm always looking for new libraries and
+          tools to make me productive.
+        </p>,
+        <div key="content" className="flex gap-4 mt-6">
+          <ResumeButton />
+          <EmailButton />
+        </div>,
+      ]}
       featureSections={[
         {
           icon: {
@@ -56,11 +57,10 @@ const FavoriteLibraries = () => {
           title: "Containers with Docker",
           description:
             "I use Docker for dev environments, to test something fast, or to take something to production, and it never lets me down.",
-        }
-      ]
-      }
+        },
+      ]}
     />
-  )
-}
+  );
+};
 
-export default FavoriteLibraries
+export default FavoriteLibraries;

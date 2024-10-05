@@ -1,15 +1,14 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
 const Divider: React.FC = () => {
   return (
-
-    <div className='container relative flex h-[250px] items-center border-2 border-black bg-cover bg-center'>
+    <div className="container relative flex h-[250px] items-center border-2 border-black bg-cover bg-center">
       <div className="absolute w-full h-full z-0 ">
         <Image
           src="/images/background-agile-manifesto.jpg"
           alt="Agile Manifesto"
-          style={{ objectFit: 'cover', zIndex: -1, position: 'absolute' }}
+          style={{ objectFit: "cover", zIndex: -1, position: "absolute" }}
           layout="fill"
           objectFit="cover"
         />
@@ -35,7 +34,7 @@ const Divider: React.FC = () => {
           </p>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 

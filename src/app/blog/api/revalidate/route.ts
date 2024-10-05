@@ -1,6 +1,6 @@
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
-import appConfig from '@/app/app.config';
+import appConfig from "@/app/app.config";
 
 export async function POST(req: NextRequest) {
   try {
@@ -12,16 +12,25 @@ export async function POST(req: NextRequest) {
     }
     // Revalidate the specific post
     if (!post_slug) {
-      NextResponse.json({ message: "Need post_slug to update " }, { status: 400 });
+      NextResponse.json(
+        { message: "Need post_slug to update " },
+        { status: 400 },
+      );
     }
     // If no specific post_id, revalidate all posts
     revalidatePath(`/blog`);
     revalidatePath(`/blog/${post_slug}`);
 
-    return NextResponse.json({ message: "Revalidation successful" }, { status: 200 });
+    return NextResponse.json(
+      { message: "Revalidation successful" },
+      { status: 200 },
+    );
   } catch (err) {
     // If there was an error, Next.js will continue
     // to show the last successfully generated page
-    return NextResponse.json({ message: "Error revalidating" }, { status: 500 });
+    return NextResponse.json(
+      { message: "Error revalidating" },
+      { status: 500 },
+    );
   }
 }

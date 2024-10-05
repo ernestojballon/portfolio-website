@@ -1,14 +1,15 @@
-import React from 'react'
-import Navbar1 from '@/components/sections/navs/NavBar1'
+import React from "react";
+import Navbar1 from "@/components/sections/navs/NavBar1";
 
 const NavBar = () => {
   return (
     <Navbar1
       logoSlot={[
         <a href={"/"} className="flex items-center">
-          <p className="font-bold text-2xl bg-gradient-to-r from-indigo-400 to-red-400 text-transparent bg-clip-text"
-          >Ernesto J Ballon</p>
-        </a>
+          <p className="font-bold text-2xl bg-gradient-to-r from-indigo-400 to-red-400 text-transparent bg-clip-text">
+            Ernesto J Ballon
+          </p>
+        </a>,
       ]}
       navLinks={[
         { title: "Home", url: "/" },
@@ -46,7 +47,11 @@ const NavBar = () => {
                 },
                 title: "ESignature Component",
                 description: "Fun esignature component and mural",
-                button: { title: "Check it out", variant: "link", size: "link" },
+                button: {
+                  title: "Check it out",
+                  variant: "link",
+                  size: "link",
+                },
               },
               {
                 url: "/playground",
@@ -56,7 +61,11 @@ const NavBar = () => {
                 },
                 title: "JS playground",
                 description: "Playground for js code",
-                button: { title: "Check it out", variant: "link", size: "link" },
+                button: {
+                  title: "Check it out",
+                  variant: "link",
+                  size: "link",
+                },
               },
 
               {
@@ -66,7 +75,8 @@ const NavBar = () => {
                   alt: "placeholder image 4",
                 },
                 title: "Article Title",
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                description:
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                 button: { title: "Read more", variant: "link", size: "link" },
               },
               {
@@ -76,7 +86,8 @@ const NavBar = () => {
                   alt: "placeholder image 5",
                 },
                 title: "Article Title",
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                description:
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                 button: { title: "Read more", variant: "link", size: "link" },
               },
               {
@@ -86,15 +97,14 @@ const NavBar = () => {
                   alt: "placeholder image 6",
                 },
                 title: "Article Title",
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                description:
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                 button: { title: "Read more", variant: "link", size: "link" },
               },
             ],
           },
         },
-      ]
-
-      }
+      ]}
       buttons={[
         {
           title: "Sign In",
@@ -106,12 +116,9 @@ const NavBar = () => {
           variant: "variant",
           size: "lg",
         },
-      ]
-
-      }
-
+      ]}
     />
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

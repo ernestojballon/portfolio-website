@@ -26,7 +26,8 @@ type Props = {
   blogPosts: BlogPost[];
 };
 
-export type BlogListProps = React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
+export type BlogListProps = React.ComponentPropsWithoutRef<"section"> &
+  Partial<Props>;
 
 export const BlogList = (props: BlogListProps) => {
   const { slot1, blogPosts } = {
@@ -42,7 +43,10 @@ export const BlogList = (props: BlogListProps) => {
         <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 md:gap-y-16 lg:grid-cols-3">
           {blogPosts.map((post, index) => (
             <div className="flex flex-col" key={index}>
-              <Link href={post?.url || ""} className="mb-6 inline-block w-full max-w-full">
+              <Link
+                href={post?.url || ""}
+                className="mb-6 inline-block w-full max-w-full"
+              >
                 <div className="w-full overflow-hidden">
                   <img
                     src={post?.image?.src}
@@ -74,8 +78,12 @@ export const BlogList = (props: BlogListProps) => {
                   <h6 className="text-sm font-semibold">{post.fullName}</h6>
                   <div className="flex items-center">
                     <p className="text-sm">{post.date}</p>
-                    {post.readTime && <><span className="mx-2">•</span>
-                      <p className="text-sm">{post.readTime}</p></>}
+                    {post.readTime && (
+                      <>
+                        <span className="mx-2">•</span>
+                        <p className="text-sm">{post.readTime}</p>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
@@ -93,12 +101,15 @@ export const BlogListDefaults: BlogListProps = {
       <div className="w-full max-w-lg">
         <p className="mb-3 font-semibold md:mb-4">Blog</p>
         <h2 className="mb-3 h1 font-bold md:mb-4 ">This is my blog title</h2>
-        <p className="md:text-md">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
+        <p className="md:text-md">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          varius enim in eros elementum tristique.
+        </p>
       </div>
     </div>,
     <div key={"CTA"} className="absolute right-0 hidden md:flex ">
       <Button>More</Button>
-    </div>
+    </div>,
   ],
 
   blogPosts: [

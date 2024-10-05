@@ -23,7 +23,8 @@ type Props = {
   featureSections: FeatureSectionProps[];
 };
 
-export type DismissCardsProps = React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
+export type DismissCardsProps = React.ComponentPropsWithoutRef<"section"> &
+  Partial<Props>;
 
 export const DismissCards = (props: DismissCardsProps) => {
   const { slot1, featureSections } = {
@@ -43,9 +44,7 @@ export const DismissCards = (props: DismissCardsProps) => {
     <section ref={containerRef} className="px-[5%]">
       <div className="container relative h-[300svh] lg:h-[300vh]">
         <div className="static grid h-full grid-cols-1 content-start items-center gap-x-20 gap-y-16 py-16 md:sticky md:top-0 md:h-[100svh] md:grid-cols-2 md:content-normal md:py-0 lg:h-screen">
-          <div>
-            {slot1}
-          </div>
+          <div>{slot1}</div>
           <div className="sticky top-[25%] flex min-h-[24.5rem] flex-col items-center justify-center md:relative md:top-0 md:min-h-[auto]">
             {featureSections.map((section, index) => (
               <FeatureSection
@@ -106,9 +105,15 @@ const FeatureSection = ({
       }}
     >
       <div className="rb-6 mb-6 md:mb-8">
-        <img src={section.icon.src} alt={section.icon.alt} className="size-12" />
+        <img
+          src={section.icon.src}
+          alt={section.icon.alt}
+          className="size-12"
+        />
       </div>
-      <h3 className="mb-3 text-xl font-bold md:mb-4 md:text-2xl">{section.title}</h3>
+      <h3 className="mb-3 text-xl font-bold md:mb-4 md:text-2xl">
+        {section.title}
+      </h3>
       <p>{section.description}</p>
     </motion.div>
   );
@@ -116,11 +121,13 @@ const FeatureSection = ({
 
 export const DismissCardsDefaults: DismissCardsProps = {
   slot1: [
-    <h1 key="title" className='h1'>Medium length hero heading goes here</h1>,
+    <h1 key="title" className="h1">
+      Medium length hero heading goes here
+    </h1>,
     <p key="text" className="body">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
-      elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
-      commodo diam libero vitae erat.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+      varius enim in eros elementum tristique. Duis cursus, mi quis viverra
+      ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
     </p>,
     <div key="content" className="flex gap-4 mt-6">
       <Button>Primary Button</Button>

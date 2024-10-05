@@ -19,8 +19,8 @@ type Props = {
   images: ImageProps[];
 };
 
-export type MultipleSlotsProps = React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
-
+export type MultipleSlotsProps = React.ComponentPropsWithoutRef<"section"> &
+  Partial<Props>;
 
 export const MultipleSlots = (props: MultipleSlotsProps) => {
   const { contents, images } = {
@@ -39,13 +39,12 @@ export const MultipleSlots = (props: MultipleSlotsProps) => {
 
     const componentObserver = new IntersectionObserver(
       ([entry]) => {
-        if (entry.intersectionRatio >= 0.10) {
+        if (entry.intersectionRatio >= 0.1) {
           return setIsComponentInView(true);
         }
         setIsComponentInView(false);
-
       },
-      { threshold: [0, 0.1] }
+      { threshold: [0, 0.1] },
     );
     componentObserver.observe(componentRef.current);
 
@@ -58,7 +57,7 @@ export const MultipleSlots = (props: MultipleSlotsProps) => {
             setActiveSection(index);
           }
         },
-        { threshold: 0.2 }
+        { threshold: 0.2 },
       );
 
       observer.observe(ref);
@@ -71,9 +70,10 @@ export const MultipleSlots = (props: MultipleSlotsProps) => {
     };
   }, []);
 
-  const backgroundColor = isComponentInView && !isMobile
-    ? `hsl(0, 0%, ${90 - activeSection * 10}%)`
-    : 'initial';
+  const backgroundColor =
+    isComponentInView && !isMobile
+      ? `hsl(0, 0%, ${90 - activeSection * 10}%)`
+      : "initial";
 
   return (
     <section ref={componentRef} className="px-[5%]">
@@ -82,12 +82,18 @@ export const MultipleSlots = (props: MultipleSlotsProps) => {
           {contents.map((content, index) => (
             <div
               key={index}
-              ref={(el) => { sectionRefs.current[index] = el; }}
+              ref={(el) => {
+                sectionRefs.current[index] = el;
+              }}
               className="min-h-screen flex flex-col justify-center"
             >
               <div>{content.slot1}</div>
               <div className="mt-10 block w-full md:hidden">
-                <img src={content.phoneImage.src} className="w-full" alt={content.phoneImage.alt} />
+                <img
+                  src={content.phoneImage.src}
+                  className="w-full"
+                  alt={content.phoneImage.alt}
+                />
               </div>
             </div>
           ))}
@@ -97,8 +103,9 @@ export const MultipleSlots = (props: MultipleSlotsProps) => {
             <img
               key={index}
               src={image.src}
-              className={`absolute w-full transition-opacity duration-500 ${activeSection === index ? "opacity-100" : "opacity-0"
-                }`}
+              className={`absolute w-full transition-opacity duration-500 ${
+                activeSection === index ? "opacity-100" : "opacity-0"
+              }`}
               alt={image.alt}
             />
           ))}
@@ -112,16 +119,17 @@ export const MultipleSlots = (props: MultipleSlotsProps) => {
   );
 };
 
-
 export const MultipleSlotsDefaults: MultipleSlotsProps = {
   contents: [
     {
       slot1: [
-        <h1 key="title" className='h1 text-red-400'>Medium length hero heading goes here</h1>,
+        <h1 key="title" className="h1 text-red-400">
+          Medium length hero heading goes here
+        </h1>,
         <p key="text" className="body">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
-          elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
-          commodo diam libero vitae erat.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          varius enim in eros elementum tristique. Duis cursus, mi quis viverra
+          ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
         </p>,
         <div key="content" className="flex gap-4 mt-6">
           <Button>Primary Button</Button>
@@ -135,11 +143,13 @@ export const MultipleSlotsDefaults: MultipleSlotsProps = {
     },
     {
       slot1: [
-        <h1 key="title" className='h1 text-red-400'>Medium length hero heading goes here</h1>,
+        <h1 key="title" className="h1 text-red-400">
+          Medium length hero heading goes here
+        </h1>,
         <p key="text" className="body">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
-          elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
-          commodo diam libero vitae erat.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          varius enim in eros elementum tristique. Duis cursus, mi quis viverra
+          ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
         </p>,
         <div key="content" className="flex gap-4 mt-6">
           <Button>Primary Button</Button>
@@ -150,7 +160,7 @@ export const MultipleSlotsDefaults: MultipleSlotsProps = {
         src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-2.svg",
         alt: "placeholder image 2",
       },
-    }
+    },
   ],
   images: [
     {

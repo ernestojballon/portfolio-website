@@ -97,14 +97,14 @@ body {
   iframe {
     @apply w-full h-[14rem] md:h-[25rem] my-5 rounded-sm;
   }
-   .container {
-    @apply w-full max-w-[80rem] mx-auto stroke-border relative ;
+  .container {
+    @apply w-full max-w-[80rem] mx-auto stroke-border relative;
   }
-  .font-color{
-    color:var(--primary) ;
+  .font-color {
+    color: var(--primary);
   }
   .h1 {
-    @apply font-color mb-5 mt-2 text-5xl font-bold md:mb-6 ;
+    @apply font-color mb-5 mt-2 text-5xl font-bold md:mb-6;
   }
   .h2 {
     @apply font-color scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0;
@@ -131,6 +131,6 @@ body {
     @apply font-color text-sm font-medium leading-none;
   }
   .tagLine {
-    @apply font-color mb-3 font-semibold md:mb-4 uppercase ;
+    @apply font-color mb-3 font-semibold md:mb-4 uppercase;
   }
 }

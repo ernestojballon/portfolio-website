@@ -1,4 +1,3 @@
-
 export interface PostListItem {
   id: string;
   slug: string;
@@ -22,15 +21,17 @@ const blogParser = (data: any): PostListItem[] => {
       id: post.id,
       slug: post.slug,
       title: post.title,
-      categories: post.categories.edges.map((catEdge: any) => catEdge.node.name),
+      categories: post.categories.edges.map(
+        (catEdge: any) => catEdge.node.name,
+      ),
       featuredImage: post.featuredImage?.node?.mediaItemUrl || null,
       excerpt: post.excerpt,
-      author: `${post.author.node.firstName} ${post.author.node.lastName}`.trim(),
+      author:
+        `${post.author.node.firstName} ${post.author.node.lastName}`.trim(),
       authorImage: post.author.node.avatar?.url || null,
       date: post.date,
     };
   });
-}
-
+};
 
 export default blogParser;

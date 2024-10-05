@@ -11,7 +11,7 @@ type FeaturesProps = {
   };
   heading: string;
   description?: string;
-  descriptionNode?: React.ReactNode[]
+  descriptionNode?: React.ReactNode[];
 };
 
 type Props = {
@@ -19,9 +19,12 @@ type Props = {
   features: FeaturesProps[];
 };
 
-export type VerticalFeatureProgressProps = React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
+export type VerticalFeatureProgressProps =
+  React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
 
-export const VerticalFeatureProgress = (props: VerticalFeatureProgressProps) => {
+export const VerticalFeatureProgress = (
+  props: VerticalFeatureProgressProps,
+) => {
   const { slot1, features } = {
     ...VerticalFeatureProgressDefaults,
     ...props,
@@ -37,37 +40,42 @@ export const VerticalFeatureProgress = (props: VerticalFeatureProgressProps) => 
   return (
     <section className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container grid grid-cols-1 items-start gap-y-8 md:grid-cols-2 md:gap-x-12 lg:gap-x-20">
-        <div>
-          {slot1}
-        </div>
+        <div>{slot1}</div>
         <div className="relative">
           <div className="absolute left-8 right-auto top-[10%] h-3/4 w-0.5 bg-black/15 md:left-[2.4375rem]">
-            <motion.div ref={scrollSection} className="bg-black" style={{ height }} />
+            <motion.div
+              ref={scrollSection}
+              className="bg-black"
+              style={{ height }}
+            />
           </div>
           {features.map((feature, index) => (
-            <div key={index} className="grid grid-cols-[max-content_1fr] gap-x-6 lg:gap-x-10">
+            <div
+              key={index}
+              className="grid grid-cols-[max-content_1fr] gap-x-6 lg:gap-x-10"
+            >
               <div className="relative flex flex-col items-center justify-start py-10">
                 <div className="relative z-10 -mt-4 bg-white px-2 py-4 md:px-4">
-                  <img src={feature.icon.src} alt={feature.icon.alt} className="size-12" />
+                  <img
+                    src={feature.icon.src}
+                    alt={feature.icon.alt}
+                    className="size-12"
+                  />
                 </div>
               </div>
               <div className="py-10">
-                <h6 className="h2 mb-4">
-                  {feature.heading}
-                </h6>
-                {
-                  feature.description ? <p>{feature.description}</p> :
-                    feature.descriptionNode?.map((node, index) => (
-                      <div key={index}>{node}</div>
-                    ))
-                }
+                <h6 className="h2 mb-4">{feature.heading}</h6>
+                {feature.description ? (
+                  <p>{feature.description}</p>
+                ) : (
+                  feature.descriptionNode?.map((node, index) => (
+                    <div key={index}>{node}</div>
+                  ))
+                )}
               </div>
             </div>
           ))}
         </div>
-
-
-
       </div>
     </section>
   );
@@ -75,11 +83,13 @@ export const VerticalFeatureProgress = (props: VerticalFeatureProgressProps) => 
 
 export const VerticalFeatureProgressDefaults: VerticalFeatureProgressProps = {
   slot1: [
-    <h1 key="title" className='h1'>Medium length hero heading goes here</h1>,
+    <h1 key="title" className="h1">
+      Medium length hero heading goes here
+    </h1>,
     <p key="text" className="body">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
-      elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
-      commodo diam libero vitae erat.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+      varius enim in eros elementum tristique. Duis cursus, mi quis viverra
+      ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
     </p>,
     <div key="content" className="flex gap-4 mt-6">
       <Button>Primary Button</Button>

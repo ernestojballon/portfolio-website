@@ -32,21 +32,21 @@ const NavBar = () => {
                 url: "/signature",
                 image: {
                   src: "/images/esignature-modal.png",
-                  alt: "placeholder image 1",
+                  alt: "signature modal",
                 },
                 title: "ESignature Component",
                 description: "Fun esignature component and mural",
                 button: { title: "Check it out", variant: "link", size: "link" },
               },
               {
-                url: "#",
+                url: "/playground",
                 image: {
-                  src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
-                  alt: "placeholder image 2",
+                  src: "/images/js-playground.png",
+                  alt: "js playground",
                 },
-                title: "Todo List",
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                button: { title: "Read more", variant: "link", size: "link" },
+                title: "JS playground",
+                description: "Playground for js code",
+                button: { title: "Check it out", variant: "link", size: "link" },
               },
               {
                 url: "#",

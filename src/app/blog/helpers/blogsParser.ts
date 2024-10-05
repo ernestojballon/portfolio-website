@@ -22,7 +22,7 @@ const blogParser = (data: any): PostListItem[] => {
       slug: post.slug,
       title: post.title,
       categories: post.categories.edges.map(
-        (catEdge: any) => catEdge.node.name,
+        (catEdge: any) => catEdge.node.name
       ),
       featuredImage: post.featuredImage?.node?.mediaItemUrl || null,
       excerpt: post.excerpt,

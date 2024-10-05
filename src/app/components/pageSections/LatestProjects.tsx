@@ -1,40 +1,40 @@
-import React from "react";
-import TwoSections from "@/components/sections/content/TwoSections";
-import Image from "next/image";
-import Link from "next/link";
-import { CodeBracketIcon, EyeIcon } from "@heroicons/react/24/outline";
+import React from 'react';
+import TwoSections from '@/components/sections/content/TwoSections';
+import Image from 'next/image';
+import Link from 'next/link';
+import { CodeBracketIcon, EyeIcon } from '@heroicons/react/24/outline';
 
 const projects = [
   {
-    name: "Acosta DMA Cleaning Website",
+    name: 'Acosta DMA Cleaning Website',
     description:
-      "A responsive website for a cleaning company, showcasing services and contact information.",
-    image: "/images/acostadmacleaning-logo.png",
-    url: "https://acostadmacleaning.com",
-    repoUrl: "https://acostadmacleaning.com",
+      'A responsive website for a cleaning company, showcasing services and contact information.',
+    image: '/images/acostadmacleaning-logo.png',
+    url: 'https://acostadmacleaning.com',
+    repoUrl: 'https://acostadmacleaning.com',
     technologies: [
-      "Vanilla JS",
-      "Tailwind CSS",
-      "Babel",
-      "Webpack",
-      "AWS S3",
-      "AWS CloudFront",
-      "AWS Route 53",
-      "AWS SES",
+      'Vanilla JS',
+      'Tailwind CSS',
+      'Babel',
+      'Webpack',
+      'AWS S3',
+      'AWS CloudFront',
+      'AWS Route 53',
+      'AWS SES',
     ],
   },
   {
-    name: "Google Reviews Widget",
-    description: "Widget Develop as web component to display google reviews",
-    image: "/images/acostadmacleaning-logo.png",
-    url: "#",
-    repoUrl: "https://github.com/ernestojballon/review-widget-webcomponent",
+    name: 'Google Reviews Widget',
+    description: 'Widget Develop as web component to display google reviews',
+    image: '/images/acostadmacleaning-logo.png',
+    url: '#',
+    repoUrl: 'https://github.com/ernestojballon/review-widget-webcomponent',
     technologies: [
-      "Stencil JS",
-      "Tailwind CSS",
-      "AWS CloudFront",
-      "AWS Route 53",
-      "AWS SES",
+      'Stencil JS',
+      'Tailwind CSS',
+      'AWS CloudFront',
+      'AWS Route 53',
+      'AWS SES',
     ],
   },
   // Add more projects here

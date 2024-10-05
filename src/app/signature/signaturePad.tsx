@@ -1,7 +1,7 @@
-"use client";
-import { useCallback, useEffect, useRef, useState } from "react";
-import SignatureCanvas from "react-signature-canvas";
-import { Button } from "@/components/ui/button";
+'use client';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import SignatureCanvas from 'react-signature-canvas';
+import { Button } from '@/components/ui/button';
 
 const Signature = () => {
   // const { setSignatureImageURL, setCurrentPage } = useStore();
@@ -17,9 +17,9 @@ const Signature = () => {
 
   const confirmSignature = () => {
     console.log(
-      padRef.current?.toDataURL("image/png")
-        ? padRef.current?.toDataURL("image/png")
-        : "",
+      padRef.current?.toDataURL('image/png')
+        ? padRef.current?.toDataURL('image/png')
+        : ''
     );
     // setSignatureImageURL(
     //   padRef.current?.toDataURL('image/png') ? padRef.current?.toDataURL('image/png') : '',
@@ -33,8 +33,7 @@ const Signature = () => {
       const canvas = padRef.current?.getCanvas();
       canvas.width = canvas?.offsetWidth * ratio;
       canvas.height = canvas?.offsetHeight * ratio;
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      canvas.getContext("2d")!.scale(ratio, ratio);
+      canvas.getContext('2d')!.scale(ratio, ratio);
       padRef?.current?.clear();
     }
   }, [signature]);

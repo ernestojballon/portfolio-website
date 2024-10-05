@@ -1,5 +1,5 @@
-import TwoSectionsWithCarousel from "@/components/sections/headers/TwoSectionsWithCarousel";
-import React from "react";
+import TwoSectionsWithCarousel from '@/components/sections/headers/TwoSectionsWithCarousel';
+import React from 'react';
 import {
   CodeBracketIcon,
   CloudIcon,
@@ -11,7 +11,7 @@ import {
   BeakerIcon,
   CommandLineIcon,
   GlobeAltIcon,
-} from "@heroicons/react/24/outline";
+} from '@heroicons/react/24/outline';
 const SkillItem = ({
   Icon,
   skill,
@@ -87,64 +87,64 @@ const CarouselTechnologies = () => {
       ]}
       images={[
         {
-          src: "/icons/aws.svg",
-          alt: "AWS icon",
+          src: '/icons/aws.svg',
+          alt: 'AWS icon',
         },
         {
-          src: "/icons/bun.svg",
-          alt: "Bun icon",
+          src: '/icons/bun.svg',
+          alt: 'Bun icon',
         },
         {
-          src: "/icons/cypress.svg",
-          alt: "Cypress icon",
+          src: '/icons/cypress.svg',
+          alt: 'Cypress icon',
         },
         {
-          src: "/icons/deno.svg",
-          alt: "Deno icon",
+          src: '/icons/deno.svg',
+          alt: 'Deno icon',
         },
         {
-          src: "/icons/docker.svg",
-          alt: "Docker icon",
+          src: '/icons/docker.svg',
+          alt: 'Docker icon',
         },
         {
-          src: "/icons/github.svg",
-          alt: "GitHub icon",
+          src: '/icons/github.svg',
+          alt: 'GitHub icon',
         },
         {
-          src: "/icons/graphql.svg",
-          alt: "GraphQL icon",
+          src: '/icons/graphql.svg',
+          alt: 'GraphQL icon',
         },
         {
-          src: "/icons/kubernetes.svg",
-          alt: "Kubernetes icon",
+          src: '/icons/kubernetes.svg',
+          alt: 'Kubernetes icon',
         },
         {
-          src: "/icons/next.svg",
-          alt: "Next.js icon",
+          src: '/icons/next.svg',
+          alt: 'Next.js icon',
         },
         {
-          src: "/icons/node.svg",
-          alt: "Node.js icon",
+          src: '/icons/node.svg',
+          alt: 'Node.js icon',
         },
         {
-          src: "/icons/react.svg",
-          alt: "React icon",
+          src: '/icons/react.svg',
+          alt: 'React icon',
         },
         {
-          src: "/icons/redux.svg",
-          alt: "Redux icon",
+          src: '/icons/redux.svg',
+          alt: 'Redux icon',
         },
         {
-          src: "/icons/tailwind.svg",
-          alt: "Tailwind CSS icon",
+          src: '/icons/tailwind.svg',
+          alt: 'Tailwind CSS icon',
         },
         {
-          src: "/icons/typescript.svg",
-          alt: "TypeScript icon",
+          src: '/icons/typescript.svg',
+          alt: 'TypeScript icon',
         },
         {
-          src: "/icons/vscode.svg",
-          alt: "Visual Studio Code icon",
+          src: '/icons/vscode.svg',
+          alt: 'Visual Studio Code icon',
         },
       ]}
     />

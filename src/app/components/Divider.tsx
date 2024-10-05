@@ -1,5 +1,5 @@
-import React from "react";
-import Image from "next/image";
+import React from 'react';
+import Image from 'next/image';
 
 const Divider: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ const Divider: React.FC = () => {
         <Image
           src="/images/background-agile-manifesto.jpg"
           alt="Agile Manifesto"
-          style={{ objectFit: "cover", zIndex: -1, position: "absolute" }}
+          style={{ objectFit: 'cover', zIndex: -1, position: 'absolute' }}
           layout="fill"
           objectFit="cover"
         />

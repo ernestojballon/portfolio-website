@@ -13,12 +13,12 @@ function getEnvVariable(key: string): string {
 }
 
 const config: Config = {
-  wordpressApiUrl: getEnvVariable("WORDPRESS_API_ENDPOINT"),
+  wordpressApiUrl: getEnvVariable('WORDPRESS_API_ENDPOINT'),
   wordpressCloudfrontUrl: getEnvVariable(
-    "WORDPRESS_CLOUDFRONT_DISTRIBUTION_URL",
+    'WORDPRESS_CLOUDFRONT_DISTRIBUTION_URL'
   ),
   revalidationWordpressContentSecret: getEnvVariable(
-    "WORDPRESS_CONTENT_REVALIDATION_SECRET_KEY",
+    'WORDPRESS_CONTENT_REVALIDATION_SECRET_KEY'
   ),
 };
 

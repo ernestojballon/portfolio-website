@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
-import ClientSideHTML from "@/components/utils/ClientSideHTML";
-import Link from "next/link";
-import { RxChevronRight } from "react-icons/rx";
+import { Button } from '@/components/ui/button';
+import Image from 'next/image';
+import Link from 'next/link';
+import { RxChevronRight } from 'react-icons/rx';
 
 type ImageProps = {
   src: string;
@@ -26,7 +26,7 @@ type Props = {
   blogPosts: BlogPost[];
 };
 
-export type BlogListProps = React.ComponentPropsWithoutRef<"section"> &
+export type BlogListProps = React.ComponentPropsWithoutRef<'section'> &
   Partial<Props>;
 
 export const BlogList = (props: BlogListProps) => {
@@ -44,13 +44,15 @@ export const BlogList = (props: BlogListProps) => {
           {blogPosts.map((post, index) => (
             <div className="flex flex-col" key={index}>
               <Link
-                href={post?.url || ""}
+                href={post?.url || ''}
                 className="mb-6 inline-block w-full max-w-full"
               >
                 <div className="w-full overflow-hidden">
-                  <img
-                    src={post?.image?.src}
-                    alt={post?.image?.alt}
+                  <Image
+                    src={post?.image?.src || ''}
+                    alt={post?.image?.alt || ''}
+                    width={600}
+                    height={400}
                     className="aspect-[3/2] size-full object-cover"
                   />
                 </div>
@@ -68,9 +70,11 @@ export const BlogList = (props: BlogListProps) => {
               {post.excerpt}
               <div className="pt-6 flex items-center mt-auto">
                 <div className="mr-4 shrink-0">
-                  <img
-                    src={post?.avatar?.src}
-                    alt={post?.avatar?.alt}
+                  <Image
+                    src={post?.avatar?.src || ''}
+                    alt={post?.avatar?.alt || ''}
+                    width={48}
+                    height={48}
                     className="size-12 min-h-12 min-w-12 rounded-full object-cover"
                   />
                 </div>
@@ -97,7 +101,7 @@ export const BlogList = (props: BlogListProps) => {
 
 export const BlogListDefaults: BlogListProps = {
   slot1: [
-    <div key={"Tagline"} className="md:mr-12 lg:mr-0 ">
+    <div key={'Tagline'} className="md:mr-12 lg:mr-0 ">
       <div className="w-full max-w-lg">
         <p className="mb-3 font-semibold md:mb-4">Blog</p>
         <h2 className="mb-3 h1 font-bold md:mb-4 ">This is my blog title</h2>
@@ -107,81 +111,81 @@ export const BlogListDefaults: BlogListProps = {
         </p>
       </div>
     </div>,
-    <div key={"CTA"} className="absolute right-0 hidden md:flex ">
+    <div key={'CTA'} className="absolute right-0 hidden md:flex ">
       <Button>More</Button>
     </div>,
   ],
 
   blogPosts: [
     {
-      url: "#",
+      url: '#',
       image: {
-        src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
-        alt: " placeholder image 1",
+        src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg',
+        alt: ' placeholder image 1',
       },
-      category: "Category",
-      title: "Blog title heading will go here",
+      category: 'Category',
+      title: 'Blog title heading will go here',
       excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
       avatar: {
-        src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
-        alt: " placeholder avatar 3",
+        src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg',
+        alt: ' placeholder avatar 3',
       },
-      fullName: "Full name",
-      date: "11 Jan 2022",
-      readTime: "5 min read",
+      fullName: 'Full name',
+      date: '11 Jan 2022',
+      readTime: '5 min read',
       button: {
-        title: "Read more",
-        variant: "link",
-        size: "link",
+        title: 'Read more',
+        variant: 'link',
+        size: 'link',
         iconRight: <RxChevronRight />,
       },
     },
     {
-      url: "#",
+      url: '#',
       image: {
-        src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
-        alt: " placeholder image 2",
+        src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg',
+        alt: ' placeholder image 2',
       },
-      category: "Category",
-      title: "Blog title heading will go here",
+      category: 'Category',
+      title: 'Blog title heading will go here',
       excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
       avatar: {
-        src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
-        alt: " placeholder avatar 3",
+        src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg',
+        alt: ' placeholder avatar 3',
       },
-      fullName: "Full name",
-      date: "11 Jan 2022",
-      readTime: "5 min read",
+      fullName: 'Full name',
+      date: '11 Jan 2022',
+      readTime: '5 min read',
       button: {
-        title: "Read more",
-        variant: "link",
-        size: "link",
+        title: 'Read more',
+        variant: 'link',
+        size: 'link',
         iconRight: <RxChevronRight />,
       },
     },
     {
-      url: "#",
+      url: '#',
       image: {
-        src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
-        alt: " placeholder image 3",
+        src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg',
+        alt: ' placeholder image 3',
       },
-      category: "Category",
-      title: "Blog title heading will go here",
+      category: 'Category',
+      title: 'Blog title heading will go here',
       excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
       avatar: {
-        src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
-        alt: " placeholder avatar 3",
+        src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg',
+        alt: ' placeholder avatar 3',
       },
-      fullName: "Full name",
-      date: "11 Jan 2022",
-      readTime: "5 min read",
+      fullName: 'Full name',
+      date: '11 Jan 2022',
+      readTime: '5 min read',
       button: {
-        title: "Read more",
-        variant: "link",
-        size: "link",
+        title: 'Read more',
+        variant: 'link',
+        size: 'link',
         iconRight: <RxChevronRight />,
       },
     },

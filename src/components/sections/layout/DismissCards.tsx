@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useRef } from "react";
-import { Button } from "@/components/ui/button";
+import { useRef } from 'react';
+import { Button } from '@/components/ui/button';
 
-import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { RxChevronRight } from "react-icons/rx";
-import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
+import { useMediaQuery } from '@/hooks/useMediaQuery';
+import Image from 'next/image';
+import { MotionValue, motion, useScroll, useTransform } from 'framer-motion';
 
 type ImageProps = {
   src: string;
@@ -23,7 +23,7 @@ type Props = {
   featureSections: FeatureSectionProps[];
 };
 
-export type DismissCardsProps = React.ComponentPropsWithoutRef<"section"> &
+export type DismissCardsProps = React.ComponentPropsWithoutRef<'section'> &
   Partial<Props>;
 
 export const DismissCards = (props: DismissCardsProps) => {
@@ -32,12 +32,12 @@ export const DismissCards = (props: DismissCardsProps) => {
     ...props,
   } as Props;
 
-  const isMobile = useMediaQuery("(max-width: 767px)");
+  const isMobile = useMediaQuery('(max-width: 767px)');
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: isMobile ? ["20% start", "end end"] : ["start start", "end end"],
+    offset: isMobile ? ['20% start', 'end end'] : ['start start', 'end end'],
   });
 
   return (
@@ -80,34 +80,36 @@ const FeatureSection = ({
   const rotate = useTransform(
     scrollYProgress,
     [sectionScrollStart, sectionScrollEnd],
-    [0 + index * 3, -30],
+    [0 + index * 3, -30]
   );
   const translateY = useTransform(
     scrollYProgress,
     [sectionScrollStart, sectionScrollEnd],
-    ["0vh", "-100vh"],
+    ['0vh', '-100vh']
   );
 
   const translateX = useTransform(
     scrollYProgress,
     [sectionScrollStart, sectionScrollEnd],
-    ["0vw", "-10vw"],
+    ['0vw', '-10vw']
   );
 
   return (
     <motion.div
       className="absolute ml-6 mr-6 flex flex-col justify-between border rounded-md bg-white p-8 md:ml-0"
       style={{
-        rotate: index === totalSections - 1 ? "9deg" : rotate,
+        rotate: index === totalSections - 1 ? '9deg' : rotate,
         translateY: index === totalSections - 1 ? undefined : translateY,
         translateX: index === totalSections - 1 ? undefined : translateX,
         zIndex: `${totalSections - index}`,
       }}
     >
       <div className="rb-6 mb-6 md:mb-8">
-        <img
+        <Image
           src={section.icon.src}
-          alt={section.icon.alt}
+          alt={section.icon.alt || ''}
+          width={48}
+          height={48}
           className="size-12"
         />
       </div>
@@ -137,39 +139,39 @@ export const DismissCardsDefaults: DismissCardsProps = {
   featureSections: [
     {
       icon: {
-        src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-        alt: "logo 1",
+        src: 'https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg',
+        alt: 'logo 1',
       },
-      title: "Subheading one",
+      title: 'Subheading one',
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.',
     },
     {
       icon: {
-        src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-        alt: "logo 2",
+        src: 'https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg',
+        alt: 'logo 2',
       },
-      title: "Subheading two",
+      title: 'Subheading two',
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.',
     },
     {
       icon: {
-        src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-        alt: "logo 3",
+        src: 'https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg',
+        alt: 'logo 3',
       },
-      title: "Subheading three",
+      title: 'Subheading three',
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.',
     },
     {
       icon: {
-        src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-        alt: "logo 4",
+        src: 'https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg',
+        alt: 'logo 4',
       },
-      title: "Subheading four",
+      title: 'Subheading four',
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.',
     },
   ],
 };

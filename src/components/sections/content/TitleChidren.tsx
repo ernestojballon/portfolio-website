@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 type Props = {
   image: {
@@ -9,7 +9,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-export type TitleChidrenProps = React.ComponentPropsWithoutRef<"section"> &
+export type TitleChidrenProps = React.ComponentPropsWithoutRef<'section'> &
   Partial<Props>;
 
 export const TitleChidren = (props: TitleChidrenProps) => {
@@ -24,7 +24,7 @@ export const TitleChidren = (props: TitleChidrenProps) => {
         width={1200}
         height={400}
         className="w-full object-cover h-[5rem] "
-        alt={image.alt || ""}
+        alt={image.alt || ''}
       />
       <div className="container px-[5%]">
         <div className="rb-12 mb-10 md:mb-12 lg:mb-14"></div>
@@ -39,10 +39,10 @@ export const TitleChidren = (props: TitleChidrenProps) => {
 
 export const TitleChidrenDefaults: TitleChidrenProps = {
   image: {
-    src: "https://via.placeholder.com/800x400",
-    alt: "placeholder",
+    src: 'https://via.placeholder.com/800x400',
+    alt: 'placeholder',
   },
-  heading: "Short heading goes here",
+  heading: 'Short heading goes here',
   children: (
     <div>
       <p>

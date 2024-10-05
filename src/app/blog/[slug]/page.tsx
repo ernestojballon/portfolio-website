@@ -1,9 +1,9 @@
-import TitleChidren from "@/components/sections/content/TitleChidren";
+import TitleChidren from '@/components/sections/content/TitleChidren';
 
-import sanitized from "@/utils/stringFormatter";
-import React from "react";
-import styles from "./wordpressStyles.module.css";
-import appConfig from "@/app/app.config";
+import sanitized from '@/utils/stringFormatter';
+import React from 'react';
+import styles from './wordpressStyles.module.css';
+import appConfig from '@/app/app.config';
 
 export async function generateStaticParams() {
   const res = await fetch(`${appConfig.wordpressApiUrl}/wp-json/wp/v2/posts`);
@@ -36,13 +36,13 @@ const BlogPage = async (props: BlogPostProps) => {
     options: {
       sanitize: true,
       sanitizeOptions: {
-        ADD_TAGS: ["iframe"],
+        ADD_TAGS: ['iframe'],
         ADD_ATTR: [
-          "allow",
-          "allowfullscreen",
-          "frameborder",
-          "scrolling",
-          "src",
+          'allow',
+          'allowfullscreen',
+          'frameborder',
+          'scrolling',
+          'src',
         ],
         ALLOW_UNKNOWN_PROTOCOLS: true,
         ALLOWED_URI_REGEXP:
@@ -58,10 +58,9 @@ const BlogPage = async (props: BlogPostProps) => {
   return (
     <div>
       <div className={styles.container}>
-        <TitleChidren
-          heading={blog.title?.rendered}
-          children={<span dangerouslySetInnerHTML={{ __html: html }} />}
-        />
+        <TitleChidren heading={blog.title?.rendered}>
+          <span dangerouslySetInnerHTML={{ __html: html }} />
+        </TitleChidren>
       </div>
     </div>
   );

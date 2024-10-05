@@ -1,13 +1,13 @@
-import React from "react";
-import BlogList from "@/components/sections/lists/BlogList";
-import { formatReadableDate } from "@/utils/formatReadableDate";
+import React from 'react';
+import BlogList from '@/components/sections/lists/BlogList';
+import { formatReadableDate } from '@/utils/formatReadableDate';
 import {
   getPostsQuery,
   getErnestoWordpressClient,
-} from "@/app/blog/helpers/graphql/index";
-import blogParser, { PostListItem } from "@/app/blog/helpers/blogsParser";
-import stringFormatter from "@/utils/stringFormatter";
-import appConfig from "@/app/app.config";
+} from '@/app/blog/helpers/graphql/index';
+import blogParser, { PostListItem } from '@/app/blog/helpers/blogsParser';
+import stringFormatter from '@/utils/stringFormatter';
+import appConfig from '@/app/app.config';
 
 export const revalidate = 5;
 
@@ -29,13 +29,13 @@ const BlogHome = async () => {
               },
             },
           })
-        : "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
-      alt: " placeholder image 1",
+        : 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg',
+      alt: ' placeholder image 1',
     },
     category: post.categories
-      .filter((cat) => "Uncategorized" !== cat)
+      .filter((cat) => 'Uncategorized' !== cat)
       .map((cat) => cat.toUpperCase())
-      .join(", "),
+      .join(', '),
     title: post.title,
     excerpt: post.excerpt
       ? stringFormatter({
@@ -46,27 +46,27 @@ const BlogHome = async () => {
             firstCapital: true,
           },
         })
-      : "",
+      : '',
     avatar: {
       src:
         post.authorImage ||
-        "https://d22po4pjz3o32e.cloudfront.net/placeholder-avatar.svg",
-      alt: " placeholder avatar 3",
+        'https://d22po4pjz3o32e.cloudfront.net/placeholder-avatar.svg',
+      alt: ' placeholder avatar 3',
     },
     fullName: post.author,
     date: post.date && formatReadableDate(post.date),
-    readTime: "5 min read",
+    readTime: '5 min read',
   }));
   return (
     <>
       <BlogList
         slot1={[
           <h1 key="title" className="h1 text-4xl font-bold mb-4 text-red-400">
-            Ernesto Ballon's Tech Blog
+            Ernesto Ballon&apos;s Tech Blog
           </h1>,
           <p key="text" className="body text-lg mb-6">
-            Documenting{" "}
-            <span className="font-semibold text-green-600">solutions</span> and{" "}
+            Documenting{' '}
+            <span className="font-semibold text-green-600">solutions</span> and{' '}
             <span className="font-semibold text-red-600">challenges</span> from
             my journey as a software engineer.
           </p>,
@@ -74,20 +74,20 @@ const BlogHome = async () => {
             <p className="text-sm font-medium mb-2">This blog is powered by:</p>
             <ul className="list-disc list-inside space-y-1">
               <li>
-                <span className="font-semibold text-indigo-600">Next.js</span>{" "}
+                <span className="font-semibold text-indigo-600">Next.js</span>{' '}
                 for the frontend
               </li>
               <li>
                 <span className="font-semibold text-green-600">
                   Headless WordPress
-                </span>{" "}
+                </span>{' '}
                 as the backend
               </li>
             </ul>
           </div>,
           <p key="cta" className="mt-4 text-sm italic">
-            It's never too late to start sharing knowledge. Let's learn
-            together!
+            It&apos;s never too late to start sharing knowledge. Let&apos;s
+            learn together!
           </p>,
         ]}
         blogPosts={blogPosts}

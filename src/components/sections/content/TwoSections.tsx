@@ -1,11 +1,11 @@
-import React from "react";
-import { Button } from "@/components/ui/button";
+import React from 'react';
+import { Button } from '@/components/ui/button';
 
 type Props = {
   slot1: React.ReactNode[];
   slot2: React.ReactNode[];
 };
-export type TwoSectionsProps = React.ComponentPropsWithoutRef<"section"> &
+export type TwoSectionsProps = React.ComponentPropsWithoutRef<'section'> &
   Partial<Props>;
 
 const TwoSections = (props: TwoSectionsProps) => {

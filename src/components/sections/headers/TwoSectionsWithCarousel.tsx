@@ -1,5 +1,8 @@
-import React, { useMemo } from "react";
-import { Button } from "@/components/ui/button";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useMemo } from 'react';
+import { Button } from '@/components/ui/button';
+import Image from 'next/image';
+import Link from 'next/link';
 
 type ImageProps = {
   src: string;
@@ -12,7 +15,7 @@ type Props = {
 };
 
 export type HeaderWithCarouselProps =
-  React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
+  React.ComponentPropsWithoutRef<'section'> & Partial<Props>;
 
 export const HeaderWithCarousel = (props: HeaderWithCarouselProps) => {
   const { slot1, images } = {
@@ -32,11 +35,13 @@ export const HeaderWithCarousel = (props: HeaderWithCarouselProps) => {
                 {reversedImages.map((image, index) => (
                   <div key={index} className="grid size-full grid-cols-1 gap-4">
                     <div className="relative w-full pt-[120%]">
-                      <img
-                        className="absolute inset-0 h-full w-full  transition-opacity duration-300 ease-in-out group-hover:opacity-75"
+                      <Image
+                        className="absolute inset-0 h-full w-full transition-opacity duration-300 ease-in-out group-hover:opacity-75"
                         src={image.src}
-                        alt={image.alt || ""}
+                        alt={image.alt || ''}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        fill
+                        style={{ objectFit: 'cover' }}
                       />
                     </div>
                   </div>
@@ -46,11 +51,13 @@ export const HeaderWithCarousel = (props: HeaderWithCarouselProps) => {
                 {images.map((image, index) => (
                   <div key={index} className="grid size-full grid-cols-1 gap-4">
                     <div className="relative w-full pt-[120%]">
-                      <img
-                        className="absolute inset-0 h-full w-full  transition-opacity duration-300 ease-in-out group-hover:opacity-75"
+                      <Image
+                        className="absolute inset-0 h-full w-full transition-opacity duration-300 ease-in-out group-hover:opacity-75"
                         src={image.src}
-                        alt={image.alt || ""}
+                        alt={image.alt || ''}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        fill
+                        style={{ objectFit: 'cover' }}
                       />
                     </div>
                   </div>
@@ -79,38 +86,38 @@ export const HeaderWithCarouselDefaults: HeaderWithCarouselProps = {
       ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
     </p>,
     <div key="content" className="flex gap-4 mt-6">
-      <a href="#">
+      <Link href="#">
         <Button>Primary Button</Button>
-      </a>
-      <a href="#">
+      </Link>
+      <Link href="#">
         <Button variant="secondary">Secondary Button</Button>
-      </a>
+      </Link>
     </div>,
   ],
   images: [
     {
-      src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
-      alt: "placeholder image 1",
+      src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg',
+      alt: 'placeholder image 1',
     },
     {
-      src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
-      alt: "placeholder image 2",
+      src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg',
+      alt: 'placeholder image 2',
     },
     {
-      src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
-      alt: "placeholder image 3",
+      src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg',
+      alt: 'placeholder image 3',
     },
     {
-      src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
-      alt: "placeholder image 4",
+      src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg',
+      alt: 'placeholder image 4',
     },
     {
-      src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
-      alt: "placeholder image 5",
+      src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg',
+      alt: 'placeholder image 5',
     },
     {
-      src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
-      alt: "placeholder image 6",
+      src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg',
+      alt: 'placeholder image 6',
     },
   ],
 };

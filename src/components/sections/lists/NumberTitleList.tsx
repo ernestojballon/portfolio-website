@@ -1,10 +1,11 @@
-"use client";
+/* eslint-disable react-hooks/rules-of-hooks */
+'use client';
 
-import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { useRef } from "react";
-import { RxChevronRight } from "react-icons/rx";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import Link from "next/link";
+import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { useRef } from 'react';
+import { RxChevronRight } from 'react-icons/rx';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import Link from 'next/link';
 
 type Feature = {
   number: string;
@@ -20,7 +21,7 @@ type Props = {
   features: Feature[];
 };
 
-export type NumberTitleListProps = React.ComponentPropsWithoutRef<"section"> &
+export type NumberTitleListProps = React.ComponentPropsWithoutRef<'section'> &
   Partial<Props>;
 
 export const NumberTitleList = (props: NumberTitleListProps) => {
@@ -30,11 +31,11 @@ export const NumberTitleList = (props: NumberTitleListProps) => {
   } as Props;
 
   const ref = useRef<HTMLDivElement>(null);
-  const isTablet = useMediaQuery("(max-width: 991px)");
+  const isTablet = useMediaQuery('(max-width: 991px)');
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start center", "end center"],
+    offset: ['start center', 'end center'],
   });
 
   const featureCount = features.length;
@@ -43,12 +44,12 @@ export const NumberTitleList = (props: NumberTitleListProps) => {
     ? useTransform(
         scrollYProgress,
         [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
-        ["0%", "-25%", "-25%", "-50%", "-50%", "-50%", "-75%"],
+        ['0%', '-25%', '-25%', '-50%', '-50%', '-50%', '-75%']
       )
     : useTransform(
         scrollYProgress,
         [0.3, 0.4, 0.5, 0.6, 0.7, 0.8],
-        ["0%", "-25%", "-25%", "-50%", "-50%", "-75%"],
+        ['0%', '-25%', '-25%', '-50%', '-50%', '-75%']
       );
 
   return (
@@ -83,13 +84,13 @@ const FeatureCard = ({ ...feature }: Feature) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start center", "end center"],
+    offset: ['start center', 'end center'],
   });
   const animatedWidth = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 20,
   });
-  const width = useTransform(animatedWidth, [0, 1], ["0%", "100%"]);
+  const width = useTransform(animatedWidth, [0, 1], ['0%', '100%']);
 
   return (
     <div className="flex flex-col items-start justify-center py-8 md:py-0">
@@ -107,7 +108,7 @@ const FeatureCard = ({ ...feature }: Feature) => {
       <p className="md:text-md">{feature.description}</p>
       <div className="mt-6 flex items-center gap-x-4 md:mt-8">
         {feature.buttons.map((button, index) => (
-          <Link key={index} href={button.url || ""}>
+          <Link key={index} href={button.url || ''}>
             {button.title}
           </Link>
         ))}
@@ -119,65 +120,65 @@ const FeatureCard = ({ ...feature }: Feature) => {
 export const NumberTitleListDefaults: NumberTitleListProps = {
   features: [
     {
-      number: "01",
-      tagline: "Tagline",
-      heading: "Medium length section heading goes here",
+      number: '01',
+      tagline: 'Tagline',
+      heading: 'Medium length section heading goes here',
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.',
       buttons: [
-        { title: "Button", variant: "secondary" },
+        { title: 'Button', variant: 'secondary' },
         {
-          title: "Button",
-          variant: "link",
-          size: "link",
+          title: 'Button',
+          variant: 'link',
+          size: 'link',
           iconRight: <RxChevronRight />,
         },
       ],
     },
     {
-      number: "02",
-      tagline: "Tagline",
-      heading: "Medium length section heading goes here",
+      number: '02',
+      tagline: 'Tagline',
+      heading: 'Medium length section heading goes here',
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.',
       buttons: [
-        { title: "Button", variant: "secondary" },
+        { title: 'Button', variant: 'secondary' },
         {
-          title: "Button",
-          variant: "link",
-          size: "link",
+          title: 'Button',
+          variant: 'link',
+          size: 'link',
           iconRight: <RxChevronRight />,
         },
       ],
     },
     {
-      number: "03",
-      tagline: "Tagline",
-      heading: "Medium length section heading goes here",
+      number: '03',
+      tagline: 'Tagline',
+      heading: 'Medium length section heading goes here',
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.',
       buttons: [
-        { title: "Button", variant: "secondary" },
+        { title: 'Button', variant: 'secondary' },
         {
-          title: "Button",
-          variant: "link",
-          size: "link",
+          title: 'Button',
+          variant: 'link',
+          size: 'link',
           iconRight: <RxChevronRight />,
         },
       ],
     },
     {
-      number: "04",
-      tagline: "Tagline",
-      heading: "Medium length section heading goes here",
+      number: '04',
+      tagline: 'Tagline',
+      heading: 'Medium length section heading goes here',
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.',
       buttons: [
-        { title: "Button", variant: "secondary" },
+        { title: 'Button', variant: 'secondary' },
         {
-          title: "Button",
-          variant: "link",
-          size: "link",
+          title: 'Button',
+          variant: 'link',
+          size: 'link',
           iconRight: <RxChevronRight />,
         },
       ],

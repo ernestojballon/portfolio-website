@@ -1,18 +1,18 @@
-"use client";
-import React, { useState, useRef, useEffect } from "react";
-import SignatureCanvas from "react-signature-canvas";
-import { Stage, Layer, Image } from "react-konva";
-import { Button } from "@/components/ui/button";
+'use client';
+import React, { useState, useRef, useEffect } from 'react';
+import SignatureCanvas from 'react-signature-canvas';
+import { Stage, Layer, Image } from 'react-konva';
+import { Button } from '@/components/ui/button';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
-import { useToast } from "@/components/ui/use-toast";
-import { Trash2, ZoomIn, ZoomOut, Move, Undo, Download } from "lucide-react";
+} from '@/components/ui/select';
+import { Slider } from '@/components/ui/slider';
+import { useToast } from '@/components/ui/use-toast';
+import { Trash2, ZoomIn, ZoomOut, Move, Undo, Download } from 'lucide-react';
 
 interface Signature {
   id: string;
@@ -27,9 +27,9 @@ interface Signature {
 export function EnhancedSignatureMuralComponent() {
   const [signatures, setSignatures] = useState<Signature[]>([]);
   const [selectedSignature, setSelectedSignature] = useState<string | null>(
-    null,
+    null
   );
-  const [color, setColor] = useState<string>("#000000");
+  const [color, setColor] = useState<string>('#000000');
   const [scale, setScale] = useState<number>(1);
   const [position, setPosition] = useState<{ x: number; y: number }>({
     x: 0,
@@ -42,7 +42,7 @@ export function EnhancedSignatureMuralComponent() {
   const { toast } = useToast();
 
   useEffect(() => {
-    const savedSignatures = localStorage.getItem("mural-signatures");
+    const savedSignatures = localStorage.getItem('mural-signatures');
     if (savedSignatures) {
       setSignatures(JSON.parse(savedSignatures));
     }
@@ -54,12 +54,12 @@ export function EnhancedSignatureMuralComponent() {
       });
     };
     updateCanvasSize();
-    window.addEventListener("resize", updateCanvasSize);
-    return () => window.removeEventListener("resize", updateCanvasSize);
+    window.addEventListener('resize', updateCanvasSize);
+    return () => window.removeEventListener('resize', updateCanvasSize);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("mural-signatures", JSON.stringify(signatures));
+    localStorage.setItem('mural-signatures', JSON.stringify(signatures));
   }, [signatures]);
 
   const handleClear = () => {
@@ -71,7 +71,7 @@ export function EnhancedSignatureMuralComponent() {
   const handleSubmit = () => {
     if (sigPad.current) {
       const dataURL = sigPad.current.toDataURL();
-      console.log("Signature dataURL:", dataURL); // Debugging log
+      console.log('Signature dataURL:', dataURL); // Debugging log
       const newSignature: Signature = {
         id: Date.now().toString(),
         dataURL,
@@ -82,14 +82,14 @@ export function EnhancedSignatureMuralComponent() {
         rotation: Math.random() * 30 - 15,
       };
       setSignatures((prevSignatures) => {
-        console.log("Adding new signature:", newSignature); // Debugging log
+        console.log('Adding new signature:', newSignature); // Debugging log
         return [...prevSignatures, newSignature];
       });
       setSelectedSignature(newSignature.id);
       sigPad.current.clear();
       toast({
-        title: "Signature added",
-        description: "Your signature has been added to the mural.",
+        title: 'Signature added',
+        description: 'Your signature has been added to the mural.',
       });
     }
   };
@@ -99,15 +99,15 @@ export function EnhancedSignatureMuralComponent() {
       setSignatures(signatures.filter((sig) => sig.id !== selectedSignature));
       setSelectedSignature(null);
       toast({
-        title: "Signature deleted",
-        description: "The selected signature has been removed from the mural.",
+        title: 'Signature deleted',
+        description: 'The selected signature has been removed from the mural.',
       });
     }
   };
 
-  const handleZoom = (direction: "in" | "out") => {
+  const handleZoom = (direction: 'in' | 'out') => {
     setScale((prevScale) => {
-      const newScale = direction === "in" ? prevScale * 1.2 : prevScale / 1.2;
+      const newScale = direction === 'in' ? prevScale * 1.2 : prevScale / 1.2;
       return Math.max(0.5, Math.min(newScale, 3));
     });
   };
@@ -136,16 +136,16 @@ export function EnhancedSignatureMuralComponent() {
       setSignatures(newSignatures);
       setSelectedSignature(null);
       toast({
-        title: "Undo",
-        description: "Last signature has been removed.",
+        title: 'Undo',
+        description: 'Last signature has been removed.',
       });
     }
   };
 
   const handleDownloadMural = () => {
     const dataURL = stageRef.current.toDataURL();
-    const link = document.createElement("a");
-    link.download = "signature-mural.png";
+    const link = document.createElement('a');
+    link.download = 'signature-mural.png';
     link.href = dataURL;
     document.body.appendChild(link);
     link.click();
@@ -173,6 +173,7 @@ export function EnhancedSignatureMuralComponent() {
               img.src = sig.dataURL;
               return (
                 <Image
+                  alt="signature"
                   key={sig.id}
                   image={img}
                   x={sig.x}
@@ -203,7 +204,7 @@ export function EnhancedSignatureMuralComponent() {
             ref={sigPad}
             canvasProps={{
               className:
-                "signature-canvas w-full border border-gray-400 rounded-md",
+                'signature-canvas w-full border border-gray-400 rounded-md',
               width: 400,
               height: 350,
             }}

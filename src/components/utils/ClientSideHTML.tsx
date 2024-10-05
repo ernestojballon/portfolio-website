@@ -1,8 +1,8 @@
 // components/ClientSideExcerpt.tsx
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import DOMPurify from "isomorphic-dompurify";
+import { useEffect, useState } from 'react';
+import DOMPurify from 'isomorphic-dompurify';
 
 type ClientSideHTMLProps = {
   content: string;
@@ -11,7 +11,7 @@ type ClientSideHTMLProps = {
 
 const ClientSideHTML: React.FC<ClientSideHTMLProps> = ({
   content,
-  as: Element = "div",
+  as: Element = 'div',
 }) => {
   const [isMounted, setIsMounted] = useState(false);
 

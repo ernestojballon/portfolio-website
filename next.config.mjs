@@ -14,6 +14,22 @@ const nextConfig = {
     };
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'drxtoysoe50lt.cloudfront.net',
+        port: '',
+        pathname: '/wp-content/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'secure.gravatar.com',
+        port: '',
+        pathname: '/avatar/**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;

@@ -1,8 +1,9 @@
-"use client";
+'use client';
 
-import { useRef } from "react";
-import { useScroll, useTransform, motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { useRef } from 'react';
+import { useScroll, useTransform, motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 type FeaturesProps = {
   icon: {
@@ -20,10 +21,10 @@ type Props = {
 };
 
 export type VerticalFeatureProgressProps =
-  React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
+  React.ComponentPropsWithoutRef<'section'> & Partial<Props>;
 
 export const VerticalFeatureProgress = (
-  props: VerticalFeatureProgressProps,
+  props: VerticalFeatureProgressProps
 ) => {
   const { slot1, features } = {
     ...VerticalFeatureProgressDefaults,
@@ -33,9 +34,9 @@ export const VerticalFeatureProgress = (
   const scrollSection = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: scrollSection,
-    offset: ["start 55%", "start start"],
+    offset: ['start 55%', 'start start'],
   });
-  const height = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const height = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
   return (
     <section className="px-[5%] py-16 md:py-24 lg:py-28">
@@ -56,9 +57,11 @@ export const VerticalFeatureProgress = (
             >
               <div className="relative flex flex-col items-center justify-start py-10">
                 <div className="relative z-10 -mt-4 bg-white px-2 py-4 md:px-4">
-                  <img
+                  <Image
                     src={feature.icon.src}
                     alt={feature.icon.alt}
+                    width={48}
+                    height={48}
                     className="size-12"
                   />
                 </div>
@@ -99,48 +102,48 @@ export const VerticalFeatureProgressDefaults: VerticalFeatureProgressProps = {
   features: [
     {
       icon: {
-        src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-        alt: "icon 1",
+        src: 'https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg',
+        alt: 'icon 1',
       },
-      heading: "Subheading one",
+      heading: 'Subheading one',
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
     },
     {
       icon: {
-        src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-        alt: "icon 2",
+        src: 'https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg',
+        alt: 'icon 2',
       },
-      heading: "Subheading two",
+      heading: 'Subheading two',
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
     },
     {
       icon: {
-        src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-        alt: "icon 3",
+        src: 'https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg',
+        alt: 'icon 3',
       },
-      heading: "Subheading three",
+      heading: 'Subheading three',
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
     },
     {
       icon: {
-        src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-        alt: "icon 4",
+        src: 'https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg',
+        alt: 'icon 4',
       },
-      heading: "Subheading four",
+      heading: 'Subheading four',
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
     },
     {
       icon: {
-        src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-        alt: "icon 4",
+        src: 'https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg',
+        alt: 'icon 4',
       },
-      heading: "Subheading four",
+      heading: 'Subheading four',
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
     },
   ],
 };

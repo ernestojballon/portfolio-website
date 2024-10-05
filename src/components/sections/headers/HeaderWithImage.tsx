@@ -1,6 +1,6 @@
-import React from "react";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import React from 'react';
+import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 type ImageProps = {
   src: string;
@@ -12,7 +12,7 @@ type Props = {
   image: ImageProps;
 };
 
-export type HeaderWithImageProps = React.ComponentPropsWithoutRef<"section"> &
+export type HeaderWithImageProps = React.ComponentPropsWithoutRef<'section'> &
   Partial<Props>;
 
 export const HeaderWithImage = (props: HeaderWithImageProps) => {
@@ -29,7 +29,7 @@ export const HeaderWithImage = (props: HeaderWithImageProps) => {
             <Image
               src={image.src}
               className="w-full object-cover rounded-lg"
-              alt={image.alt || ""}
+              alt={image.alt || ''}
               width={800}
               height={600}
               priority
@@ -57,8 +57,8 @@ export const HeaderWithImageDefaults: HeaderWithImageProps = {
     </div>,
   ],
   image: {
-    src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
-    alt: "Header placeholder image",
+    src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg',
+    alt: 'Header placeholder image',
   },
 };
 

@@ -1,10 +1,18 @@
-import React from "react";
-import VerticalFeatureProgress from "@/components/sections/layout/VerticalFeatureProgress";
-import { Button } from "@/components/ui/button";
-import ResumeButton from "../ContactButtons";
+import React from 'react';
+import VerticalFeatureProgress from '@/components/sections/layout/VerticalFeatureProgress';
+import { Button } from '@/components/ui/button';
+import ResumeButton from '../ContactButtons';
+
+import Image from 'next/image';
 
 const CompanyLogo = ({ src, alt }: { src: string; alt: string }) => (
-  <img src={src} alt={alt} width={100} className="object-contain my-2" />
+  <Image
+    src={src}
+    alt={alt}
+    width={100}
+    height={50}
+    className="object-contain my-2"
+  />
 );
 
 const Experience = () => {
@@ -15,7 +23,7 @@ const Experience = () => {
           Experience
         </p>,
         <h2 key="title" className="h1">
-          Places I've worked
+          Places I&apos;ve worked
         </h2>,
         <p key="text" className="body">
           Over the years I was lucky to work with awesome people and companies.
@@ -28,10 +36,10 @@ const Experience = () => {
       features={[
         {
           icon: {
-            src: "/icons/accenture.svg",
-            alt: "Accenture logo",
+            src: '/icons/accenture.svg',
+            alt: 'Accenture logo',
           },
-          heading: "Software Engineer at Accenture",
+          heading: 'Software Engineer at Accenture',
           descriptionNode: [
             <>
               <CompanyLogo src="/icons/comcast-lg.svg" alt="Comcast" />
@@ -54,21 +62,21 @@ const Experience = () => {
         },
         {
           icon: {
-            src: "/icons/adp.svg",
-            alt: "ADP logo",
+            src: '/icons/adp.svg',
+            alt: 'ADP logo',
           },
-          heading: "Software Engineer at ADP",
+          heading: 'Software Engineer at ADP',
           description:
-            "Software Engineer for ADP project, developed features for application in charge of onboarding clients to the platform.",
+            'Software Engineer for ADP project, developed features for application in charge of onboarding clients to the platform.',
         },
         {
           icon: {
-            src: "/icons/centene.svg",
-            alt: "Centene Corp logo",
+            src: '/icons/centene.svg',
+            alt: 'Centene Corp logo',
           },
-          heading: "Software Engineer at Centene",
+          heading: 'Software Engineer at Centene',
           description:
-            "Software Engineer for Centene project, developed features for pharmacies to be able to provide prescriptions to patients.",
+            'Software Engineer for Centene project, developed features for pharmacies to be able to provide prescriptions to patients.',
         },
       ]}
     />

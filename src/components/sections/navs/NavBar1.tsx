@@ -1,9 +1,10 @@
-"use client";
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { RxChevronDown } from "react-icons/rx";
-import { AnimatePresence, motion } from "framer-motion";
+'use client';
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { RxChevronDown } from 'react-icons/rx';
+import { AnimatePresence, motion } from 'framer-motion';
+import Image from 'next/image';
 
 type ImageProps = {
   url?: string;
@@ -44,7 +45,7 @@ type Props = {
   buttons: any[];
 };
 
-export type Navbar1Props = React.ComponentPropsWithoutRef<"section"> &
+export type Navbar1Props = React.ComponentPropsWithoutRef<'section'> &
   Partial<Props>;
 
 export const Navbar1 = (props: Navbar1Props) => {
@@ -54,7 +55,7 @@ export const Navbar1 = (props: Navbar1Props) => {
   } as Props;
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const isMobile = useMediaQuery("(max-width: 991px)");
+  const isMobile = useMediaQuery('(max-width: 991px)');
 
   return (
     <nav className="fixed top-0 z-[999] flex min-h-16 w-full items-center border-b border-border-primary bg-white px-[5%] md:min-h-18">
@@ -96,17 +97,17 @@ export const Navbar1 = (props: Navbar1Props) => {
         >
           <motion.span
             className="my-[3px] h-0.5 w-6 bg-black"
-            animate={isMobileMenuOpen ? ["open", "rotatePhase"] : "closed"}
+            animate={isMobileMenuOpen ? ['open', 'rotatePhase'] : 'closed'}
             variants={topLineVariants}
           />
           <motion.span
             className="my-[3px] h-0.5 w-6 bg-black"
-            animate={isMobileMenuOpen ? "open" : "closed"}
+            animate={isMobileMenuOpen ? 'open' : 'closed'}
             variants={middleLineVariants}
           />
           <motion.span
             className="my-[3px] h-0.5 w-6 bg-black"
-            animate={isMobileMenuOpen ? ["open", "rotatePhase"] : "closed"}
+            animate={isMobileMenuOpen ? ['open', 'rotatePhase'] : 'closed'}
             variants={bottomLineVariants}
           />
         </button>
@@ -115,10 +116,10 @@ export const Navbar1 = (props: Navbar1Props) => {
         {isMobileMenuOpen && (
           <motion.div
             variants={{
-              open: { height: "100dvh" },
-              close: { height: "auto" },
+              open: { height: '100dvh' },
+              close: { height: 'auto' },
             }}
-            animate={isMobileMenuOpen ? "open" : "close"}
+            animate={isMobileMenuOpen ? 'open' : 'close'}
             initial="close"
             exit="close"
             className="absolute left-0 right-0 top-full w-full overflow-hidden lg:hidden "
@@ -127,9 +128,9 @@ export const Navbar1 = (props: Navbar1Props) => {
             <motion.div
               variants={{
                 open: { y: 0 },
-                close: { y: "-100%" },
+                close: { y: '-100%' },
               }}
-              animate={isMobileMenuOpen ? "open" : "close"}
+              animate={isMobileMenuOpen ? 'open' : 'close'}
               initial="close"
               exit="close"
               transition={{ duration: 0.4 }}
@@ -185,7 +186,7 @@ const SubMenu = ({
       >
         <span>{title}</span>
         <motion.span
-          animate={isDropdownOpen ? "rotated" : "initial"}
+          animate={isDropdownOpen ? 'rotated' : 'initial'}
           variants={{
             rotated: { rotate: 180 },
             initial: { rotate: 0 },
@@ -201,14 +202,14 @@ const SubMenu = ({
             variants={{
               open: {
                 opacity: 1,
-                height: "var(--height-open, auto)",
+                height: 'var(--height-open, auto)',
               },
               close: {
                 opacity: 0,
-                height: "var(--height-close, 0)",
+                height: 'var(--height-close, 0)',
               },
             }}
-            animate={isDropdownOpen ? "open" : "close"}
+            animate={isDropdownOpen ? 'open' : 'close'}
             initial="close"
             exit="close"
             transition={{ duration: 0.2 }}
@@ -227,7 +228,7 @@ const SubMenu = ({
                         <a key={index} href={subMenuLink.url}>
                           {subMenuLink.title}
                         </a>
-                      ),
+                      )
                     )}
                   </div>
                 </div>
@@ -242,9 +243,12 @@ const SubMenu = ({
                         className="grid max-w-full auto-cols-fr grid-cols-1 items-start gap-x-6 gap-y-4 py-2 lg:grid-cols-[0.5fr_1fr] lg:gap-y-0"
                       >
                         <div className="relative flex w-full flex-col pt-[10%] lg:flex-row">
-                          <img
+                          <Image
                             src={blogCategory.image.src}
-                            alt={blogCategory.image.alt || ""}
+                            alt={blogCategory.image.alt || ''}
+                            width={500}
+                            height={300}
+                            layout="responsive"
                           />
                         </div>
                         <div className="flex w-full flex-col justify-center self-center lg:w-auto">
@@ -274,110 +278,110 @@ const SubMenu = ({
 
 export const Navbar1Defaults: Navbar1Props = {
   logoSlot: [
-    <a href={"/"} className="flex items-center">
+    <a key={'logo'} href={'/'} className="flex items-center">
       <p className="font-bold text-2xl bg-gradient-to-r from-indigo-400 to-red-400 text-transparent bg-clip-text">
         Ernesto J Ballon
       </p>
     </a>,
   ],
   navLinks: [
-    { title: "Home", url: "/" },
-    { title: "Blog", url: "/blog" },
+    { title: 'Home', url: '/' },
+    { title: 'Blog', url: '/blog' },
 
     {
-      title: "Showcase",
-      url: "#",
+      title: 'Showcase',
+      url: '#',
       megaMenu: {
         linkGroup: {
-          title: "Blog categories",
+          title: 'Blog categories',
           subMenuLinks: [
             {
-              url: "#",
-              title: "Category One",
+              url: '#',
+              title: 'Category One',
             },
             {
-              url: "#",
-              title: "Category Two",
+              url: '#',
+              title: 'Category Two',
             },
             {
-              url: "#",
-              title: "Category Three",
+              url: '#',
+              title: 'Category Three',
             },
             {
-              url: "#",
-              title: "Category Four",
+              url: '#',
+              title: 'Category Four',
             },
             {
-              url: "#",
-              title: "Category Five",
+              url: '#',
+              title: 'Category Five',
             },
           ],
         },
         blogCategories: [
           {
-            url: "#",
+            url: '#',
             image: {
-              src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
-              alt: "placeholder image 1",
+              src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg',
+              alt: 'placeholder image 1',
             },
-            title: "ESignature Component",
-            description: "React signature component for web applications",
-            button: { title: "Read more", variant: "link", size: "link" },
+            title: 'ESignature Component',
+            description: 'React signature component for web applications',
+            button: { title: 'Read more', variant: 'link', size: 'link' },
           },
           {
-            url: "#",
+            url: '#',
             image: {
-              src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
-              alt: "placeholder image 2",
+              src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg',
+              alt: 'placeholder image 2',
             },
-            title: "Todo List",
+            title: 'Todo List',
             description:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-            button: { title: "Read more", variant: "link", size: "link" },
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+            button: { title: 'Read more', variant: 'link', size: 'link' },
           },
           {
-            url: "#",
+            url: '#',
             image: {
-              src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
-              alt: "placeholder image 3",
+              src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg',
+              alt: 'placeholder image 3',
             },
-            title: "Article Title",
+            title: 'Article Title',
             description:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-            button: { title: "Read more", variant: "link", size: "link" },
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+            button: { title: 'Read more', variant: 'link', size: 'link' },
           },
           {
-            url: "#",
+            url: '#',
             image: {
-              src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
-              alt: "placeholder image 4",
+              src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg',
+              alt: 'placeholder image 4',
             },
-            title: "Article Title",
+            title: 'Article Title',
             description:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-            button: { title: "Read more", variant: "link", size: "link" },
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+            button: { title: 'Read more', variant: 'link', size: 'link' },
           },
           {
-            url: "#",
+            url: '#',
             image: {
-              src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
-              alt: "placeholder image 5",
+              src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg',
+              alt: 'placeholder image 5',
             },
-            title: "Article Title",
+            title: 'Article Title',
             description:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-            button: { title: "Read more", variant: "link", size: "link" },
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+            button: { title: 'Read more', variant: 'link', size: 'link' },
           },
           {
-            url: "#",
+            url: '#',
             image: {
-              src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
-              alt: "placeholder image 6",
+              src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg',
+              alt: 'placeholder image 6',
             },
-            title: "Article Title",
+            title: 'Article Title',
             description:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-            button: { title: "Read more", variant: "link", size: "link" },
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+            button: { title: 'Read more', variant: 'link', size: 'link' },
           },
         ],
       },
@@ -385,14 +389,14 @@ export const Navbar1Defaults: Navbar1Props = {
   ],
   buttons: [
     {
-      title: "Sign In",
-      variant: "default",
-      size: "lg",
+      title: 'Sign In',
+      variant: 'default',
+      size: 'lg',
     },
     {
-      title: "Sign Up",
-      variant: "variant",
-      size: "lg",
+      title: 'Sign Up',
+      variant: 'variant',
+      size: 'lg',
     },
   ],
 };
@@ -419,7 +423,7 @@ const middleLineVariants = {
     transition: { duration: 0.1 },
   },
   closed: {
-    width: "1.5rem",
+    width: '1.5rem',
     transition: { delay: 0.3, duration: 0.2 },
   },
 };

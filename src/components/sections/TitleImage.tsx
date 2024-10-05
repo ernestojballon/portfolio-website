@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState, useRef } from "react";
-import { motion } from "framer-motion";
-import clsx from "clsx";
+import { useState, useRef } from 'react';
+import { motion } from 'framer-motion';
+import clsx from 'clsx';
 
 type ImageProps = {
   src: string;
@@ -20,12 +20,12 @@ type Props = {
   tagline: string;
   hoverLinks: HoverLinkProps[];
 };
-export type TitleImageProps = React.ComponentPropsWithoutRef<"section"> &
+export type TitleImageProps = React.ComponentPropsWithoutRef<'section'> &
   Partial<Props>;
 
 const getDirection = (
   ev: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  obj: HTMLElement,
+  obj: HTMLElement
 ) => {
   const { width: w, height: h, left, top } = obj.getBoundingClientRect();
 
@@ -39,13 +39,13 @@ const getDirection = (
   const adjustedAngle = angleDegrees < 0 ? angleDegrees + 360 : angleDegrees;
 
   if (adjustedAngle >= 315 || adjustedAngle < 45) {
-    return "right";
+    return 'right';
   } else if (adjustedAngle >= 45 && adjustedAngle < 135) {
-    return "bottom";
+    return 'bottom';
   } else if (adjustedAngle >= 135 && adjustedAngle < 225) {
-    return "left";
+    return 'left';
   } else {
-    return "top";
+    return 'top';
   }
 };
 
@@ -61,11 +61,11 @@ export const TitleImage = (props: TitleImageProps) => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [hoveredIndex, setHoveredIndex] = useState<null | number>(null);
   const [direction, setDirection] = useState<
-    "top" | "bottom" | "left" | "right" | string
-  >("initial");
+    'top' | 'bottom' | 'left' | 'right' | string
+  >('initial');
 
   const handleMouseEnter = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
     if (!ref.current) return;
     setDirection(getDirection(event, ref.current));
@@ -101,37 +101,37 @@ export const TitleImage = (props: TitleImageProps) => {
     top: {
       y: 25,
       transition: {
-        type: "spring",
+        type: 'spring',
         duration: 1,
       },
     },
     bottom: {
       y: -25,
       transition: {
-        type: "spring",
+        type: 'spring',
         duration: 1,
       },
     },
     left: {
       x: 25,
       transition: {
-        type: "spring",
+        type: 'spring',
         duration: 1,
       },
     },
     right: {
       x: -25,
       transition: {
-        type: "spring",
+        type: 'spring',
         duration: 1,
       },
     },
   };
 
-  const translateTopInverse = direction === "top" ? -25 : 0;
-  const translateBottomInverse = direction === "bottom" ? 25 : 0;
-  const translateLeftInverse = direction === "left" ? -25 : 0;
-  const translateRightInverse = direction === "right" ? 25 : 0;
+  const translateTopInverse = direction === 'top' ? -25 : 0;
+  const translateBottomInverse = direction === 'bottom' ? 25 : 0;
+  const translateLeftInverse = direction === 'left' ? -25 : 0;
+  const translateRightInverse = direction === 'right' ? 25 : 0;
 
   return (
     <section
@@ -155,13 +155,13 @@ export const TitleImage = (props: TitleImageProps) => {
               href={link.url}
               onMouseEnter={() => setHoveredIndex(index)}
               className={clsx(
-                "relative flex items-center justify-start border-b border-border-primary py-5 transition-colors duration-300 md:py-6",
+                'relative flex items-center justify-start border-b border-border-primary py-5 transition-colors duration-300 md:py-6',
                 {
-                  "lg:text-black/20":
+                  'lg:text-black/20':
                     hoveredIndex !== index && hoveredIndex !== null,
-                  "lg:text-black":
+                  'lg:text-black':
                     hoveredIndex === index || hoveredIndex === null,
-                },
+                }
               )}
             >
               <p className="mr-6 whitespace-nowrap text-xl font-bold md:mr-8 md:text-2xl">
@@ -170,7 +170,7 @@ export const TitleImage = (props: TitleImageProps) => {
               <h1 className="h1">{link.heading}</h1>
               <motion.div
                 className={`pointer-events-none fixed inset-0 z-10 ml-[300px] hidden size-[600px] lg:block
-                ${hoveredIndex === index ? "opacity-100" : "opacity-0"}
+                ${hoveredIndex === index ? 'opacity-100' : 'opacity-0'}
               `}
                 style={{
                   translateX:
@@ -201,24 +201,24 @@ export const TitleImage = (props: TitleImageProps) => {
 };
 
 export const TitleImageDefaults: TitleImageProps = {
-  tagline: "Tagline",
+  tagline: 'Tagline',
   hoverLinks: [
     {
-      url: "#",
-      listNumber: "01",
-      heading: "Hover over link one",
+      url: '#',
+      listNumber: '01',
+      heading: 'Hover over link one',
       image: {
-        src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-1.svg",
-        alt: "placeholder image 1",
+        src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image-1.svg',
+        alt: 'placeholder image 1',
       },
     },
     {
-      url: "#",
-      listNumber: "02",
-      heading: "Hover over link two",
+      url: '#',
+      listNumber: '02',
+      heading: 'Hover over link two',
       image: {
-        src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-2.svg",
-        alt: "placeholder image 2",
+        src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image-2.svg',
+        alt: 'placeholder image 2',
       },
     },
   ],

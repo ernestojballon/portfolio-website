@@ -1,25 +1,25 @@
-"use client";
-import { type editor } from "monaco-editor";
-import { useState, useRef, useEffect, useCallback, useMemo, Ref } from "react";
-import Editor, { Monaco } from "@monaco-editor/react";
-import { Button } from "@/components/ui/button";
-import { throttle } from "@/utils/throttle";
+'use client';
+import { type editor } from 'monaco-editor';
+import { useState, useRef, useEffect, useCallback, useMemo, Ref } from 'react';
+import Editor, { Monaco } from '@monaco-editor/react';
+import { Button } from '@/components/ui/button';
+import { throttle } from '@/utils/throttle';
 
 export default function JavaScriptPlayground() {
-  const [code, setCode] = useState("");
-  const [output, setOutput] = useState("");
+  const [code, setCode] = useState('');
+  const [output, setOutput] = useState('');
   const editorRef: {
     current: editor.IStandaloneCodeEditor | null;
   } = useRef(null);
 
   useEffect(() => {
     // Load code from local storage on component mount
-    const savedCode = localStorage.getItem("javascriptPlaygroundCode");
+    const savedCode = localStorage.getItem('javascriptPlaygroundCode');
     if (savedCode) {
       setCode(savedCode);
     } else {
       setCode(
-        '// Write your JavaScript code here\n// Press Cmd+Enter (or Ctrl+Enter) to run\nconsole.log("Hello, World!");',
+        '// Write your JavaScript code here\n// Press Cmd+Enter (or Ctrl+Enter) to run\nconsole.log("Hello, World!");'
       );
     }
   }, []);
@@ -33,15 +33,15 @@ export default function JavaScriptPlayground() {
     let outputBuffer = [];
 
     console.log = (...args) => {
-      outputBuffer.push(args.join(" "));
+      outputBuffer.push(args.join(' '));
       consoleLog(...args);
     };
     console.error = (...args) => {
-      outputBuffer.push(`Error: ${args.join(" ")}`);
+      outputBuffer.push(`Error: ${args.join(' ')}`);
       consoleError(...args);
     };
     console.warn = (...args) => {
-      outputBuffer.push(`Warning: ${args.join(" ")}`);
+      outputBuffer.push(`Warning: ${args.join(' ')}`);
       consoleWarn(...args);
     };
 
@@ -55,18 +55,18 @@ export default function JavaScriptPlayground() {
     console.error = consoleError;
     console.warn = consoleWarn;
 
-    setOutput(outputBuffer.join("\n"));
+    setOutput(outputBuffer.join('\n'));
   }, []);
 
   const executeCodeThrottle = useMemo(
     () => throttle(executeCode, 500),
-    [executeCode],
+    [executeCode]
   );
 
   useEffect(() => {
     // Save code to local storage whenever it changes
     if (code) {
-      localStorage.setItem("javascriptPlaygroundCode", code);
+      localStorage.setItem('javascriptPlaygroundCode', code);
       if (editorRef.current) {
         executeCodeThrottle();
       }
@@ -75,7 +75,7 @@ export default function JavaScriptPlayground() {
 
   const handleEditorDidMount = (
     editor: editor.IStandaloneCodeEditor,
-    monaco: Monaco,
+    monaco: Monaco
   ) => {
     editorRef.current = editor;
 
@@ -86,14 +86,14 @@ export default function JavaScriptPlayground() {
 
   const handleEditorChange = (
     value: string | undefined,
-    ev: editor.IModelContentChangedEvent,
+    ev: editor.IModelContentChangedEvent
   ) => {
-    setCode(value || "");
+    setCode(value || '');
   };
 
   function copyValue() {
     navigator.clipboard.writeText(code);
-    alert("Code copied to clipboard");
+    alert('Code copied to clipboard');
   }
 
   return (
@@ -116,7 +116,7 @@ export default function JavaScriptPlayground() {
           options={{
             minimap: { enabled: false },
             fontSize: 14,
-            lineNumbers: "on",
+            lineNumbers: 'on',
             roundedSelection: true,
             scrollBeyondLastLine: false,
             readOnly: false,

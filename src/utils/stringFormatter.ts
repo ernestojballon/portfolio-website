@@ -1,4 +1,4 @@
-import DOMPurify from "isomorphic-dompurify";
+import DOMPurify from 'isomorphic-dompurify';
 
 type SanitizeHtmlProps = {
   str: string;
@@ -25,7 +25,7 @@ const stringFormatter = ({ str, options }: SanitizeHtmlProps): string => {
   } = options;
 
   if (!str) {
-    return "";
+    return '';
   }
 
   let sanitizedStr = str;
@@ -36,13 +36,13 @@ const stringFormatter = ({ str, options }: SanitizeHtmlProps): string => {
   }
 
   if (removeHtmlTags) {
-    sanitizedStr = sanitizedStr.replace(/<[^>]+>/g, "");
+    sanitizedStr = sanitizedStr.replace(/<[^>]+>/g, '');
   }
 
   if (stringReplace?.from && stringReplace?.to) {
     sanitizedStr = sanitizedStr.replace(
-      new RegExp(stringReplace.from, "g"),
-      stringReplace.to,
+      new RegExp(stringReplace.from, 'g'),
+      stringReplace.to
     );
   }
 
@@ -51,7 +51,7 @@ const stringFormatter = ({ str, options }: SanitizeHtmlProps): string => {
   }
 
   if (truncateOn && sanitizedStr.length > truncateOn) {
-    sanitizedStr = sanitizedStr.slice(0, truncateOn) + "...";
+    sanitizedStr = sanitizedStr.slice(0, truncateOn) + '...';
   }
 
   return sanitizedStr;

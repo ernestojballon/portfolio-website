@@ -1,5 +1,5 @@
-import React from "react";
-import Signature from "../signature/signaturePad";
+import React from 'react';
+import Signature from '../signature/signaturePad';
 
 const testPage = () => {
   return (

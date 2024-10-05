@@ -1,8 +1,9 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { useEffect, useRef, useState } from "react";
+import { Button } from '@/components/ui/button';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
 type ImageProps = {
   src: string;
@@ -19,7 +20,7 @@ type Props = {
   images: ImageProps[];
 };
 
-export type MultipleSlotsProps = React.ComponentPropsWithoutRef<"section"> &
+export type MultipleSlotsProps = React.ComponentPropsWithoutRef<'section'> &
   Partial<Props>;
 
 export const MultipleSlots = (props: MultipleSlotsProps) => {
@@ -32,7 +33,7 @@ export const MultipleSlots = (props: MultipleSlotsProps) => {
   const [isComponentInView, setIsComponentInView] = useState(false);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
   const componentRef = useRef<HTMLElement>(null);
-  const isMobile = useMediaQuery("(max-width: 767px)");
+  const isMobile = useMediaQuery('(max-width: 767px)');
 
   useEffect(() => {
     if (!componentRef.current) return;
@@ -44,7 +45,7 @@ export const MultipleSlots = (props: MultipleSlotsProps) => {
         }
         setIsComponentInView(false);
       },
-      { threshold: [0, 0.1] },
+      { threshold: [0, 0.1] }
     );
     componentObserver.observe(componentRef.current);
 
@@ -57,7 +58,7 @@ export const MultipleSlots = (props: MultipleSlotsProps) => {
             setActiveSection(index);
           }
         },
-        { threshold: 0.2 },
+        { threshold: 0.2 }
       );
 
       observer.observe(ref);
@@ -73,7 +74,7 @@ export const MultipleSlots = (props: MultipleSlotsProps) => {
   const backgroundColor =
     isComponentInView && !isMobile
       ? `hsl(0, 0%, ${90 - activeSection * 10}%)`
-      : "initial";
+      : 'initial';
 
   return (
     <section ref={componentRef} className="px-[5%]">
@@ -89,10 +90,12 @@ export const MultipleSlots = (props: MultipleSlotsProps) => {
             >
               <div>{content.slot1}</div>
               <div className="mt-10 block w-full md:hidden">
-                <img
+                <Image
                   src={content.phoneImage.src}
+                  alt={content.phoneImage.alt || ''}
                   className="w-full"
-                  alt={content.phoneImage.alt}
+                  width={500}
+                  height={500}
                 />
               </div>
             </div>
@@ -100,13 +103,17 @@ export const MultipleSlots = (props: MultipleSlotsProps) => {
         </div>
         <div className="sticky top-0 hidden h-screen md:flex md:flex-col md:items-center md:justify-center">
           {images.map((image, index) => (
-            <img
+            <Image
               key={index}
               src={image.src}
+              alt={image.alt || ''}
               className={`absolute w-full transition-opacity duration-500 ${
-                activeSection === index ? "opacity-100" : "opacity-0"
+                activeSection === index ? 'opacity-100' : 'opacity-0'
               }`}
-              alt={image.alt}
+              width={500}
+              height={500}
+              layout="responsive"
+              objectFit="contain"
             />
           ))}
         </div>
@@ -137,8 +144,8 @@ export const MultipleSlotsDefaults: MultipleSlotsProps = {
         </div>,
       ],
       phoneImage: {
-        src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-1.svg",
-        alt: "placeholder image 1",
+        src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image-1.svg',
+        alt: 'placeholder image 1',
       },
     },
     {
@@ -157,19 +164,19 @@ export const MultipleSlotsDefaults: MultipleSlotsProps = {
         </div>,
       ],
       phoneImage: {
-        src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-2.svg",
-        alt: "placeholder image 2",
+        src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image-2.svg',
+        alt: 'placeholder image 2',
       },
     },
   ],
   images: [
     {
-      src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-1.svg",
-      alt: "placeholder image 1",
+      src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image-1.svg',
+      alt: 'placeholder image 1',
     },
     {
-      src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-2.svg",
-      alt: "placeholder image 2",
+      src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image-2.svg',
+      alt: 'placeholder image 2',
     },
   ],
 };

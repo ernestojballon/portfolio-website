@@ -4,7 +4,7 @@ type DebouncedFunction<T extends (...args: any[]) => any> = (
 
 function debounce<T extends (...args: any[]) => any>(
   func: T,
-  delay: number,
+  delay: number
 ): DebouncedFunction<T> {
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
 

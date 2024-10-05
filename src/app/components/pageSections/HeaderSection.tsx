@@ -1,10 +1,18 @@
-import HeaderWithImage from "@/components/sections/headers/HeaderWithImage";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import React from "react";
-import ResumeButton from "../ContactButtons";
+import HeaderWithImage from '@/components/sections/headers/HeaderWithImage';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import React from 'react';
+import ResumeButton from '../ContactButtons';
+import Image from 'next/image';
+
 const TechLogo = ({ src, alt }: { src: string; alt: string }) => (
-  <img src={src} alt={alt} width={48} height={48} className="object-contain" />
+  <Image
+    src={src}
+    alt={alt}
+    width={48}
+    height={48}
+    className="object-contain"
+  />
 );
 const HeaderSection = () => {
   return (
@@ -13,7 +21,7 @@ const HeaderSection = () => {
         <React.Fragment key="intro">
           <div className="max-w-4xl mx-auto">
             <p className="tagLine">Software Engineer</p>
-            <h1 className="h1 ">Hola, I'm Ernesto Ballon</h1>
+            <h1 className="h1 ">Hola, I&apos;m Ernesto Ballon</h1>
             <p className="body mb-6">
               Father of two princesses, loving husband, problem solver, and Full
               Stack JavaScript Engineer.
@@ -45,8 +53,8 @@ const HeaderSection = () => {
         </React.Fragment>,
       ]}
       image={{
-        src: "/images/family.png",
-        alt: "React js programer image",
+        src: '/images/family.png',
+        alt: 'React js programer image',
       }}
     />
   );

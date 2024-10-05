@@ -4,7 +4,7 @@ type ThrottledFunction<T extends (...args: any[]) => any> = (
 
 function throttle<T extends (...args: any[]) => any>(
   func: T,
-  limit: number,
+  limit: number
 ): ThrottledFunction<T> {
   let shouldWait = false;
   let waitingArgs: Parameters<T> | null = null;

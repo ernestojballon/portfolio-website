@@ -19,15 +19,25 @@ const NavBar = () => {
           url: "#",
           megaMenu: {
             linkGroup: {
-              title: "Blog categories",
+              title: "Projects",
               subMenuLinks: [
-                {
-                  url: "#",
-                  title: "Category One",
-                },
+                // {
+                //   url: "#",
+                //   title: "Category One",
+                // },
               ],
             },
             blogCategories: [
+              {
+                url: "https://www.acostadmacleaning.com/",
+                image: {
+                  src: "/images/acostadma-site.png",
+                  alt: "acostadma site",
+                },
+                title: "Website acostaDMACleaning",
+                description: "Website for acostaDMACleaning",
+                button: { title: "Go to site", variant: "link", size: "link" },
+              },
               {
                 url: "/signature",
                 image: {
@@ -48,16 +58,7 @@ const NavBar = () => {
                 description: "Playground for js code",
                 button: { title: "Check it out", variant: "link", size: "link" },
               },
-              {
-                url: "#",
-                image: {
-                  src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
-                  alt: "placeholder image 3",
-                },
-                title: "Article Title",
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                button: { title: "Read more", variant: "link", size: "link" },
-              },
+
               {
                 url: "#",
                 image: {

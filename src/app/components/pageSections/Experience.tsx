@@ -1,6 +1,7 @@
 import React from 'react'
 import VerticalFeatureProgress from '@/components/sections/layout/VerticalFeatureProgress'
 import { Button } from '@/components/ui/button'
+import ResumeButton from '../ContactButtons';
 
 const CompanyLogo = ({ src, alt }: { src: string; alt: string }) => (
   <img src={src} alt={alt} width={100} className="object-contain my-2" />
@@ -16,8 +17,8 @@ const Experience = () => {
           Over the years I was lucky to work with awesome people and companies.
         </p>,
         <div key="content" className="flex gap-4 mt-6">
-          <Button>Check My Resume</Button>
-          <Button variant="secondary">Check Projects</Button>
+          <ResumeButton />
+          {/* <Button variant="secondary">Check Projects</Button> */}
         </div>,
       ]}
       features={[
@@ -33,11 +34,11 @@ const Experience = () => {
               Lead Engineer for Comcast project, developing features for buyflow and checkout.
             </p>
             <CompanyLogo src="/icons/ross.svg" alt="ROSS" />
-            <p key="text" className="body mb-5">
+            <p key="text2" className="body mb-5">
               Senior Engineer for ROSS stores project, developed pilot for microfrontend application.
             </p>
             <CompanyLogo src="/icons/cat-lg.svg" alt="Caterpillar" />
-            <p key="text" className="body mb-5">
+            <p key="text3" className="body mb-5">
               Senior Engineer for Caterpillar project, developed application for remote 3D troubleshooting app for heavy machinery.
             </p>
           </>],

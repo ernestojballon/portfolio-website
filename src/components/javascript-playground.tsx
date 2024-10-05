@@ -1,8 +1,9 @@
 "use client"
 import { type editor } from 'monaco-editor';
-import { useState, useRef, useEffect, Ref } from 'react'
+import { useState, useRef, useEffect, useCallback, useMemo, Ref } from 'react'
 import Editor, { Monaco } from '@monaco-editor/react'
 import { Button } from "@/components/ui/button"
+import { throttle } from "@/utils/throttle"
 
 export default function JavaScriptPlayground() {
   const [code, setCode] = useState('')
@@ -21,29 +22,7 @@ export default function JavaScriptPlayground() {
     }
   }, [])
 
-  useEffect(() => {
-    // Save code to local storage whenever it changes
-    if (code) {
-      localStorage.setItem('javascriptPlaygroundCode', code)
-    }
-  }, [code])
-
-  const handleEditorDidMount = (editor: editor.IStandaloneCodeEditor, monaco: Monaco) => {
-    editorRef.current = editor
-
-    editor.addCommand(
-      monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter,
-      () => {
-        executeCode()
-      }
-    )
-  }
-
-  const handleEditorChange = (value: string | undefined, ev: editor.IModelContentChangedEvent) => {
-    setCode(value || '')
-  }
-
-  const executeCode = () => {
+  const executeCode = useCallback(() => {
     if (!editorRef.current) return
 
     const consoleLog = console.log
@@ -75,20 +54,47 @@ export default function JavaScriptPlayground() {
     console.warn = consoleWarn
 
     setOutput(outputBuffer.join('\n'))
+  }, [])
+
+  const executeCodeThrottle = useMemo(() => throttle(executeCode, 500), [executeCode]);
+
+  useEffect(() => {
+    // Save code to local storage whenever it changes
+    if (code) {
+      localStorage.setItem('javascriptPlaygroundCode', code)
+      if (editorRef.current) {
+        executeCodeThrottle();
+      }
+    }
+  }, [code, executeCodeThrottle])
+
+  const handleEditorDidMount = (editor: editor.IStandaloneCodeEditor, monaco: Monaco) => {
+    editorRef.current = editor
+
+    editor.addCommand(
+      monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter,
+      () => {
+        executeCode()
+      }
+    )
   }
+
+  const handleEditorChange = (value: string | undefined, ev: editor.IModelContentChangedEvent) => {
+    setCode(value || '')
+  }
+
   function copyValue() {
     navigator.clipboard.writeText(code);
     alert("Code copied to clipboard");
   }
+
   return (
     <div className="flex flex-col h-full   ">
-      <div className='flex flex-row' >
-        <h1 className='h3' >Javascript Playground</h1>
+      <div className='flex flex-row mb-4' >
+        <h1 className='h3' >JavaScript Playground</h1>
         <Button className='ml-auto' onClick={copyValue}>Copy Code</Button>
       </div>
-      <p className='body my-5'>Write and run JavaScript code in the browser.</p>
-
-      <div className="flex-1 min-h-0 relative w-full">
+      <div className="flex-1 min-h-0 relative w-full ">
         <Editor
           height="100%"
           width="100%"

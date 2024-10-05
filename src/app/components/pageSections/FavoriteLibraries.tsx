@@ -1,6 +1,7 @@
 import React from 'react'
 import DismissCards from '@/components/sections/layout/DismissCards'
 import { Button } from '@/components/ui/button'
+import ResumeButton, { CallMeButton, EmailButton } from '../ContactButtons'
 
 const FavoriteLibraries = () => {
   return (
@@ -14,8 +15,8 @@ const FavoriteLibraries = () => {
             I love JavaScript and AWS. I'm always looking for new libraries and tools to make me productive.
           </p>,
           <div key="content" className="flex gap-4 mt-6">
-            <Button>Check Out Full Resume</Button>
-            <Button variant="secondary">Give me a call</Button>
+            <ResumeButton />
+            <EmailButton />
           </div>,
         ]
       }

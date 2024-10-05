@@ -37,6 +37,9 @@ export const VerticalFeatureProgress = (props: VerticalFeatureProgressProps) => 
   return (
     <section className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container grid grid-cols-1 items-start gap-y-8 md:grid-cols-2 md:gap-x-12 lg:gap-x-20">
+        <div>
+          {slot1}
+        </div>
         <div className="relative">
           <div className="absolute left-8 right-auto top-[10%] h-3/4 w-0.5 bg-black/15 md:left-[2.4375rem]">
             <motion.div ref={scrollSection} className="bg-black" style={{ height }} />
@@ -62,9 +65,7 @@ export const VerticalFeatureProgress = (props: VerticalFeatureProgressProps) => 
             </div>
           ))}
         </div>
-        <div>
-          {slot1}
-        </div>
+
 
 
       </div>

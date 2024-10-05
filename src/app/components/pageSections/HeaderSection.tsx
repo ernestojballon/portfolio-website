@@ -1,6 +1,8 @@
 import HeaderWithImage from '@/components/sections/headers/HeaderWithImage'
+import { Button } from '@/components/ui/button';
 import Link from 'next/link'
 import React from 'react'
+import ResumeButton from '../ContactButtons';
 const TechLogo = ({ src, alt }: { src: string; alt: string }) => (
   <img src={src} alt={alt} width={48} height={48} className="object-contain" />
 );
@@ -33,6 +35,7 @@ const HeaderSection = () => {
               target="_blank">
               <TechLogo src="/icons/linkedin.svg" alt="React" />
             </Link>
+            <ResumeButton />
           </div>
         </div>
       </React.Fragment >

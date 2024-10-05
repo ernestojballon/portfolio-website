@@ -1,11 +1,9 @@
 import JavaScriptPlayground from '@/components/javascript-playground'
 import React from 'react'
-import NavBar from '../nav/Nav'
 
 const playgroundPage = () => {
   return (
     <>
-      <NavBar />
       <div className='container pt-20 h-screen flex '>
         <div className='mx-auto h-full w-full justify-center items-center content-center'
           style={{

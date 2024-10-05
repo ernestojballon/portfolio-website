@@ -15,7 +15,7 @@ import {
 const SkillItem = ({ Icon, skill }: { Icon: React.ElementType; skill: string }) => (
   <div className="flex items-center mb-2">
     <Icon className="h-5 w-5 text-blue-600 mr-2" />
-    <span className="text-gray-700">{skill}</span>
+    <span className="bodysmall">{skill}</span>
   </div>
 );
 const CarouselTechnologies = () => {
@@ -23,16 +23,16 @@ const CarouselTechnologies = () => {
     < TwoSectionsWithCarousel slot1={
       [
         <React.Fragment key="Technologies">
-          <p className="text-xl text-indigo-600 mb-2">Expertise</p>
-          <h2 className="text-3xl font-bold mb-4">Technologies I&apos;m proficient in</h2>
+          <p className="tagLine">Expertise</p>
+          <h2 className="h1">I consider myself a React Engineer</h2>
 
-          <p className="text-lg text-gray-700 mb-6">
+          <p className="body">
             My greater strength lies in front-end development, but I&apos;m also very comfortable with back-end technologies.
             I&apos;ve worked with a diverse array of tools and frameworks, with React, AWS, and Node.js being some of my favorites.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             <div>
-              <h3 className="text-xl font-semibold mb-2 flex items-center">
+              <h3 className="h3 mb-4 flex items-center ">
                 <CodeBracketIcon className="h-6 w-6 text-indigo-500 mr-2" />
                 Front-End Expertise
               </h3>
@@ -43,7 +43,7 @@ const CarouselTechnologies = () => {
               <SkillItem Icon={CpuChipIcon} skill="Tailwind CSS for rapid styling" />
             </div>
             <div>
-              <h3 className="text-xl font-semibold mb-2 flex items-center">
+              <h3 className="h3 mb-2 flex items-center">
                 <ServerIcon className="h-6 w-6 text-indigo-500 mr-2" />
                 Back-End & Cloud Skills
               </h3>

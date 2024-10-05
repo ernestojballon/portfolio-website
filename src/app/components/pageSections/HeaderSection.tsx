@@ -16,7 +16,7 @@ const HeaderSection = () => {
             Hola, I'm Ernesto Ballon
           </h1>
           <p className="body mb-6">
-            Website developer, JavaScript enthusiast, and problem solver.
+            Father of two princesses, loving husband, problem solver, and Full Stack JavaScript Engineer.
           </p>
           {/* <p className="text-lg text-gray-700 mb-6">
               Experienced Engineer that specializes in building scalable,
@@ -42,7 +42,7 @@ const HeaderSection = () => {
 
     ]}
       image={{
-        src: '/images/programersWorking.png',
+        src: '/images/family.png',
         alt: 'React js programer image'
       }}
     />

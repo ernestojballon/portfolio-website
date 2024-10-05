@@ -22,7 +22,7 @@ export const HeaderWithCarousel = (props: HeaderWithCarouselProps) => {
   const reversedImages = useMemo(() => images.slice().reverse(), [images]);
 
   return (
-    <section id="header" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="header" className="px-[5%] ">
       <div className="container">
         <div className="grid grid-cols-1 gap-x-20 gap-y-12 md:gap-y-16 lg:grid-cols-2 lg:items-center">
           <div className="h-[30rem] overflow-hidden lg:pl-0 lg:pr-0 pl-[1vw] pr-[1vw] md:h-[40rem] lg:h-screen ">

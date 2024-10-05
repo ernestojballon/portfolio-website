@@ -1,13 +1,15 @@
 "use client"
-
-import { useState, useRef, useEffect } from 'react'
-import Editor from '@monaco-editor/react'
+import { type editor } from 'monaco-editor';
+import { useState, useRef, useEffect, Ref } from 'react'
+import Editor, { Monaco } from '@monaco-editor/react'
 import { Button } from "@/components/ui/button"
 
 export default function JavaScriptPlayground() {
   const [code, setCode] = useState('')
   const [output, setOutput] = useState('')
-  const editorRef = useRef(null)
+  const editorRef: {
+    current: editor.IStandaloneCodeEditor | null
+  } = useRef(null)
 
   useEffect(() => {
     // Load code from local storage on component mount
@@ -26,7 +28,7 @@ export default function JavaScriptPlayground() {
     }
   }, [code])
 
-  const handleEditorDidMount = (editor) => {
+  const handleEditorDidMount = (editor: editor.IStandaloneCodeEditor, monaco: Monaco) => {
     editorRef.current = editor
 
     editor.addCommand(
@@ -35,6 +37,10 @@ export default function JavaScriptPlayground() {
         executeCode()
       }
     )
+  }
+
+  const handleEditorChange = (value: string | undefined, ev: editor.IModelContentChangedEvent) => {
+    setCode(value || '')
   }
 
   const executeCode = () => {
@@ -60,7 +66,7 @@ export default function JavaScriptPlayground() {
 
     try {
       eval(editorRef.current.getValue())
-    } catch (error) {
+    } catch (error: any) {
       outputBuffer.push(`Runtime Error: ${error.message}`)
     }
 
@@ -88,7 +94,7 @@ export default function JavaScriptPlayground() {
           width="100%"
           defaultLanguage="javascript"
           value={code}
-          onChange={setCode}
+          onChange={handleEditorChange}
           onMount={handleEditorDidMount}
           theme='light'//"vs-dark"
           options={{

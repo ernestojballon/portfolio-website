@@ -16,17 +16,20 @@ const Footer = () => {
             { title: 'Home', url: '/' },
             { title: 'Blog', url: '/blog' },
             { title: 'Playground', url: '/playground' },
-            { title: 'Resume', url: 'https://ernestoballon.com/resume.pdf' },
+            {
+              title: 'Resume',
+              url: '/ernesto-ballon-resume.pdf',
+            },
           ],
         },
       ]}
       socialMediaLinks={[
         {
-          url: 'https://github.com/ernestoballon',
+          url: 'https://github.com/ernestojballon',
           icon: <BiLogoGithub className="size-6 p-0.5" />,
         },
         {
-          url: 'https://www.linkedin.com/in/ernesto-ballon/',
+          url: 'https://www.linkedin.com/in/ernestojballon/',
           icon: <BiLogoLinkedinSquare className="size-6" />,
         },
       ]}

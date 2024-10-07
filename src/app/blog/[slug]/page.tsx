@@ -57,7 +57,7 @@ const BlogPage = async (props: BlogPostProps) => {
 
   return (
     <div>
-      <div className={styles.container}>
+      <div className={styles.wpcontainer}>
         <TitleChidren heading={blog.title?.rendered}>
           <span dangerouslySetInnerHTML={{ __html: html }} />
         </TitleChidren>

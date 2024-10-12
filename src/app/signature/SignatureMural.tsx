@@ -83,7 +83,6 @@ const SignatureMural = () => {
         rotation: Math.random() * 30 - 15,
       };
       setSignatures((prevSignatures) => {
-        console.log('Adding new signature:', newSignature); // Debugging log
         return [...prevSignatures, newSignature];
       });
       setSelectedSignatureId(newSignature.id);

@@ -17,6 +17,7 @@ export const TitleChidren = (props: TitleChidrenProps) => {
     ...TitleChidrenDefaults,
     ...props,
   } as Props;
+
   return (
     <section className=" py-16 md:py-16 lg:py-16">
       <Image
@@ -29,7 +30,7 @@ export const TitleChidren = (props: TitleChidrenProps) => {
       <div className="container px-[5%]">
         <div className="rb-12 mb-10 md:mb-12 lg:mb-14"></div>
         <div className="mx-auto w-full max-w-5xl">
-          <h2 className="rb-5 mb-5 h1 font-bold md:mb-6 ">{heading}</h2>
+          <h1 className="h1 rb-5 mb-5 h1 font-bold md:mb-6 ">{heading}</h1>
           <div className="">{children}</div>
         </div>
       </div>

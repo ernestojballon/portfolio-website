@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
-export const getPostsQuery = gql`
-  query getPosts {
+export const findAllPostsQuery = gql`
+  query findAllPosts {
     posts {
       edges {
         node {

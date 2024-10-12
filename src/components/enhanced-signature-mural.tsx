@@ -71,7 +71,6 @@ export function EnhancedSignatureMuralComponent() {
   const handleSubmit = () => {
     if (sigPad.current) {
       const dataURL = sigPad.current.toDataURL();
-      console.log('Signature dataURL:', dataURL); // Debugging log
       const newSignature: Signature = {
         id: Date.now().toString(),
         dataURL,
@@ -82,7 +81,6 @@ export function EnhancedSignatureMuralComponent() {
         rotation: Math.random() * 30 - 15,
       };
       setSignatures((prevSignatures) => {
-        console.log('Adding new signature:', newSignature); // Debugging log
         return [...prevSignatures, newSignature];
       });
       setSelectedSignature(newSignature.id);

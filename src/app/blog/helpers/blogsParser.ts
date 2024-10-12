@@ -1,37 +1,25 @@
-export interface PostListItem {
-  id: string;
-  slug: string;
-  title: string;
-  categories: string[];
-  featuredImage: string | null;
-  author: string;
-  authorImage: string | null;
-  excerpt: string;
-  date: string;
-}
+import { WpPostsType, PostListItem } from './types';
 
-const blogParser = (data: any): PostListItem[] => {
-  if (!data || !data.posts || !data.posts.edges) {
-    return [];
-  }
-
-  return data.posts.edges.map((edge: any) => {
-    const post = edge.node;
-    return {
-      id: post.id,
-      slug: post.slug,
-      title: post.title,
-      categories: post.categories.edges.map(
-        (catEdge: any) => catEdge.node.name
-      ),
-      featuredImage: post.featuredImage?.node?.mediaItemUrl || null,
-      excerpt: post.excerpt,
-      author:
-        `${post.author.node.firstName} ${post.author.node.lastName}`.trim(),
-      authorImage: post.author.node.avatar?.url || null,
-      date: post.date,
-    };
-  });
+export const postParser = (postData: WpPostsType): PostListItem => {
+  return {
+    id: postData.id,
+    slug: postData.slug,
+    title: postData.title,
+    categories: postData.categories?.edges.map(
+      (catEdge: any) => catEdge.node.name
+    ),
+    featuredImage: postData.featuredImage?.node?.mediaItemUrl || null,
+    excerpt: postData.excerpt,
+    author:
+      `${postData.author?.node.firstName} ${postData.author?.node.lastName}`.trim(),
+    authorImage: postData.author?.node.avatar?.url || null,
+    date: postData.date,
+    content: postData.content || '',
+  };
 };
 
-export default blogParser;
+export const blogParser = (wpPosts: WpPostsType[]): PostListItem[] => {
+  return wpPosts.map((wpPost: WpPostsType) => {
+    return postParser(wpPost);
+  });
+};

@@ -1,68 +1,57 @@
 import TitleChidren from '@/components/sections/content/TitleChidren';
 
-import sanitized from '@/utils/stringFormatter';
 import React from 'react';
+import Image from 'next/image';
 import styles from './wordpressStyles.module.css';
-import appConfig from '@/app/app.config';
+import { findAllSlugsPosts, findPostBySlug } from '../helpers/graphql';
+import { postSanitizer } from '../helpers/postSanitizer';
+import { postParser } from '../helpers/blogsParser';
+import { WpPostsType } from '../helpers/types';
 
-export async function generateStaticParams() {
-  const res = await fetch(`${appConfig.wordpressApiUrl}/wp-json/wp/v2/posts`);
-  const posts = await res.json();
-  const postSlugs = posts.map((post: { slug: string }) => ({
-    slug: post.slug,
-  }));
-  return postSlugs;
-}
+type GenerateStaticParams = () => Promise<{ slug: string }[]>;
+export const generateStaticParams: GenerateStaticParams = async () => {
+  const slugsLists = await findAllSlugsPosts();
+  return slugsLists;
+};
 
 type BlogPostProps = {
   params: {
     slug: string;
   };
+  post: WpPostsType;
 };
 
 async function getPost(slug: string) {
-  const url = `${appConfig.wordpressApiUrl}/wp-json/wp/v2/posts?slug=${slug}`;
-  const res = await fetch(url, { next: { revalidate: 60 } }); // Revalidate every 60 seconds
-  const post = await res.json();
-  return post[0];
+  const wpPost: WpPostsType = await findPostBySlug(slug);
+  const postItem = postSanitizer(postParser(wpPost));
+  return postItem;
 }
 
 const BlogPage = async (props: BlogPostProps) => {
   const { slug } = props.params;
   const blog = await getPost(slug);
 
-  const html = sanitized({
-    str: blog.content.rendered,
-    options: {
-      sanitize: true,
-      sanitizeOptions: {
-        ADD_TAGS: ['iframe'],
-        ADD_ATTR: [
-          'allow',
-          'allowfullscreen',
-          'frameborder',
-          'scrolling',
-          'src',
-        ],
-        ALLOW_UNKNOWN_PROTOCOLS: true,
-        ALLOWED_URI_REGEXP:
-          /^(?:(?:https?:)?\/\/)?(?:(?:www|m)\.)?(?:(?:youtube\.com|youtu.be))(?:\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/,
-      },
-      stringReplace: {
-        from: appConfig.wordpressApiUrl,
-        to: appConfig.wordpressCloudfrontUrl,
-      },
-    },
-  });
-
   return (
-    <div>
-      <div className={styles.wpcontainer}>
-        <TitleChidren heading={blog.title?.rendered}>
-          <span dangerouslySetInnerHTML={{ __html: html }} />
-        </TitleChidren>
+    <TitleChidren heading={blog.title || ''}>
+      <div>
+        <div className="flex mt-4 items-center gap-2 mb-8">
+          <p className="small ">{blog.date}</p>
+          <p className=" text-gray-400">•</p>
+          <Image
+            src={blog.authorImage || ''}
+            alt={blog.author || ''}
+            width={30}
+            height={30}
+          />
+          <p className="small">{blog.author}</p>
+          <p className=" text-gray-400">•</p>
+          <p className="small">5 min read</p>
+        </div>
       </div>
-    </div>
+      <div className={styles.wpcontainer}>
+        <span dangerouslySetInnerHTML={{ __html: blog.content || '' }} />
+      </div>
+    </TitleChidren>
   );
 };
 

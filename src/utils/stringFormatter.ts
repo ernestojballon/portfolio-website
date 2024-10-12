@@ -12,6 +12,7 @@ type SanitizeHtmlProps = {
       to: string;
     };
     firstCapital?: boolean;
+    allWordsFirstCapital?: boolean;
   };
 };
 
@@ -48,6 +49,13 @@ const stringFormatter = ({ str, options }: SanitizeHtmlProps): string => {
 
   if (options.firstCapital) {
     sanitizedStr = sanitizedStr.charAt(0).toUpperCase() + sanitizedStr.slice(1);
+  }
+
+  if (options.allWordsFirstCapital) {
+    sanitizedStr = sanitizedStr
+      .split(' ')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
   }
 
   if (truncateOn && sanitizedStr.length > truncateOn) {

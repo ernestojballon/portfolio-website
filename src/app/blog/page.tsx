@@ -1,62 +1,36 @@
 import React from 'react';
 import BlogList from '@/components/sections/lists/BlogList';
-import { formatReadableDate } from '@/utils/formatReadableDate';
-import {
-  getPostsQuery,
-  getErnestoWordpressClient,
-} from '@/app/blog/helpers/graphql/index';
-import blogParser, { PostListItem } from '@/app/blog/helpers/blogsParser';
-import stringFormatter from '@/utils/stringFormatter';
-import appConfig from '@/app/app.config';
-
-export const revalidate = 5;
+import { findAllPosts } from '@/app/blog/helpers/graphql/index';
+import { blogParser } from './helpers/blogsParser';
+import { PostListItem, WpPostsType } from './helpers/types';
+import { postSanitizer } from './helpers/postSanitizer';
 
 const BlogHome = async () => {
-  const { data } = await getErnestoWordpressClient().query({
-    query: getPostsQuery,
-  });
-  const postList = blogParser(data);
-  const blogPosts = postList.map((post: PostListItem) => ({
-    url: `/blog/${post.slug}`,
-    image: {
-      src: post.featuredImage
-        ? stringFormatter({
-            str: post.featuredImage,
-            options: {
-              stringReplace: {
-                from: appConfig.wordpressApiUrl,
-                to: appConfig.wordpressCloudfrontUrl,
-              },
-            },
-          })
-        : 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg',
-      alt: ' placeholder image 1',
-    },
-    category: post.categories
-      .filter((cat) => 'Uncategorized' !== cat)
-      .map((cat) => cat.toUpperCase())
-      .join(', '),
-    title: post.title,
-    excerpt: post.excerpt
-      ? stringFormatter({
-          str: post.excerpt,
-          options: {
-            removeHtmlTags: true,
-            truncateOn: 150,
-            firstCapital: true,
-          },
-        })
-      : '',
-    avatar: {
-      src:
-        post.authorImage ||
-        'https://d22po4pjz3o32e.cloudfront.net/placeholder-avatar.svg',
-      alt: ' placeholder avatar 3',
-    },
-    fullName: post.author,
-    date: post.date && formatReadableDate(post.date),
-    readTime: '5 min read',
-  }));
+  const wpPostList: WpPostsType[] = await findAllPosts();
+
+  const postList: PostListItem[] = blogParser(wpPostList);
+
+  const blogPosts = postList
+    .map((post: PostListItem) => {
+      return postSanitizer(post);
+    })
+    .map((post: PostListItem) => ({
+      url: `/blog/${post.slug}`,
+      image: {
+        src: post.featuredImage || '',
+        alt: post.title || '',
+      },
+      category: (post.categories || []).join(', '),
+      title: post.title,
+      excerpt: post.excerpt || '',
+      avatar: {
+        src: post.authorImage || '',
+        alt: post.author || '',
+      },
+      fullName: post.author,
+      date: post.date,
+      readTime: '5 min read',
+    }));
   return (
     <>
       <BlogList

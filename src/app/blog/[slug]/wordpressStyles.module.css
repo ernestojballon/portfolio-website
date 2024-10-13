@@ -35,9 +35,14 @@
   background-color: #f4f4f4;
   padding: 2px 4px;
   border-radius: 3px;
+  word-break: break-word;
 }
 .wpcontainer {
   @apply text-gray-800 leading-relaxed;
+}
+
+.wpcontainer strong {
+  @apply break-words;
 }
 
 .wpcontainer h2 {
@@ -74,7 +79,7 @@
 }
 
 .wpcontainer table {
-  @apply w-full border-collapse mb-4;
+  @apply w-full border-collapse mb-4 overflow-scroll;
 }
 
 .wpcontainer th,

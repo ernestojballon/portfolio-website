@@ -50,7 +50,7 @@ const NavBar = () => {
                 button: { title: 'Go to site', variant: 'link', size: 'link' },
               },
               {
-                url: '/reviews',
+                url: '/reviews-webcomponent',
                 image: {
                   src: '/images/reviews-webcomponent.png',
                   alt: 'reviews webcomponent',

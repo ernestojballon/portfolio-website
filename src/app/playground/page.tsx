@@ -12,7 +12,7 @@ const playgroundPage = () => {
             maxWidth: 'calc(100vw - 60px)',
           }}
         >
-          <div className="h-full w-full m-auto overflow-auto border border-gray-300 rounded-md p-4 mt-4 bg-gray-100">
+          <div className="h-full w-full overflow-auto border border-gray-300 rounded-md p-4 mt-2 sm:mt-4 bg-gray-100">
             <JavaScriptPlayground />
           </div>
         </div>

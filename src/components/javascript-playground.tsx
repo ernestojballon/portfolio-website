@@ -100,42 +100,43 @@ export default function JavaScriptPlayground() {
   }
 
   return (
-    <div className="flex flex-col h-full   ">
-      <div className="flex flex-row mb-4">
-        <h1 className="h3">JavaScript Playground</h1>
-        <Button className="ml-auto" onClick={copyValue}>
-          Copy Code
-        </Button>
-      </div>
-      <div className="flex-1 min-h-0 relative w-full ">
-        <Editor
-          height="100%"
-          width="100%"
-          defaultLanguage="javascript"
-          value={code}
-          onChange={handleEditorChange}
-          onMount={handleEditorDidMount}
-          theme="light" //"vs-dark"
-          options={{
-            minimap: { enabled: false },
-            fontSize: 14,
-            lineNumbers: 'on',
-            roundedSelection: true,
-            scrollBeyondLastLine: false,
-            readOnly: false,
-          }}
-        />
-        <div className="absolute bottom-2 right-2 text-xs text-muted-foreground bg-background/80 px-2 py-1 rounded">
-          Press Cmd+Enter (or Ctrl+Enter) to run
+    <div className="flex p-2 h-full w-full gap-4 flex-col sm:flex-row">
+      <div className="flex flex-1 flex-col   sm:h-full sm:w-7/12">
+        <div className="flex mb-4 gap-4">
+          <h1 className="h3">JavaScript Playground</h1>
+          <Button className="ml-auto" onClick={copyValue}>
+            Copy Code
+          </Button>
+          <Button onClick={executeCode} className="mb-4">
+            Run Code
+          </Button>
+        </div>
+        <div className="h-full relative w-full  overflow-scroll">
+          <Editor
+            height="100%"
+            width="100%"
+            defaultLanguage="javascript"
+            value={code}
+            onChange={handleEditorChange}
+            onMount={handleEditorDidMount}
+            theme="light" //"vs-dark"
+            options={{
+              minimap: { enabled: false },
+              fontSize: 14,
+              lineNumbers: 'on',
+              roundedSelection: true,
+              scrollBeyondLastLine: false,
+              readOnly: false,
+            }}
+          />
+          <div className="absolute bottom-2 right-2 text-xs text-muted-foreground bg-background/80 px-2 py-1 rounded">
+            Press Cmd+Enter (or Ctrl+Enter) to run
+          </div>
         </div>
       </div>
 
-      <div className="p-4 bg-muted">
-        <Button onClick={executeCode} className="mb-4">
-          Run Code
-        </Button>
-
-        <div className="bg-black text-white p-4 rounded-md h-48 overflow-auto font-mono">
+      <div className="relative h-40 sm:h-full bg-muted sm:w-5/12">
+        <div className="bg-black text-white p-4 mb-4 rounded-md h-full overflow-auto font-mono">
           <pre>{output}</pre>
         </div>
       </div>

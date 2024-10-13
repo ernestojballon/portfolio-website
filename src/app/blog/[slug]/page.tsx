@@ -18,7 +18,6 @@ type BlogPostProps = {
   params: {
     slug: string;
   };
-  post: WpPostsType;
 };
 
 async function getPost(slug: string) {

@@ -50,6 +50,20 @@ const NavBar = () => {
                 button: { title: 'Go to site', variant: 'link', size: 'link' },
               },
               {
+                url: '/reviews',
+                image: {
+                  src: '/images/reviews-webcomponent.png',
+                  alt: 'reviews webcomponent',
+                },
+                title: 'Reviews Webcomponent',
+                description: 'Webcomponent for reviews',
+                button: {
+                  title: 'Check it out',
+                  variant: 'link',
+                  size: 'link',
+                },
+              },
+              {
                 url: '/signature',
                 image: {
                   src: '/images/esignature-modal.png',
@@ -77,39 +91,19 @@ const NavBar = () => {
                   size: 'link',
                 },
               },
-
               {
-                url: '#',
+                url: '/qr-code-generator',
                 image: {
-                  src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg',
-                  alt: 'placeholder image 4',
+                  src: '/images/qr-code-generator.png',
+                  alt: 'qr code generator',
                 },
-                title: 'Article Title',
-                description:
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                button: { title: 'Read more', variant: 'link', size: 'link' },
-              },
-              {
-                url: '#',
-                image: {
-                  src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg',
-                  alt: 'placeholder image 5',
+                title: 'QR Code Generator',
+                description: 'Generate qr codes from urls',
+                button: {
+                  title: 'Check it out',
+                  variant: 'link',
+                  size: 'link',
                 },
-                title: 'Article Title',
-                description:
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                button: { title: 'Read more', variant: 'link', size: 'link' },
-              },
-              {
-                url: '#',
-                image: {
-                  src: 'https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg',
-                  alt: 'placeholder image 6',
-                },
-                title: 'Article Title',
-                description:
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                button: { title: 'Read more', variant: 'link', size: 'link' },
               },
             ],
           },

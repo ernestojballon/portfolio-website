@@ -39,7 +39,7 @@ export const VerticalFeatureProgress = (
   const height = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section className="px-[5%] ">
       <div className="container grid grid-cols-1 items-start gap-y-8 md:grid-cols-2 md:gap-x-12 lg:gap-x-20">
         <div>{slot1}</div>
         <div className="relative">

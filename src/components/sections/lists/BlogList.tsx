@@ -35,7 +35,7 @@ export const BlogList = (props: BlogListProps) => {
     ...props,
   } as Props;
   return (
-    <section id="" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="" className="px-[5%] pt-24 md:pt-[15vh] ">
       <div className="container">
         <div className="rb-12 mb-10 grid grid-cols-1 items-start justify-start gap-y-8 md:mb-12 md:grid-cols-[1fr_max-content] md:items-end md:justify-between md:gap-x-12 md:gap-y-4 lg:mb-20 lg:gap-x-20">
           <div>{slot1}</div>

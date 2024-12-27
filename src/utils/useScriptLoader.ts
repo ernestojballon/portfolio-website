@@ -49,9 +49,11 @@ const useScriptLoader = (scriptConfigs: ScriptConfig[]) => {
 
     Promise.all(scriptConfigs.map(loadScript))
       .then(() => {
+        console.log('script loaded');
         if (isMounted) setStatus('loaded');
       })
       .catch((err) => {
+        console.log('error loading scripts', JSON.stringify(err));
         if (isMounted) {
           setStatus('error');
           setError(err);

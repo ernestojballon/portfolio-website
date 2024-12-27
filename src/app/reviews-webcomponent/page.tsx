@@ -45,11 +45,13 @@ const ReviewsWebcomponent = () => {
   }, [status]);
 
   if (status === 'loading') {
-    return <div>Loading web component...</div>;
+    return <div className="mt-20">Loading web component...</div>;
   }
 
   if (status === 'error') {
-    return <div>Error loading web component: {error?.message}</div>;
+    return (
+      <div className="mt-20">Error loading web component: {error?.message}</div>
+    );
   }
 
   return (

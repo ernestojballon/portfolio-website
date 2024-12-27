@@ -24,12 +24,12 @@ const ReviewsWebcomponent = () => {
     {
       url: 'https://www.ernestoballon.com/build/webcomponents-library-stencil.esm.js',
       type: 'module' as const,
-      id: 'unique-script-id', // optional
+      id: 'esmjs-webcomponent', // optional
     },
     {
       url: 'https://www.ernestoballon.com/build/webcomponents-library-stencil.js',
       type: 'nomodule' as const,
-      id: 'unique-script-id2', // optional
+      id: 'jscript-webcomponent', // optional
     },
   ];
 

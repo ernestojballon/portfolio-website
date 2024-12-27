@@ -65,7 +65,7 @@ const useScriptLoader = (scriptConfigs: ScriptConfig[]) => {
             event: event.toString(),
             timestamp: new Date().toISOString(),
           };
-          console.error('Script loading failed:', errorDetails);
+          console.log('Script loading failed:', errorDetails);
           reject(new Error(`Failed to load script: ${url}`));
         };
 
@@ -91,7 +91,7 @@ const useScriptLoader = (scriptConfigs: ScriptConfig[]) => {
           return;
         } catch (err) {
           retryCount++;
-          console.warn(`Retry attempt ${retryCount} of ${maxRetries}`);
+          console.log(`Retry attempt ${retryCount} of ${maxRetries}`);
 
           if (retryCount === maxRetries) {
             if (isMounted) {
@@ -101,7 +101,7 @@ const useScriptLoader = (scriptConfigs: ScriptConfig[]) => {
                   ? err
                   : new Error('Unknown error loading scripts')
               );
-              console.error('Final retry failed:', err);
+              console.log('Final retry failed:', err);
             }
           } else {
             // Wait before retrying (exponential backoff)

@@ -62,7 +62,7 @@ const useScriptLoader = (scriptConfigs: ScriptConfig[]) => {
           const errorDetails = {
             url,
             type,
-            event: event.type,
+            event: event.toString(),
             timestamp: new Date().toISOString(),
           };
           console.error('Script loading failed:', errorDetails);

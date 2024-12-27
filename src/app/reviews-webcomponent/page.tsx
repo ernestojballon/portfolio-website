@@ -20,20 +20,17 @@ declare global {
 }
 
 const ReviewsWebcomponent = () => {
-  const scriptConfigs = [
-    {
-      url: 'https://www.ernestoballon.com/build/webcomponents-library-stencil.esm.js',
-      type: 'module' as const,
-      id: 'esmjs-webcomponent', // optional
-    },
-    {
-      url: 'https://www.ernestoballon.com/build/webcomponents-library-stencil.js',
-      type: 'nomodule' as const,
-      id: 'jscript-webcomponent', // optional
-    },
-  ];
+  const { status: scriptStatus, error: error2 } = useScriptLoader({
+    url: 'https://www.ernestoballon.com/build/webcomponents-library-stencil.js',
+    type: 'nomodule' as const,
+    id: 'jscript-webcomponent', // optional
+  });
+  const { status: esmScriptStatus, error: error1 } = useScriptLoader({
+    url: 'https://www.ernestoballon.com/build/webcomponents-library-stencil.esm.js',
+    type: 'module' as const,
+    id: 'esmjs-webcomponent', // optional
+  });
 
-  const { status, error } = useScriptLoader(scriptConfigs);
   const reviewsRef = useRef<
     HTMLElement & {
       reviews: any[];
@@ -41,18 +38,30 @@ const ReviewsWebcomponent = () => {
   >(null);
 
   useEffect(() => {
-    if (status === 'loaded' && reviewsRef.current) {
+    if (
+      (esmScriptStatus === 'loaded' || scriptStatus === 'loaded') &&
+      reviewsRef.current
+    ) {
       reviewsRef.current.reviews = reviewsData.googleReviews;
     }
-  }, [status]);
+  }, [esmScriptStatus, scriptStatus]);
 
-  if (status === 'loading') {
+  if (esmScriptStatus === 'loading' && scriptStatus === 'loading') {
     return <div className="mt-20">Loading web component...</div>;
   }
 
-  if (status === 'error') {
+  if (esmScriptStatus === 'error') {
     return (
-      <div className="mt-20">Error loading web component: {error?.message}</div>
+      <div className="mt-20">
+        Error loading web component: {error1?.message}
+      </div>
+    );
+  }
+  if (scriptStatus === 'error') {
+    return (
+      <div className="mt-20">
+        Error loading web component: {error2?.message}
+      </div>
     );
   }
 

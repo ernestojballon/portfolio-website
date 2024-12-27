@@ -1,17 +1,15 @@
 'use client';
 import { useState, useEffect } from 'react';
 
-type ScriptType = 'module' | 'nomodule';
-
 interface ScriptConfig {
   url: string;
-  type: ScriptType;
-  id?: string; // Add optional id for better script management
+  type: 'module' | 'nomodule';
+  id?: string;
 }
 
 type ScriptLoaderStatus = 'loading' | 'loaded' | 'error';
 
-const useScriptLoader = (scriptConfigs: ScriptConfig[]) => {
+const useScriptLoader = (config: ScriptConfig) => {
   const [status, setStatus] = useState<ScriptLoaderStatus>('loading');
   const [error, setError] = useState<Error | null>(null);
 
@@ -20,105 +18,53 @@ const useScriptLoader = (scriptConfigs: ScriptConfig[]) => {
       return;
     }
 
-    const loadScript = ({ url, type, id }: ScriptConfig): Promise<void> => {
-      return new Promise((resolve, reject) => {
-        // Check for existing script using both URL and ID
-        const existingScript = id
-          ? document.getElementById(id)
-          : document.querySelector(`script[src="${url}"]`);
+    const { url, type, id } = config;
 
-        if (existingScript) {
-          resolve();
-          return;
-        }
+    // Check for existing script
+    const existingScript = id
+      ? document.getElementById(id)
+      : document.querySelector(`script[src="${url}"]`);
 
-        const script = document.createElement('script');
-        script.src = url;
-        script.async = true;
+    if (existingScript) {
+      setStatus('loaded');
+      return;
+    }
 
-        // Add crossOrigin attribute for external scripts
-        if (url.startsWith('http')) {
-          script.crossOrigin = 'anonymous';
-        }
+    const script = document.createElement('script');
+    script.src = url;
+    script.async = true;
 
-        // Add ID if provided
-        if (id) {
-          script.id = id;
-        }
+    // Set the appropriate type
+    if (type === 'module') {
+      script.type = 'module';
+    } else {
+      script.setAttribute('nomodule', '');
+    }
 
-        if (type === 'module') {
-          script.type = 'module';
-        } else if (type === 'nomodule') {
-          script.setAttribute('nomodule', '');
-        }
+    if (id) {
+      script.id = id;
+    }
 
-        // Enhanced error handling
-        script.onload = () => {
-          console.log(`Script loaded successfully: ${url}`);
-          resolve();
-        };
-
-        script.onerror = (event) => {
-          const errorDetails = {
-            url,
-            type,
-            event: event.toString(),
-            timestamp: new Date().toISOString(),
-          };
-          console.log('Script loading failed:', errorDetails);
-          reject(new Error(`Failed to load script: ${url}`));
-        };
-
-        // Add to document head instead of body for better performance
-        document.head.appendChild(script);
-      });
+    script.onload = () => {
+      // console.log(`Script loaded successfully: ${url}`);
+      setStatus('loaded');
     };
 
-    let isMounted = true;
-
-    // Add delay for production environment
-    const loadWithRetry = async () => {
-      const maxRetries = 3;
-      let retryCount = 0;
-
-      while (retryCount < maxRetries) {
-        try {
-          await Promise.all(scriptConfigs.map(loadScript));
-          if (isMounted) {
-            setStatus('loaded');
-            console.log('All scripts loaded successfully');
-          }
-          return;
-        } catch (err) {
-          retryCount++;
-          console.log(`Retry attempt ${retryCount} of ${maxRetries}`);
-
-          if (retryCount === maxRetries) {
-            if (isMounted) {
-              setStatus('error');
-              setError(
-                err instanceof Error
-                  ? err
-                  : new Error('Unknown error loading scripts')
-              );
-              console.log('Final retry failed:', err);
-            }
-          } else {
-            // Wait before retrying (exponential backoff)
-            await new Promise((resolve) =>
-              setTimeout(resolve, 1000 * Math.pow(2, retryCount))
-            );
-          }
-        }
-      }
+    script.onerror = (event) => {
+      const err = new Error(`Failed to load script: ${url}`);
+      console.error('Script loading failed:', err);
+      setStatus('error');
+      setError(err);
     };
 
-    loadWithRetry();
+    document.head.appendChild(script);
 
     return () => {
-      isMounted = false;
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
     };
-  }, [scriptConfigs]);
+  }, [config]);
 
   return { status, error };
 };

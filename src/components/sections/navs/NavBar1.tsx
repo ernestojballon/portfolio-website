@@ -5,6 +5,7 @@ import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { RxChevronDown } from 'react-icons/rx';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 
 type ImageProps = {
   url?: string;
@@ -85,9 +86,9 @@ export const Navbar1 = (props: Navbar1Props) => {
           </div>
           <div className="flex items-center gap-4">
             {buttons.map((button, index) => (
-              <Button key={index} {...button}>
-                {button.title}
-              </Button>
+              <Link href={button.href} key={index}>
+                <Button {...button}>{button.title}</Button>
+              </Link>
             ))}
           </div>
         </div>
@@ -154,9 +155,9 @@ export const Navbar1 = (props: Navbar1Props) => {
                 ))}
                 <div className="mt-6 flex flex-col items-stretch gap-4">
                   {buttons.map((button, index) => (
-                    <Button key={index} {...button}>
-                      {button.title}
-                    </Button>
+                    <Link href={button.href} key={index}>
+                      <Button {...button}>{button.title}</Button>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -389,7 +390,7 @@ export const Navbar1Defaults: Navbar1Props = {
   ],
   buttons: [
     {
-      title: 'Sign In',
+      title: 's',
       variant: 'default',
       size: 'lg',
     },

@@ -111,14 +111,10 @@ const NavBar = () => {
       ]}
       buttons={[
         {
-          title: 'Sign In',
+          title: 'AI chat',
           variant: 'default',
           size: 'lg',
-        },
-        {
-          title: 'Sign Up',
-          variant: 'variant',
-          size: 'lg',
+          href: 'https://chateb.ernestoballon.com/dashboard',
         },
       ]}
     />
